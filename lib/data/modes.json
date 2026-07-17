@@ -1,0 +1,1024 @@
+[
+  {
+    "slug": "alert-mode",
+    "name": "Alert Mode",
+    "tagline": "Scanning for threat.",
+    "meme": "A security camera that never turns off.",
+    "family": "Threat / Protection",
+    "related": [
+      "Anxiety Mode",
+      "Social Anxiety Mode",
+      "Fight Mode"
+    ],
+    "thinking": "Fast, vigilant, predictive.",
+    "saran": "Me: vulnerable. Them/world: potentially dangerous. Future: something could go wrong.",
+    "body": "Shallow breath, eyes scanning, shoulders up.",
+    "behaviors": "Monitor, prepare, avoid, interrupt, check.",
+    "sequence": "Starts with ambiguity or possible threat; winds down when safety becomes obvious or body settles."
+  },
+  {
+    "slug": "anxiety-mode",
+    "name": "Anxiety Mode",
+    "tagline": "The future becomes a threat object.",
+    "meme": "A weather app showing thunderstorms for every day.",
+    "family": "Threat / Protection",
+    "related": [
+      "Alert Mode",
+      "Social Anxiety Mode",
+      "Fight Mode"
+    ],
+    "thinking": "Future-heavy, conditional, repetitive.",
+    "saran": "Me: not ready. Future: dangerous. World: unstable.",
+    "body": "Tight chest, restless body, shallow breath.",
+    "behaviors": "Plan, rehearse, seek reassurance, avoid.",
+    "sequence": "Starts with uncertainty; winds down with action, fatigue, grounding, or clearer information."
+  },
+  {
+    "slug": "social-anxiety-mode",
+    "name": "Social Anxiety Mode",
+    "tagline": "The room becomes a courtroom.",
+    "meme": "Walking into a party like entering a trial.",
+    "family": "Threat / Protection",
+    "related": [
+      "Alert Mode",
+      "Performance Mode",
+      "Inferiority Mode",
+      "Appeasement Mode"
+    ],
+    "thinking": "Self-monitoring, rank-aware, performance-focused.",
+    "saran": "Me: being evaluated. Them: judges. Situation: test.",
+    "body": "Face tension, altered eye contact, shallow breath, inward attention.",
+    "behaviors": "Perform, hide, overtalk, appease, freeze.",
+    "sequence": "Starts with social exposure; winds down through warmth, belonging cues, leaving, or permission to be simple."
+  },
+  {
+    "slug": "fight-mode",
+    "name": "Fight Mode",
+    "tagline": "Win the frame, defend the self.",
+    "meme": "A lawyer slamming papers on a desk.",
+    "family": "Threat / Protection",
+    "related": [
+      "Defense Mode",
+      "Resentment Mode",
+      "Frame Contest in Conflict"
+    ],
+    "thinking": "Prosecutorial, certain, selective.",
+    "saran": "Me: wronged. Them: offender. World: unfair.",
+    "body": "Heat, pressure, forward lean, louder voice.",
+    "behaviors": "Attack, counter, interrupt, escalate.",
+    "sequence": "Starts with perceived attack/disrespect; winds down after victory, exhaustion, repair, or perspective shift."
+  },
+  {
+    "slug": "freeze-mode",
+    "name": "Freeze Mode",
+    "tagline": "No move feels safe.",
+    "meme": "A deer staring at headlights.",
+    "family": "Threat / Protection",
+    "related": [
+      "Alert Mode",
+      "Anxiety Mode",
+      "Social Anxiety Mode"
+    ],
+    "thinking": "Blank, slowed, threat-saturated.",
+    "saran": "Me: trapped. Them/world: unsafe. Future: no good option.",
+    "body": "Held breath, stillness, numbness, wide eyes.",
+    "behaviors": "Stop, comply, go quiet, delay.",
+    "sequence": "Starts with overwhelm; winds down when pressure lowers or a clear next step appears."
+  },
+  {
+    "slug": "defense-mode",
+    "name": "Defense Mode",
+    "tagline": "Set the record straight.",
+    "meme": "A courtroom defense team entering emergency mode.",
+    "family": "Threat / Protection",
+    "related": [
+      "Alert Mode",
+      "Anxiety Mode",
+      "Social Anxiety Mode"
+    ],
+    "thinking": "Justifying, correcting, explaining.",
+    "saran": "Me: misunderstood/accused. Them: unfair. Situation: trial.",
+    "body": "Tight jaw, quick speech, chest pressure.",
+    "behaviors": "Explain, argue, document, correct.",
+    "sequence": "Starts with criticism; winds down when seen, validated, or when the need to prove loosens."
+  },
+  {
+    "slug": "appeasement-mode",
+    "name": "Appeasement Mode",
+    "tagline": "Keep the peace by shrinking.",
+    "meme": "A person smiling while backing toward the exit.",
+    "family": "Threat / Protection",
+    "related": [
+      "Alert Mode",
+      "Anxiety Mode",
+      "Social Anxiety Mode"
+    ],
+    "thinking": "Other-focused, self-erasing, harmony-seeking.",
+    "saran": "Me: risky if honest. Them: must be managed. World: conflict is dangerous.",
+    "body": "Soft voice, collapsed posture, stomach tension.",
+    "behaviors": "Agree, soften, apologize too quickly, hide needs.",
+    "sequence": "Starts with tension or high-rank other; winds down when safety/equality returns."
+  },
+  {
+    "slug": "avoidance-mode",
+    "name": "Avoidance Mode",
+    "tagline": "Do anything except the thing.",
+    "meme": "A browser with 37 tabs open to avoid one email.",
+    "family": "Threat / Protection",
+    "related": [
+      "Alert Mode",
+      "Anxiety Mode",
+      "Social Anxiety Mode"
+    ],
+    "thinking": "Evasive, foggy, rationalizing.",
+    "saran": "Task: threatening. Future: pressure. Me: not ready.",
+    "body": "Restlessness, drifting eyes, low-grade tension.",
+    "behaviors": "Delay, scroll, clean, snack, switch tasks.",
+    "sequence": "Starts with demand; winds down through deadline, support, reduced stakes, or one small action."
+  },
+  {
+    "slug": "progress-mode",
+    "name": "Progress Mode",
+    "tagline": "Life becomes a scoreboard.",
+    "meme": "A Sunday afternoon wearing a performance review badge.",
+    "family": "Rank / Worth",
+    "related": [
+      "Comparison Mode",
+      "Life-Management Mode",
+      "Mental Manager Mode",
+      "More Mode"
+    ],
+    "thinking": "Comparative, future-evaluating, self-measuring.",
+    "saran": "Me: behind. Future: must be fixed. World: competition.",
+    "body": "Restless pressure, forward lean, inability to settle.",
+    "behaviors": "Plan, compare, optimize, self-improve, worry.",
+    "sequence": "Starts with life reflection/comparison; winds down through action, perspective, or letting the verdict drop."
+  },
+  {
+    "slug": "performance-mode",
+    "name": "Performance Mode",
+    "tagline": "Become the version they will approve of.",
+    "meme": "An actor checking the audience after every line.",
+    "family": "Rank / Worth",
+    "related": [
+      "Progress Mode",
+      "Comparison Mode",
+      "Shame Mode"
+    ],
+    "thinking": "Managed, image-aware, approval-seeking.",
+    "saran": "Me: on stage. Them: audience. Situation: audition.",
+    "body": "Face control, voice control, breath held.",
+    "behaviors": "Charm, impress, overperform, hide awkwardness.",
+    "sequence": "Starts with visibility; winds down when contact replaces evaluation."
+  },
+  {
+    "slug": "comparison-mode",
+    "name": "Comparison Mode",
+    "tagline": "Someone else becomes evidence against you.",
+    "meme": "A scoreboard floating above every person’s head.",
+    "family": "Rank / Worth",
+    "related": [
+      "Progress Mode",
+      "Performance Mode",
+      "Shame Mode"
+    ],
+    "thinking": "Comparative, selective, self-diminishing or self-inflating.",
+    "saran": "Me: ranked. Them: benchmark. World: hierarchy.",
+    "body": "Drop in chest, scanning, contraction.",
+    "behaviors": "Compare, envy, dismiss, imitate, withdraw.",
+    "sequence": "Starts with exposure to someone’s apparent advantage; winds down when the scoring system is seen."
+  },
+  {
+    "slug": "shame-mode",
+    "name": "Shame Mode",
+    "tagline": "The self becomes the problem.",
+    "meme": "A spotlight that only shows flaws.",
+    "family": "Rank / Worth",
+    "related": [
+      "Progress Mode",
+      "Performance Mode",
+      "Comparison Mode"
+    ],
+    "thinking": "Globalizing, identity-based, unforgiving.",
+    "saran": "Me: bad/defective. Them: would reject me. Future: exposure.",
+    "body": "Collapse, heat, lowered gaze, heaviness.",
+    "behaviors": "Hide, self-attack, apologize, disappear.",
+    "sequence": "Starts with exposure or failure; winds down through contact, specificity, repair, and separating act from identity."
+  },
+  {
+    "slug": "validation-seeking-mode",
+    "name": "Validation-Seeking Mode",
+    "tagline": "Borrow worth from outside.",
+    "meme": "A phone battery charging only when someone likes you.",
+    "family": "Rank / Worth",
+    "related": [
+      "Progress Mode",
+      "Performance Mode",
+      "Comparison Mode"
+    ],
+    "thinking": "Approval-scanning, externally anchored.",
+    "saran": "Me: uncertain. Them: arbiters. Future: depends on response.",
+    "body": "Restless checking, lifted nervous energy.",
+    "behaviors": "Check messages, fish for reassurance, perform.",
+    "sequence": "Starts with uncertain worth; winds down when self-positioning stabilizes."
+  },
+  {
+    "slug": "inferiority-mode",
+    "name": "Inferiority Mode",
+    "tagline": "Everyone else gets credit; you get flaws.",
+    "meme": "A rigged résumé where others get strengths and you get footnotes.",
+    "family": "Rank / Worth",
+    "related": [
+      "Progress Mode",
+      "Performance Mode",
+      "Comparison Mode"
+    ],
+    "thinking": "Low-rank, self-doubting, deferential.",
+    "saran": "Me: less. Them: more. World: unequal.",
+    "body": "Collapsed posture, quiet voice, guarded eyes.",
+    "behaviors": "Defer, hide, overprepare, self-deprecate.",
+    "sequence": "Starts around admired/high-rank people; winds down through equality cues and embodied confidence."
+  },
+  {
+    "slug": "impress-mode",
+    "name": "Impress Mode",
+    "tagline": "Make them see your value.",
+    "meme": "A peacock with a LinkedIn profile.",
+    "family": "Rank / Worth",
+    "related": [
+      "Progress Mode",
+      "Performance Mode",
+      "Comparison Mode"
+    ],
+    "thinking": "Strategic, display-oriented, restless.",
+    "saran": "Me: must prove. Them: audience/gatekeeper. World: opportunity/threat.",
+    "body": "Energetic, performative, chest lifted.",
+    "behaviors": "Name-drop, joke, explain, display skill.",
+    "sequence": "Starts with desired approval; winds down when contact becomes real or the need to prove fades."
+  },
+  {
+    "slug": "relationship-mode",
+    "name": "Relationship Mode",
+    "tagline": "The bond becomes the whole world.",
+    "meme": "A small weather system over two people.",
+    "family": "Attachment / Connection",
+    "related": [
+      "Romantic Projection Mode",
+      "Chase Mode",
+      "Withdrawal Mode"
+    ],
+    "thinking": "Relationally saturated, emotionally interpretive.",
+    "saran": "Me/us: at stake. Them: source of safety/threat. Future: relationship outcome.",
+    "body": "Heart/chest sensitivity, body keyed to cues.",
+    "behaviors": "Seek, protect, argue, repair, monitor.",
+    "sequence": "Starts with attachment cue; winds down through reassurance, repair, distance, or clarity."
+  },
+  {
+    "slug": "romantic-projection-mode",
+    "name": "Romantic Projection Mode",
+    "tagline": "Falling for the person your mind drafted.",
+    "meme": "A movie trailer for someone you barely know.",
+    "family": "Attachment / Connection",
+    "related": [
+      "Dating Strategy Mode",
+      "Chase Mode",
+      "Relationship Mode"
+    ],
+    "thinking": "Idealizing, future-building, selective.",
+    "saran": "Me: chosen/possible. Them: special/mysterious. Future: romantic destiny.",
+    "body": "Excited body, elevated energy, narrowed attention.",
+    "behaviors": "Fantasize, pursue, interpret signs, ignore mismatch.",
+    "sequence": "Starts with attraction/ambiguity; winds down through real contact, disappointment, or grounded seeing."
+  },
+  {
+    "slug": "chase-mode",
+    "name": "Chase Mode",
+    "tagline": "Closeness must be secured now.",
+    "meme": "A dog chasing a car labeled reassurance.",
+    "family": "Attachment / Connection",
+    "related": [
+      "Relationship Mode",
+      "Romantic Projection Mode",
+      "Withdrawal Mode"
+    ],
+    "thinking": "Urgent, attachment-driven, outcome-focused.",
+    "saran": "Me: at risk of losing. Them: withdrawing. Future: abandonment.",
+    "body": "Restless, phone-checking, chest urgency.",
+    "behaviors": "Text, pursue, explain, seek clarity.",
+    "sequence": "Starts with distance; winds down with reassurance, exhaustion, boundary, or self-regulation."
+  },
+  {
+    "slug": "withdrawal-mode",
+    "name": "Withdrawal Mode",
+    "tagline": "Safety through distance.",
+    "meme": "A turtle with a locked calendar.",
+    "family": "Attachment / Connection",
+    "related": [
+      "Relationship Mode",
+      "Romantic Projection Mode",
+      "Chase Mode"
+    ],
+    "thinking": "Cool, avoidant, self-protective.",
+    "saran": "Me: safer alone. Them: demanding/intrusive. World: too much.",
+    "body": "Closed posture, low eye contact, slowed speech.",
+    "behaviors": "Retreat, delay, go silent, minimize.",
+    "sequence": "Starts with pressure or vulnerability; winds down when autonomy/safety returns."
+  },
+  {
+    "slug": "resentment-mode",
+    "name": "Resentment Mode",
+    "tagline": "Old injury keeps charging the present.",
+    "meme": "A receipt printer that never stops.",
+    "family": "Attachment / Connection",
+    "related": [
+      "Relationship Mode",
+      "Romantic Projection Mode",
+      "Chase Mode"
+    ],
+    "thinking": "Scorekeeping, bitter, history-heavy.",
+    "saran": "Me: owed/wronged. Them: debtor/offender. Future: repayment or vindication.",
+    "body": "Tight mouth, hard chest, simmering heat.",
+    "behaviors": "Withhold, accuse, tally, punish indirectly.",
+    "sequence": "Starts when old wound is cued; winds down through acknowledgement, repair, or dropping the ledger."
+  },
+  {
+    "slug": "testing-mode",
+    "name": "Testing Mode",
+    "tagline": "Make them prove they care.",
+    "meme": "A pop quiz no one knew was scheduled.",
+    "family": "Attachment / Connection",
+    "related": [
+      "Relationship Mode",
+      "Romantic Projection Mode",
+      "Chase Mode"
+    ],
+    "thinking": "Indirect, suspicious, attachment-testing.",
+    "saran": "Me: uncertain. Them: must prove. Future: reveal truth.",
+    "body": "Tense waiting, watchful eyes, contained agitation.",
+    "behaviors": "Set traps, withhold, monitor reactions.",
+    "sequence": "Starts with insecurity; winds down with direct communication or secure contact."
+  },
+  {
+    "slug": "dating-strategy-mode",
+    "name": "Dating Strategy Mode",
+    "tagline": "Attraction becomes a project.",
+    "meme": "A chess board where the pieces are text messages.",
+    "family": "Attachment / Connection",
+    "related": [
+      "Relationship Mode",
+      "Romantic Projection Mode",
+      "Chase Mode"
+    ],
+    "thinking": "Goal-oriented, self-presentational, outcome-managing.",
+    "saran": "Me: candidate/player. Them: prize/judge. Future: success/failure.",
+    "body": "Excited tension, restless checking, posture management.",
+    "behaviors": "Plan texts, calculate, perform, escalate/withdraw.",
+    "sequence": "Starts with attraction plus uncertainty; winds down through play, honesty, or loss of charge."
+  },
+  {
+    "slug": "breakup-replay-mode",
+    "name": "Breakup Replay Mode",
+    "tagline": "Keep the bond alive by replaying the wound.",
+    "meme": "A tragic movie stuck on repeat.",
+    "family": "Attachment / Connection",
+    "related": [
+      "Relationship Mode",
+      "Romantic Projection Mode",
+      "Chase Mode"
+    ],
+    "thinking": "Narrative-addicted, meaning-seeking, backward-facing.",
+    "saran": "Me: abandoned/wronged. Them: lost object. Future: impossible/unfinished.",
+    "body": "Heavy chest, rumination, low energy with spikes.",
+    "behaviors": "Replay, analyze, stalk, seek closure, compare.",
+    "sequence": "Starts with reminders/loneliness; winds down through grief, new meaning, and reduced story-control."
+  },
+  {
+    "slug": "planning-mode",
+    "name": "Planning Mode",
+    "tagline": "If I solve the future, I can relax.",
+    "meme": "A calendar trying to become a therapist.",
+    "family": "Control / Future",
+    "related": [
+      "Fix-It Mode",
+      "Mental Manager Mode",
+      "Trying-to-Relax Mode"
+    ],
+    "thinking": "Future-organizing, conditional, managerial.",
+    "saran": "Me: responsible. Future: must be controlled. World: risk.",
+    "body": "Forward energy, mental speed, tightened eyes.",
+    "behaviors": "List, plan, research, schedule.",
+    "sequence": "Starts with uncertainty; winds down when plan is “good enough” or control loosens."
+  },
+  {
+    "slug": "fix-it-mode",
+    "name": "Fix-It Mode",
+    "tagline": "Turn discomfort into a project.",
+    "meme": "A toolbox opened at a funeral.",
+    "family": "Control / Future",
+    "related": [
+      "Planning Mode",
+      "Mental Manager Mode",
+      "Trying-to-Relax Mode"
+    ],
+    "thinking": "Problem-solving, impatient, solution-first.",
+    "saran": "Me: fixer. Them/situation: broken. Future: repair required.",
+    "body": "Forward lean, tight focus, action pressure.",
+    "behaviors": "Advise, intervene, optimize, interrupt emotion.",
+    "sequence": "Starts with discomfort/helplessness; winds down when presence replaces fixing."
+  },
+  {
+    "slug": "mental-manager-mode",
+    "name": "Mental Manager Mode",
+    "tagline": "The commentator takes the wheel.",
+    "meme": "A tiny supervisor with a clipboard in your head.",
+    "family": "Control / Future",
+    "related": [
+      "Planning Mode",
+      "Fix-It Mode",
+      "Trying-to-Relax Mode"
+    ],
+    "thinking": "Monitoring, correcting, self-evaluating.",
+    "saran": "Me: needing management. Situation: must be optimized. Future: avoid error.",
+    "body": "Forehead/face tension, shallow breath, split attention.",
+    "behaviors": "Comment, correct, rehearse, adjust, monitor.",
+    "sequence": "Starts with performance or uncertainty; winds down when commentary is noticed as commentary."
+  },
+  {
+    "slug": "trying-to-relax-mode",
+    "name": "Trying-to-Relax Mode",
+    "tagline": "Trying hard to stop trying.",
+    "meme": "Someone meditating with a checklist titled effortless.",
+    "family": "Control / Future",
+    "related": [
+      "Mental Manager Mode",
+      "Meditation Mode",
+      "Spiritual Person Mode"
+    ],
+    "thinking": "Paradoxical, control-disguised-as-surrender.",
+    "saran": "Me: not calm enough. Future: calm must arrive. World: this moment is wrong.",
+    "body": "Artificial stillness, breath control, subtle strain.",
+    "behaviors": "Force calm, evaluate practice, chase state.",
+    "sequence": "Starts with discomfort; winds down when the project of relaxation is seen."
+  },
+  {
+    "slug": "rehearsal-mode",
+    "name": "Rehearsal Mode",
+    "tagline": "Have the conversation before it happens.",
+    "meme": "Arguing with a voicemail.",
+    "family": "Control / Future",
+    "related": [
+      "Planning Mode",
+      "Fix-It Mode",
+      "Mental Manager Mode"
+    ],
+    "thinking": "Imagined-dialogue, defensive, anticipatory.",
+    "saran": "Me: preparing. Them: future opponent/judge. Future: confrontation.",
+    "body": "Mental speed, body activation, low present contact.",
+    "behaviors": "Script, replay, refine, lose sleep.",
+    "sequence": "Starts with anticipated interaction; winds down through actual contact, writing, or dropping certainty."
+  },
+  {
+    "slug": "life-management-mode",
+    "name": "Life-Management Mode",
+    "tagline": "Manage the whole life from above.",
+    "meme": "A project manager standing over your soul.",
+    "family": "Control / Future",
+    "related": [
+      "Planning Mode",
+      "Fix-It Mode",
+      "Mental Manager Mode"
+    ],
+    "thinking": "Global, strategic, evaluative.",
+    "saran": "Me/life: project. Future: deliverable. World: benchmark.",
+    "body": "Restless overview, pressure, abstraction.",
+    "behaviors": "Plan, compare, restructure, optimize.",
+    "sequence": "Starts with life assessment; winds down through concrete action or returning to the present slice."
+  },
+  {
+    "slug": "thinking-mode",
+    "name": "Thinking Mode",
+    "tagline": "The mind becomes the place you live.",
+    "meme": "A browser with infinite tabs and no desktop.",
+    "family": "Meaning / Analysis",
+    "related": [
+      "Reflective Mode",
+      "Theory-Building Mode",
+      "Buddhist Speculation Mode"
+    ],
+    "thinking": "Conceptual, associative, detached from scene.",
+    "saran": "Me/world: ideas. Situation: puzzle. Future: answer.",
+    "body": "Heady, less bodily awareness, eyes unfocused.",
+    "behaviors": "Analyze, narrate, link ideas.",
+    "sequence": "Starts with stimulation/question; winds down through body, task, or silence."
+  },
+  {
+    "slug": "reflective-mode",
+    "name": "Reflective Mode",
+    "tagline": "Looking at experience from a little distance.",
+    "meme": "A notebook with a window beside it.",
+    "family": "Meaning / Analysis",
+    "related": [
+      "Thinking Mode",
+      "Theory-Building Mode",
+      "Buddhist Speculation Mode"
+    ],
+    "thinking": "Observing, integrative, meaning-making.",
+    "saran": "Me: understandable. Situation: material. Future: growth/learning.",
+    "body": "Calmer breath, slower tempo, softened attention.",
+    "behaviors": "Journal, discuss, integrate, reframe.",
+    "sequence": "Starts after intensity; winds down when understanding feels complete or action calls."
+  },
+  {
+    "slug": "theory-building-mode",
+    "name": "Theory-Building Mode",
+    "tagline": "Turn life into a model.",
+    "meme": "A corkboard connecting everything with string.",
+    "family": "Meaning / Analysis",
+    "related": [
+      "Thinking Mode",
+      "Reflective Mode",
+      "Buddhist Speculation Mode"
+    ],
+    "thinking": "Abstract, systematic, generative.",
+    "saran": "World: patterns. Me: observer/builder. Future: coherent theory.",
+    "body": "Excited mental energy, body secondary.",
+    "behaviors": "Map, define, classify, diagram.",
+    "sequence": "Starts with insight/puzzle; winds down with fatigue, embodiment, or output."
+  },
+  {
+    "slug": "buddhist-speculation-mode",
+    "name": "Buddhist Speculation Mode",
+    "tagline": "Use philosophy to hover above life.",
+    "meme": "A monk debating emptiness while ignoring the dishes.",
+    "family": "Meaning / Analysis",
+    "related": [
+      "Thinking Mode",
+      "Reflective Mode",
+      "Theory-Building Mode"
+    ],
+    "thinking": "Spiritual-conceptual, subtle avoidance-prone.",
+    "saran": "Me: seeker/knower. World: dharma puzzle. Future: insight.",
+    "body": "Heady, lifted, less grounded.",
+    "behaviors": "Speculate, compare teachings, chase understanding.",
+    "sequence": "Starts with practice questions; winds down through sitting, direct experience, or humor."
+  },
+  {
+    "slug": "puzzle-mode",
+    "name": "Puzzle Mode",
+    "tagline": "Something must be solved.",
+    "meme": "A detective board over a spilled cup of coffee.",
+    "family": "Meaning / Analysis",
+    "related": [
+      "Thinking Mode",
+      "Reflective Mode",
+      "Theory-Building Mode"
+    ],
+    "thinking": "Curious but potentially compulsive.",
+    "saran": "Situation: puzzle. Me: solver. Future: answer.",
+    "body": "Focused eyes, forward lean, dopamine/interest.",
+    "behaviors": "Research, test, connect, solve.",
+    "sequence": "Starts with anomaly; winds down with solution or losing charge."
+  },
+  {
+    "slug": "meta-mode",
+    "name": "Meta Mode",
+    "tagline": "Think about the thinking about the thinking.",
+    "meme": "A mirror reflecting a mirror reflecting a mirror.",
+    "family": "Meaning / Analysis",
+    "related": [
+      "Thinking Mode",
+      "Reflective Mode",
+      "Theory-Building Mode"
+    ],
+    "thinking": "Recursive, self-aware, sometimes stuck.",
+    "saran": "Me: analyst of process. Situation: layer. Future: clarity.",
+    "body": "Head pressure, slowed action, abstraction.",
+    "behaviors": "Analyze process, loop, refine distinctions.",
+    "sequence": "Starts when trying to understand experience; winds down through direct action or grounding."
+  },
+  {
+    "slug": "work-mode",
+    "name": "Work Mode",
+    "tagline": "Competence package activated.",
+    "meme": "A blazer that changes your voice.",
+    "family": "Role / Persona",
+    "related": [
+      "Good Child Mode",
+      "Teacher Mode",
+      "Helper Mode"
+    ],
+    "thinking": "Task-focused, role-aware, efficiency-oriented.",
+    "saran": "Me: worker/expert. Them: colleagues/clients. World: deliverables.",
+    "body": "Sharper posture, clipped speech, focused eyes.",
+    "behaviors": "Produce, manage, respond, perform competence.",
+    "sequence": "Starts with work context; winds down after leaving role or decompression."
+  },
+  {
+    "slug": "good-child-mode",
+    "name": "Good Child Mode",
+    "tagline": "Stay acceptable to the family system.",
+    "meme": "A grown adult wearing an invisible school uniform.",
+    "family": "Role / Persona",
+    "related": [
+      "Work Mode",
+      "Teacher Mode",
+      "Helper Mode"
+    ],
+    "thinking": "Compliant, role-preserving, conflict-avoidant.",
+    "saran": "Me: child/approved one. Them: authority/family. World: rules.",
+    "body": "Smaller posture, softer voice, held opinions.",
+    "behaviors": "Agree, hide disagreement, help, perform goodness.",
+    "sequence": "Starts around family/authority; winds down with distance or adult self-positioning."
+  },
+  {
+    "slug": "teacher-mode",
+    "name": "Teacher Mode",
+    "tagline": "Make it useful for someone else.",
+    "meme": "A flashlight pointed at a confusing map.",
+    "family": "Role / Persona",
+    "related": [
+      "Work Mode",
+      "Good Child Mode",
+      "Helper Mode"
+    ],
+    "thinking": "Clarifying, structured, outward-facing.",
+    "saran": "Me: guide. Them: learner. World: teachable patterns.",
+    "body": "Open chest, paced speech, organized attention.",
+    "behaviors": "Explain, frame, question, model.",
+    "sequence": "Starts when someone needs help/understanding; winds down when contact or lesson completes."
+  },
+  {
+    "slug": "helper-mode",
+    "name": "Helper Mode",
+    "tagline": "Relieve their suffering, maybe yours too.",
+    "meme": "A first-aid kit with feelings inside.",
+    "family": "Role / Persona",
+    "related": [
+      "Work Mode",
+      "Good Child Mode",
+      "Teacher Mode"
+    ],
+    "thinking": "Care-oriented, sometimes self-erasing.",
+    "saran": "Me: useful/helper. Them: needing help. World: repairable.",
+    "body": "Warmth plus responsibility tension.",
+    "behaviors": "Listen, advise, rescue, support.",
+    "sequence": "Starts with another’s distress; winds down with boundaries or completion."
+  },
+  {
+    "slug": "seducer-mode",
+    "name": "Seducer Mode",
+    "tagline": "Become charged and desirable.",
+    "meme": "A spotlight that learned to flirt.",
+    "family": "Role / Persona",
+    "related": [
+      "Work Mode",
+      "Good Child Mode",
+      "Teacher Mode"
+    ],
+    "thinking": "Playful/strategic, frame-aware, desire-oriented.",
+    "saran": "Me: attractive/performing. Them: desired/audience. Future: erotic possibility.",
+    "body": "Heightened body awareness, eyes, posture.",
+    "behaviors": "Flirt, tease, perform, escalate, test.",
+    "sequence": "Starts with attraction; winds down through real intimacy, rejection, or loss of charge."
+  },
+  {
+    "slug": "spiritual-person-mode",
+    "name": "Spiritual Person Mode",
+    "tagline": "Perform being beyond performance.",
+    "meme": "A halo with a status anxiety problem.",
+    "family": "Role / Persona",
+    "related": [
+      "Work Mode",
+      "Good Child Mode",
+      "Teacher Mode"
+    ],
+    "thinking": "Spiritualized, image-aware, purity-monitoring.",
+    "saran": "Me: practitioner. Them: witnesses/teachers. Future: attainment.",
+    "body": "Controlled posture, subtle effort, self-checking.",
+    "behaviors": "Speak spiritually, judge practice, hide messiness.",
+    "sequence": "Starts in spiritual contexts; winds down through sincerity and not-knowing."
+  },
+  {
+    "slug": "bar-social-mode",
+    "name": "Bar Social Mode",
+    "tagline": "Group energy, status, and play collide.",
+    "meme": "A room where everyone is both audience and actor.",
+    "family": "Role / Persona",
+    "related": [
+      "Work Mode",
+      "Good Child Mode",
+      "Teacher Mode"
+    ],
+    "thinking": "Fast, social, vibe-reading, performative/playful.",
+    "saran": "Me: social agent. Them: potential allies/targets/judges. World: scene.",
+    "body": "Animated body, scanning, altered voice.",
+    "behaviors": "Joke, flirt, join groups, perform, withdraw.",
+    "sequence": "Starts in nightlife/social scene; winds down by leaving, bonding, fatigue, or grounding."
+  },
+  {
+    "slug": "family-time-mode",
+    "name": "Family Time Mode",
+    "tagline": "Old roles come back online.",
+    "meme": "A time machine disguised as dinner.",
+    "family": "Role / Persona",
+    "related": [
+      "Work Mode",
+      "Good Child Mode",
+      "Teacher Mode"
+    ],
+    "thinking": "Role-bound, reactive, familiar.",
+    "saran": "Me: old family position. Them: old roles. Future: old pattern repeats.",
+    "body": "Posture/voice shifts younger or defensive.",
+    "behaviors": "Comply, argue, regress, perform role.",
+    "sequence": "Starts around family; winds down with distance, humor, or adult stance."
+  },
+  {
+    "slug": "collapse-mode",
+    "name": "Collapse Mode",
+    "tagline": "The system powers down.",
+    "meme": "A phone at 1% refusing all updates.",
+    "family": "Collapse / Withdrawal",
+    "related": [
+      "Doom Mode",
+      "Numb Mode",
+      "Isolation Mode"
+    ],
+    "thinking": "Low-energy, defeated, simplified.",
+    "saran": "Me: unable. Future: closed. World: too much.",
+    "body": "Heavy body, slow movement, low gaze.",
+    "behaviors": "Stop, sleep, isolate, avoid decisions.",
+    "sequence": "Starts after overwhelm/failure; winds down with rest, care, small action, or connection."
+  },
+  {
+    "slug": "doom-mode",
+    "name": "Doom Mode",
+    "tagline": "The worst story becomes the whole sky.",
+    "meme": "A weather forecast that only shows apocalypse.",
+    "family": "Collapse / Withdrawal",
+    "related": [
+      "Collapse Mode",
+      "Numb Mode",
+      "Isolation Mode"
+    ],
+    "thinking": "Catastrophic, totalizing, low-hope.",
+    "saran": "Me: doomed. Future: bad. World: hostile/empty.",
+    "body": "Heavy chest, dread, agitation or slump.",
+    "behaviors": "Ruminate, withdraw, seek proof, spiral.",
+    "sequence": "Starts with negative cue/fatigue; winds down through time, regulation, counter-evidence, or contact."
+  },
+  {
+    "slug": "numb-mode",
+    "name": "Numb Mode",
+    "tagline": "Nothing gets through.",
+    "meme": "A dimmer switch turned almost off.",
+    "family": "Collapse / Withdrawal",
+    "related": [
+      "Collapse Mode",
+      "Doom Mode",
+      "Isolation Mode"
+    ],
+    "thinking": "Flat, disconnected, low-salience.",
+    "saran": "Me/world: distant. Future: irrelevant. Situation: muted.",
+    "body": "Low sensation, blank face, slow response.",
+    "behaviors": "Scroll, drift, say little, avoid feeling.",
+    "sequence": "Starts after overload or pain; winds down through safety, body activation, or gentle contact."
+  },
+  {
+    "slug": "isolation-mode",
+    "name": "Isolation Mode",
+    "tagline": "Safety by disappearing.",
+    "meme": "A cabin with no doors, only windows.",
+    "family": "Collapse / Withdrawal",
+    "related": [
+      "Collapse Mode",
+      "Doom Mode",
+      "Numb Mode"
+    ],
+    "thinking": "Self-contained, avoidant, protective.",
+    "saran": "Me: better alone. Them: demanding/risky. World: draining.",
+    "body": "Closed posture, reduced speech, low social energy.",
+    "behaviors": "Cancel, hide, avoid messages, withdraw.",
+    "sequence": "Starts with social pressure or shame; winds down through low-stakes contact or rest."
+  },
+  {
+    "slug": "disengagement-mode",
+    "name": "Disengagement Mode",
+    "tagline": "Fuck it, none of this matters.",
+    "meme": "A person dropping the controller mid-game.",
+    "family": "Collapse / Withdrawal",
+    "related": [
+      "Collapse Mode",
+      "Doom Mode",
+      "Numb Mode"
+    ],
+    "thinking": "Detached, cynical, protective.",
+    "saran": "Me: done. World: pointless. Future: not worth effort.",
+    "body": "Slack body, shrugging, emotional distance.",
+    "behaviors": "Quit, dismiss, sabotage, avoid.",
+    "sequence": "Starts with frustration/futility; winds down when care becomes safe again."
+  },
+  {
+    "slug": "craving-mode",
+    "name": "Craving Mode",
+    "tagline": "Something else will fix this.",
+    "meme": "A vending machine glowing in a dark room.",
+    "family": "Appetite / Stimulation",
+    "related": [
+      "Scroll Mode",
+      "Novelty Mode",
+      "Substance Mode"
+    ],
+    "thinking": "Reaching, urgent, relief-seeking.",
+    "saran": "Me: lacking. Object: solution. Future: relief.",
+    "body": "Restlessness, appetite, focused wanting.",
+    "behaviors": "Consume, chase, click, text, buy.",
+    "sequence": "Starts with discomfort/boredom; winds down after consumption, substitution, or letting the urge move."
+  },
+  {
+    "slug": "scroll-mode",
+    "name": "Scroll Mode",
+    "tagline": "Tiny stimulation to avoid contact.",
+    "meme": "A thumb running from silence.",
+    "family": "Appetite / Stimulation",
+    "related": [
+      "Craving Mode",
+      "Novelty Mode",
+      "Substance Mode"
+    ],
+    "thinking": "Fragmented, novelty-seeking, dissociative.",
+    "saran": "Me: bored/unsettled. World: feed. Future: next item.",
+    "body": "Hunched posture, eyes fixed, shallow breathing.",
+    "behaviors": "Scroll, switch, delay, numb.",
+    "sequence": "Starts with boredom/discomfort; winds down through interruption, body movement, or real task."
+  },
+  {
+    "slug": "novelty-mode",
+    "name": "Novelty Mode",
+    "tagline": "Newness promises aliveness.",
+    "meme": "A magpie collecting shiny futures.",
+    "family": "Appetite / Stimulation",
+    "related": [
+      "Craving Mode",
+      "Scroll Mode",
+      "Substance Mode"
+    ],
+    "thinking": "Excited, restless, possibility-focused.",
+    "saran": "Me: needs stimulation. Future: new thing saves. Present: stale.",
+    "body": "Bright energy, quick attention shifts.",
+    "behaviors": "Start projects, chase ideas, seek novelty.",
+    "sequence": "Starts with boredom; winds down when novelty fades or action grounds it."
+  },
+  {
+    "slug": "substance-mode",
+    "name": "Substance Mode",
+    "tagline": "Change the state from the outside.",
+    "meme": "A remote control for mood.",
+    "family": "Appetite / Stimulation",
+    "related": [
+      "Craving Mode",
+      "Scroll Mode",
+      "Novelty Mode"
+    ],
+    "thinking": "Relief-seeking, permission-seeking.",
+    "saran": "Me: needs altering. Substance: doorway. Future: better state.",
+    "body": "Anticipatory body, craving, relaxation fantasy.",
+    "behaviors": "Use, plan use, justify, ritualize.",
+    "sequence": "Starts with desire to alter state; winds down through use, delay, substitute, or support."
+  },
+  {
+    "slug": "more-mode",
+    "name": "More Mode",
+    "tagline": "Enough is one step away.",
+    "meme": "A ladder where every rung says ‘almost.’",
+    "family": "Appetite / Stimulation",
+    "related": [
+      "Craving Mode",
+      "Scroll Mode",
+      "Novelty Mode"
+    ],
+    "thinking": "Additive, reaching, unsatisfied.",
+    "saran": "Me: lacking. Future: enough. World: source of next thing.",
+    "body": "Forward pull, restlessness, appetite.",
+    "behaviors": "Add, buy, pursue, optimize, escalate.",
+    "sequence": "Starts with goal/desire; winds down when craving is seen or contentment returns."
+  },
+  {
+    "slug": "social-media-mode",
+    "name": "Social Media Mode",
+    "tagline": "The world becomes comparison feed.",
+    "meme": "A scoreboard disguised as a window.",
+    "family": "Appetite / Stimulation",
+    "related": [
+      "Craving Mode",
+      "Scroll Mode",
+      "Novelty Mode"
+    ],
+    "thinking": "Comparative, image-based, reactive.",
+    "saran": "Me: measured. Them: curated winners. World: audience.",
+    "body": "Hunched, scrolling eyes, stomach drop.",
+    "behaviors": "Scroll, compare, post, check reactions.",
+    "sequence": "Starts with boredom/insecurity; winds down through logging off, grounding, or seeing the scoreboard."
+  },
+  {
+    "slug": "drumming-flow-mode",
+    "name": "Drumming Flow Mode",
+    "tagline": "Listen more than you manage.",
+    "meme": "Hands dancing before the mind can interfere.",
+    "family": "Natural Function / Being",
+    "related": [
+      "Creative Expression Mode",
+      "Listening Mode",
+      "Play Mode"
+    ],
+    "thinking": "Embodied, responsive, non-self-conscious.",
+    "saran": "Me: instrument/participant. Them: co-rhythm. World: music.",
+    "body": "Loose body, rhythmic breath, attention outward.",
+    "behaviors": "Play, respond, vary, listen.",
+    "sequence": "Starts with rhythm/immersion; ends when self-consciousness, fatigue, or interruption returns."
+  },
+  {
+    "slug": "creative-expression-mode",
+    "name": "Creative Expression Mode",
+    "tagline": "Make before the critic arrives.",
+    "meme": "A kid with markers before the judge walks in.",
+    "family": "Natural Function / Being",
+    "related": [
+      "Drumming Flow Mode",
+      "Listening Mode",
+      "Play Mode"
+    ],
+    "thinking": "Generative, associative, alive.",
+    "saran": "Me: maker. World: material. Future: possible form.",
+    "body": "Activated, playful, body engaged.",
+    "behaviors": "Write, draw, compose, build, improvise.",
+    "sequence": "Starts with stimulus/permission; winds down when scoring/critique intrudes or piece completes."
+  },
+  {
+    "slug": "listening-mode",
+    "name": "Listening Mode",
+    "tagline": "Let the other person become real.",
+    "meme": "A satellite dish turned toward a human being.",
+    "family": "Natural Function / Being",
+    "related": [
+      "Drumming Flow Mode",
+      "Creative Expression Mode",
+      "Play Mode"
+    ],
+    "thinking": "Open, receptive, low-agenda.",
+    "saran": "Me: present. Them: real/complex. World: relational.",
+    "body": "Soft face, slower breath, stable gaze.",
+    "behaviors": "Ask, reflect, pause, receive.",
+    "sequence": "Starts with sincere contact; ends when agenda, fatigue, or performance returns."
+  },
+  {
+    "slug": "play-mode",
+    "name": "Play Mode",
+    "tagline": "Action without self-importance.",
+    "meme": "A serious adult briefly becoming a dog with a stick.",
+    "family": "Natural Function / Being",
+    "related": [
+      "Drumming Flow Mode",
+      "Creative Expression Mode",
+      "Listening Mode"
+    ],
+    "thinking": "Light, experimental, low-rank.",
+    "saran": "Me: free/curious. Them: play partner. World: flexible.",
+    "body": "Loose, animated, spontaneous.",
+    "behaviors": "Joke, experiment, improvise, tease.",
+    "sequence": "Starts with safety and energy; ends with judgment, injury, or pressure."
+  },
+  {
+    "slug": "care-function",
+    "name": "Care Function",
+    "tagline": "Help because the situation calls for it.",
+    "meme": "A hand reaching before the ego makes a speech.",
+    "family": "Natural Function / Being",
+    "related": [
+      "Drumming Flow Mode",
+      "Creative Expression Mode",
+      "Listening Mode"
+    ],
+    "thinking": "Warm, direct, responsive.",
+    "saran": "Me: capable of care. Them: needing/receiving. World: shared.",
+    "body": "Open chest, steady body, gentle focus.",
+    "behaviors": "Help, protect, comfort, repair.",
+    "sequence": "Starts with perceived need; ends when care completes or self-story takes over."
+  },
+  {
+    "slug": "meditation-mode",
+    "name": "Meditation Mode",
+    "tagline": "Practice as a container.",
+    "meme": "A bell that gathers scattered birds.",
+    "family": "Natural Function / Being",
+    "related": [
+      "Drumming Flow Mode",
+      "Creative Expression Mode",
+      "Listening Mode"
+    ],
+    "thinking": "Settling, observing, sometimes effortful.",
+    "saran": "Me: practitioner. World: practice field. Future: less thinking.",
+    "body": "Stillness, breath awareness, posture.",
+    "behaviors": "Sit, return, observe, chant, breathe.",
+    "sequence": "Starts with practice ritual; winds down into Being or gets hijacked by Trying-to-Relax Mode."
+  }
+]
