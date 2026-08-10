@@ -1,0 +1,658 @@
+/**
+ * Scoped styles for the personal deck. Everything here is namespaced under
+ * .e-deck so it can't leak into the Narrative Theory site sharing this app.
+ *
+ * The whole page is one scroll-snap container. Colour lives on a fixed
+ * backdrop that transitions as slides change, so the page appears to change
+ * temperature underneath the type rather than the type moving over panels.
+ */
+
+.e-deck {
+  --e-paper: oklch(0.968 0.008 85);
+  --e-paper-ink: oklch(0.18 0.015 280);
+  --e-ink: oklch(0.155 0.012 270);
+  --e-ink-paper: oklch(0.94 0.008 85);
+
+  --e-violet: oklch(0.62 0.2 295);
+  --e-amber: oklch(0.7 0.15 70);
+  --e-blue: oklch(0.68 0.16 235);
+  --e-pink: oklch(0.65 0.21 5);
+  --e-orange: oklch(0.68 0.17 45);
+  --e-green: oklch(0.62 0.14 155);
+  --e-clay: oklch(0.7 0.1 40);
+
+  --e-bg: var(--e-paper);
+  --e-fg: var(--e-paper-ink);
+  --e-accent: var(--e-violet);
+
+  height: 100dvh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  color: var(--e-fg);
+  /* The colour lives on the scroller itself. A separate fixed backdrop would
+     need a negative z-index, which puts it behind the body background this
+     app already sets globally — invisible, and the text alone would flip. */
+  background-color: var(--e-bg);
+  transition:
+    color 700ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 700ms cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: var(--font-sans);
+  position: relative;
+  isolation: isolate;
+}
+
+.e-deck::-webkit-scrollbar {
+  width: 0;
+}
+
+/* ------------------------------------------------------------------ *
+ * Slides
+ * ------------------------------------------------------------------ */
+
+.e-slide {
+  min-height: 100dvh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 6rem 7vw 7rem;
+  max-width: 62rem;
+  /* Above the cosmos backdrop. */
+  position: relative;
+  z-index: 1;
+}
+
+/* Short, punchy slides get centred; the text-heavy ones stay ranged left,
+   where long measures are actually readable. */
+.e-slide[data-align='center'] {
+  max-width: 72rem;
+  margin: 0 auto;
+  align-items: center;
+  text-align: center;
+}
+
+.e-slide[data-align='center'] .e-body {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.e-slide[data-align='center'] .e-contact {
+  justify-content: center;
+}
+
+.e-eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.5;
+  margin-bottom: 1.75rem;
+}
+
+.e-headline {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+  font-size: clamp(2.4rem, 7.2vw, 5.4rem);
+  text-wrap: balance;
+}
+
+.e-slide[data-kind='open'] .e-headline {
+  font-size: clamp(3rem, 11vw, 8rem);
+}
+
+.e-body {
+  margin-top: 2rem;
+  max-width: 34rem;
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  line-height: 1.65;
+  opacity: 0.72;
+}
+
+.e-body p + p {
+  margin-top: 1em;
+}
+
+.e-note {
+  margin-top: 1.75rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  opacity: 0.45;
+  font-style: italic;
+}
+
+/* Values — a stack that reads as one held breath. */
+.e-list {
+  margin-top: 2.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.e-list li {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 4.4vw, 3rem);
+  line-height: 1.18;
+  letter-spacing: -0.025em;
+  opacity: 0;
+  transform: translateY(0.45em);
+  transition:
+    opacity 620ms cubic-bezier(0.2, 0.7, 0.3, 1),
+    transform 620ms cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+.e-slide[data-active='true'] .e-list li {
+  opacity: 1;
+  transform: none;
+}
+
+.e-list li::before {
+  content: '';
+  display: inline-block;
+  width: 0.5em;
+  height: 1px;
+  vertical-align: 0.32em;
+  margin-right: 0.55em;
+  background: var(--e-accent);
+  opacity: 0.9;
+}
+
+/* ------------------------------------------------------------------ *
+ * Marked words — a coloured rule that becomes a squiggle on hover
+ * ------------------------------------------------------------------ */
+
+.e-mark {
+  /* inline-block, not inline: an absolutely positioned child of a relatively
+     positioned *inline* box doesn't get a dependable containing block, and the
+     underline ends up sized to a fraction of the word. */
+  display: inline-block;
+  position: relative;
+  white-space: nowrap;
+  color: inherit;
+}
+
+.e-mark-line {
+  position: absolute;
+  left: 0;
+  /* An SVG is a replaced element: with width auto it takes its intrinsic size
+     and drops `right` entirely, so the rule has to be explicit. */
+  width: 100%;
+  bottom: -0.14em;
+  height: 0.2em;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.e-mark-line path {
+  fill: none;
+  stroke: var(--e-accent);
+  stroke-width: 3.4;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.e-mark-straight {
+  transition: opacity 240ms ease;
+}
+
+.e-mark-squiggle {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  opacity: 0;
+}
+
+.e-mark:hover .e-mark-straight,
+.e-mark:focus-visible .e-mark-straight {
+  opacity: 0;
+}
+
+.e-mark:hover .e-mark-squiggle,
+.e-mark:focus-visible .e-mark-squiggle {
+  opacity: 1;
+  stroke-dashoffset: 0;
+  transition:
+    stroke-dashoffset 520ms cubic-bezier(0.3, 0.8, 0.4, 1),
+    opacity 120ms ease;
+}
+
+/* ------------------------------------------------------------------ *
+ * Asides — the depth, folded away until asked for
+ * ------------------------------------------------------------------ */
+
+.e-aside {
+  margin-top: 2.5rem;
+  max-width: 36rem;
+}
+
+.e-aside-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: inherit;
+  opacity: 0.6;
+  border-bottom: 1px dashed color-mix(in oklab, currentColor 40%, transparent);
+  padding-bottom: 0.2rem;
+  transition: opacity 200ms ease;
+}
+
+.e-aside-trigger:hover {
+  opacity: 1;
+}
+
+.e-aside-trigger span:last-child {
+  display: inline-block;
+  transition: transform 320ms cubic-bezier(0.3, 0.8, 0.4, 1);
+}
+
+.e-aside-trigger[aria-expanded='true'] span:last-child {
+  transform: rotate(90deg);
+}
+
+/* The card that animates over the slide. Squarish, offset to the right on
+   desktop so the headline underneath stays readable behind it. */
+.e-card {
+  position: fixed;
+  z-index: 30;
+  right: max(5vw, 6rem);
+  top: 50%;
+  width: min(27rem, 76vw);
+  max-height: min(30rem, 64vh);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 2rem 1.9rem 2.1rem;
+  border-radius: 4px;
+  border-top: 3px solid var(--e-accent);
+  /* Lifted off the slide colour so the card reads as a separate plane on both
+     the paper slides and the black ones, where a shadow alone does nothing. */
+  background: var(--e-card-bg, var(--e-bg));
+  color: var(--e-fg);
+  box-shadow:
+    0 1px 2px color-mix(in oklab, black 14%, transparent),
+    0 20px 55px -12px color-mix(in oklab, black 45%, transparent);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-46%) scale(0.93);
+  transform-origin: top right;
+  transition:
+    opacity 300ms cubic-bezier(0.3, 0.8, 0.4, 1),
+    transform 380ms cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 380ms;
+}
+
+.e-card[data-open='true'] {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) scale(1);
+  transition:
+    opacity 260ms ease,
+    transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s;
+}
+
+.e-card::-webkit-scrollbar {
+  width: 3px;
+}
+
+.e-card::-webkit-scrollbar-thumb {
+  background: color-mix(in oklab, currentColor 25%, transparent);
+  border-radius: 3px;
+}
+
+.e-card:focus-visible {
+  outline: none;
+}
+
+.e-card-close {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.9rem;
+  font-size: 1.35rem;
+  line-height: 1;
+  color: inherit;
+  opacity: 0.35;
+  transition: opacity 200ms ease;
+}
+
+.e-card-close:hover {
+  opacity: 1;
+}
+
+.e-card-body {
+  font-family: var(--font-serif);
+  font-size: 1.04rem;
+  line-height: 1.68;
+  opacity: 0.82;
+}
+
+.e-card-body h3 {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
+  opacity: 1;
+}
+
+.e-card-body p + p {
+  margin-top: 0.9em;
+}
+
+@media (max-width: 900px) {
+  .e-card {
+    right: 50%;
+    transform: translate(50%, -46%) scale(0.93);
+    transform-origin: center;
+    width: min(30rem, 86vw);
+  }
+
+  .e-card[data-open='true'] {
+    transform: translate(50%, -50%) scale(1);
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * The uncatchable self
+ * ------------------------------------------------------------------ */
+
+.e-catch {
+  margin-top: 2.5rem;
+  position: relative;
+  height: clamp(9rem, 22vh, 13rem);
+  width: 100%;
+  max-width: 40rem;
+  border-top: 1px solid color-mix(in oklab, currentColor 14%, transparent);
+  border-bottom: 1px solid color-mix(in oklab, currentColor 14%, transparent);
+}
+
+.e-catch-word {
+  position: absolute;
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  letter-spacing: -0.03em;
+  color: var(--e-accent);
+  cursor: pointer;
+  user-select: none;
+  padding: 0.1em 0.25em;
+  transition:
+    left 380ms cubic-bezier(0.22, 1, 0.36, 1),
+    top 380ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 300ms ease;
+  transform: translate(-50%, -50%);
+}
+
+.e-catch-hint {
+  position: absolute;
+  left: 0;
+  bottom: -2rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  opacity: 0.4;
+}
+
+.e-catch-resolved {
+  margin-top: 2.25rem;
+  max-width: 34rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+/* ------------------------------------------------------------------ *
+ * Cosmos backdrop
+ * ------------------------------------------------------------------ */
+
+.e-cosmos {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 1000ms cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+.e-cosmos[data-visible='true'] {
+  opacity: 0.8;
+}
+
+.e-cosmos svg {
+  width: 100%;
+  height: 100%;
+}
+
+.e-star {
+  opacity: var(--o);
+  animation: e-twinkle 9s ease-in-out infinite;
+}
+
+@keyframes e-twinkle {
+  0%,
+  100% {
+    opacity: var(--o);
+  }
+  50% {
+    opacity: calc(var(--o) * 0.3);
+  }
+}
+
+.e-disc-group {
+  animation: e-tilt 52s ease-in-out infinite;
+}
+
+@keyframes e-tilt {
+  0%,
+  100% {
+    transform: translate(80px, 76px) rotate(-13deg);
+  }
+  50% {
+    transform: translate(80px, 76px) rotate(-6deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .e-disc-group {
+    transform: translate(80px, 76px) rotate(-10deg);
+    animation: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .e-disc-group {
+    animation: none;
+    transform: translate(74px, 82px) rotate(-10deg) scale(0.8);
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ * Rail + chrome
+ * ------------------------------------------------------------------ */
+
+.e-rail {
+  position: fixed;
+  right: max(1.5rem, 3vw);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  align-items: flex-end;
+}
+
+.e-rail button {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: inherit;
+  opacity: 0.32;
+  transition: opacity 260ms ease;
+}
+
+.e-rail button:hover {
+  opacity: 0.8;
+}
+
+.e-rail button[data-active='true'] {
+  opacity: 1;
+}
+
+.e-rail-label {
+  opacity: 0;
+  transform: translateX(0.35rem);
+  transition:
+    opacity 260ms ease,
+    transform 260ms ease;
+}
+
+.e-rail button:hover .e-rail-label,
+.e-rail button[data-active='true'] .e-rail-label {
+  opacity: 1;
+  transform: none;
+}
+
+.e-rail-tick {
+  width: 1.4rem;
+  height: 1px;
+  background: currentColor;
+  transition:
+    width 300ms cubic-bezier(0.3, 0.8, 0.4, 1),
+    background-color 300ms ease;
+}
+
+.e-rail button[data-active='true'] .e-rail-tick {
+  width: 2.6rem;
+  background: var(--e-accent);
+}
+
+/* An open card lands where the rail lives, so the rail gets out of the way. */
+.e-deck:has(.e-card[data-open='true']) .e-rail {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.e-rail {
+  transition: opacity 300ms ease;
+}
+
+.e-wordmark {
+  position: fixed;
+  top: max(1.5rem, 3vw);
+  left: max(1.5rem, 3vw);
+  z-index: 20;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  letter-spacing: -0.01em;
+  mix-blend-mode: difference;
+  color: oklch(0.7 0 0);
+}
+
+.e-scroll-cue {
+  position: fixed;
+  bottom: max(1.5rem, 3vw);
+  left: max(1.5rem, 3vw);
+  z-index: 20;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.4;
+  transition: opacity 500ms ease;
+}
+
+.e-scroll-cue[data-hidden='true'] {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ------------------------------------------------------------------ *
+ * Links
+ * ------------------------------------------------------------------ */
+
+.e-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 2.5rem;
+  font-size: 0.95rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 2px solid var(--e-accent);
+  transition: gap 260ms cubic-bezier(0.3, 0.8, 0.4, 1);
+}
+
+.e-link:hover {
+  gap: 1.1rem;
+}
+
+.e-contact {
+  margin-top: 2.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  align-items: center;
+}
+
+.e-contact a {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3.4vw, 2.2rem);
+  letter-spacing: -0.02em;
+  border-bottom: 3px solid var(--e-accent);
+  padding-bottom: 0.12em;
+  transition: opacity 220ms ease;
+}
+
+.e-contact a:hover {
+  opacity: 0.65;
+}
+
+/* ------------------------------------------------------------------ *
+ * Reduced motion — keep the meaning, drop the movement
+ * ------------------------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  .e-deck {
+    scroll-behavior: auto;
+  }
+
+  .e-deck *,
+  .e-backdrop {
+    transition-duration: 1ms !important;
+    animation-duration: 1ms !important;
+  }
+
+  .e-list li {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .e-rail {
+    display: none;
+  }
+
+  .e-slide {
+    padding: 5rem 1.5rem 6rem;
+  }
+
+  /* Marked phrases can't break, so `balance` strands short lines around them
+     at this width. Let the lines fall naturally and give them room. */
+  .e-headline {
+    font-size: clamp(1.95rem, 7.8vw, 3rem);
+    text-wrap: pretty;
+  }
+
+  .e-slide[data-kind='open'] .e-headline {
+    font-size: clamp(2.6rem, 13vw, 4rem);
+  }
+
+  .e-list li {
+    font-size: clamp(1.35rem, 6.4vw, 2rem);
+  }
+}
