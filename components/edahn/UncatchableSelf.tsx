@@ -27,13 +27,20 @@ interface Props {
 export default function UncatchableSelf({ children }: Props) {
   const [attempts, setAttempts] = useState(0)
   const [position, setPosition] = useState({ x: 50, y: 50 })
-  const fieldRef = useRef<HTMLDivElement>(null)
+  const wordRef = useRef<HTMLButtonElement>(null)
+  const lockedUntil = useRef(0)
 
   const resolved = attempts >= ATTEMPTS_UNTIL_REST
   const word = PRONOUNS[Math.min(attempts, PRONOUNS.length - 1)]
 
   const flee = useCallback(() => {
     if (resolved) return
+
+    // One jump per animation, or a single sweep of the cursor burns the whole
+    // sequence in a few frames.
+    const now = Date.now()
+    if (now < lockedUntil.current) return
+    lockedUntil.current = now + 260
 
     setAttempts((n) => n + 1)
     setPosition((current) => {
@@ -53,15 +60,28 @@ export default function UncatchableSelf({ children }: Props) {
   return (
     <div>
       {!resolved && (
-        <div className="e-catch" ref={fieldRef}>
+        <div
+          className="e-catch"
+          // Proximity rather than pointerenter: once the word slides out from
+          // under a stationary cursor the browser keeps it as the pointer
+          // target, so no further enter events arrive and the chase dies after
+          // a single jump.
+          onPointerMove={(event) => {
+            const box = wordRef.current?.getBoundingClientRect()
+            if (!box) return
+            const dx = event.clientX - (box.left + box.width / 2)
+            const dy = event.clientY - (box.top + box.height / 2)
+            if (Math.hypot(dx, dy) < Math.max(90, box.width * 0.75)) flee()
+          }}
+        >
           <button
+            ref={wordRef}
             type="button"
             className="e-catch-word"
             style={{ left: `${position.x}%`, top: `${position.y}%` }}
-            onPointerEnter={flee}
             onPointerDown={(event) => {
-              // Touch never fires pointerenter before the tap, so the word
-              // would be trivially catchable on a phone without this.
+              // Touch never fires a hover before the tap, so the word would be
+              // trivially catchable on a phone without this.
               event.preventDefault()
               flee()
             }}
