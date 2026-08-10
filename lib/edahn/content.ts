@@ -1,17 +1,17 @@
 /**
- * The deck. One slide per screen, few words each, in order.
+ * The deck. One slide per screen, in order.
  *
- * The copy is deliberately short — every slide should be readable in a breath,
- * with the depth tucked into asides that only open if someone wants them. The
- * voice is dry and warm and slightly self-deprecating; keep it that way when
- * editing, and cut before you add.
+ * The copy here is Edahn's own, close to verbatim. Only outright typos have
+ * been corrected. Do not "tighten" it — an earlier pass rewrote it into
+ * something punchier and lost the voice. If a slide needs to be shorter, ask
+ * him; don't edit it here.
  */
 
 export type Tone = 'paper' | 'ink'
 
-export interface Aside {
-  /** The word or phrase that opens it. */
-  trigger: string
+export interface Note {
+  /** Heading on the block that floats in beside the slide. */
+  label: string
   title?: string
   paragraphs: string[]
 }
@@ -19,7 +19,6 @@ export interface Aside {
 export interface SlideLink {
   label: string
   href: string
-  external?: boolean
 }
 
 export interface Slide {
@@ -30,20 +29,21 @@ export interface Slide {
   /** Page colour while this slide is active. The deck cross-fades between them. */
   bg: string
   fg: string
-  /** Accent for underlines and marks on this slide. */
+  /** Used for rules, the note block, and list marks. */
   accent: string
-  /** Short, punchy slides read better centred; text-heavy ones don't. */
+  /** Short slides read better centred; text-heavy ones don't. */
   align?: 'left' | 'center'
   kind: 'open' | 'statement' | 'list' | 'self' | 'contact'
   eyebrow?: string
   headline: string
-  /** Marked words in the headline get an animated underline. */
+  /** Phrases that get a flat coloured rule. No hover behaviour. */
   marks?: string[]
   body?: string[]
   items?: string[]
-  aside?: Aside
+  /** Floats in on its own a beat after the slide settles. */
+  note?: Note
   link?: SlideLink
-  note?: string
+  footnote?: string
 }
 
 export const SLIDES: Slide[] = [
@@ -55,9 +55,9 @@ export const SLIDES: Slide[] = [
     fg: 'oklch(0.18 0.015 280)',
     accent: 'var(--e-violet)',
     kind: 'open',
-    headline: 'Hello. I’m Edahn.',
+    headline: 'Hello, I’m Edahn.',
     body: [
-      'What I aspire to, what I care about, and what I can’t stop wondering about.',
+      'This website is about me both professionally and personally. What I aspire to, what I care about deeply, and what I wonder about.',
     ],
   },
 
@@ -69,13 +69,12 @@ export const SLIDES: Slide[] = [
     fg: 'oklch(0.19 0.016 60)',
     accent: 'var(--e-amber)',
     kind: 'list',
-    eyebrow: 'Start here',
-    headline: 'What actually drives me.',
+    headline: 'Let’s start with what I think really drives me, my values.',
     items: [
       'Helping others',
       'Discovering truth',
       'Finding meaning and peace',
-      'Joy, celebration, spirit',
+      'Joy, celebration, and spirit',
       'Intelligence',
       'Harmony',
     ],
@@ -89,17 +88,15 @@ export const SLIDES: Slide[] = [
     fg: 'oklch(0.93 0.008 85)',
     accent: 'var(--e-blue)',
     kind: 'statement',
-    eyebrow: 'Age thirteen',
-    headline: 'I found black holes, and never quite recovered.',
-    marks: ['black holes'],
+    headline: 'I wonder a lot about a lot of things.',
     body: [
-      'I like to wonder about reality. Why there’s anything at all, what it actually is underneath, and what that means for me and my small place in it.',
+      'When I was 13 I became fascinated with space and black holes and the edge between science and science fiction. That never stopped.',
+      'I like to wonder about reality: why it exists at all, what it really is, deep down, and what that means for me, my life and my relationship to the whole.',
     ],
-    aside: {
-      trigger: 'How that happened',
+    note: {
+      label: 'Where that started',
       paragraphs: [
-        'I went to religious day school. Somewhere around tenth grade I started turning to science for explanations about why things were the way they were, instead of to religion.',
-        'That turned into a much deeper interest in science, and in cosmology in particular. The edge between physics and science fiction is still my favorite place to stand.',
+        'I attended religious day school but sometime in 10th grade started turning to science for explanations about why things were the way they were instead of religion. That led to a deeper interest in science and cosmology specifically.',
       ],
     },
   },
@@ -112,12 +109,10 @@ export const SLIDES: Slide[] = [
     fg: 'oklch(0.93 0.012 65)',
     accent: 'var(--e-clay)',
     kind: 'statement',
-    eyebrow: 'Twenty years',
-    headline: 'Then I sat down, and kept sitting.',
-    marks: ['kept sitting'],
+    headline: 'I’m also interested in Zen, and have practiced for about 20 years.',
     body: [
-      'I’m a dharma teacher in the Kwan Um School of Zen, a Korean tradition founded by Zen Master Seung Sahn. I still go on long retreats a few times a year.',
-      'Zen is where I work out how to live — and how the mind quietly decides what other people are, what reality is, and who I’m supposed to be.',
+      'I’m currently a dharma teacher in the Kwan Um School of Zen, a Korean-American tradition founded by Zen Master Seung Sahn. Zen is a place where I explore how to live, and how the mind influences our ideas about others and reality and even notions of who or what we are. I attend long retreats semi-regularly to explore these questions carefully.',
+      'Zen practice has deeply influenced how I understand notions of self, my role in life, and the nature of intimacy, spirituality, and peace.',
     ],
   },
 
@@ -127,19 +122,17 @@ export const SLIDES: Slide[] = [
     tone: 'ink',
     bg: 'oklch(0.128 0.011 300)',
     fg: 'oklch(0.93 0.01 60)',
-    align: 'center',
     accent: 'var(--e-clay)',
     kind: 'self',
-    eyebrow: 'The whole question',
-    headline: 'When you say “I,” what are you pointing at?',
-    aside: {
-      trigger: 'What I’ve found',
-      title: 'Inside and outside have become one.',
+    eyebrow: 'The fundamental inquiry',
+    headline:
+      'When you say “I have” or “give it to me,” what are the I/me pronouns actually referring to?',
+    note: {
+      label: 'What you find',
       paragraphs: [
-        'We have an idea about who we are. We think we’re the thing animating the body, or the stream of thought that runs all day. But can you see it? Catch it? Hold it?',
-        'When you try, you can’t. The moment you reach for it, it slips and becomes something else.',
-        'In deep silence you can look straight at that question and watch impermanence run through everything, including you. Nothing is made out of itself. Everything is made of other things, and all of them are changing. You’re like that too.',
-        'Eventually you can see that the “I” doing the perceiving and the world being perceived were never two. In Zen we say inside and outside have become one. Thinking about it won’t get you there — it has to be looked at from inside concentration and stillness. Though historically, there are exceptions.',
+        'We have an idea about who we are. We think we’re the thing that’s animating the body, or the ongoing stream of thoughts that dominates our consciousness. But can you see it? Can you catch it? Hold it? When you try you find it impossible. As soon as you try to grab it it slips away and becomes something else.',
+        'In deep silence you can look directly at that question and see the impermanence that pervades the entire universe and you too. You can see that nothing is actually made up of itself. It’s made up of different things that are changing. Your self is like that too. What I see is not me but the world outside, just like what I see and touch, and it’s all changing.',
+        'Ultimately one can perceive that the I/me (subject) that’s separate from what’s perceived (the object) is just a hallucination. There is no distinction. In Zen we say “inside and outside have become one.” If you try to think about it, it won’t make sense. It has to be viewed in the context of concentration and inner silence, though historically there are exceptions.',
       ],
     },
   },
@@ -152,30 +145,65 @@ export const SLIDES: Slide[] = [
     fg: 'oklch(0.19 0.02 350)',
     accent: 'var(--e-pink)',
     kind: 'statement',
-    eyebrow: 'Where it led',
-    headline: 'That question followed me into the therapy room.',
-    marks: ['therapy room'],
+    headline:
+      'Zen has also influenced my views on psychotherapy and psychology, not from dogma but my own experiences.',
     body: [
-      'I’ve been building something I call Narrative Theory. The name just sort of happened.',
-      'It’s a way to think systematically about the stories we construct — about ourselves, each other, the future, and whatever room we’re standing in — how to classify them, and how they collide with everyone else’s.',
+      'I’ve been developing my own theory called Narrative Theory. (The name just kinda happened.)',
+      'In a nutshell, it’s a way to systematically think about how we construct stories (narratives) about ourselves, others, the future, and situations, how to document and classify those stories, and how those stories interact with other stories (narrative dynamics).',
     ],
-    link: { label: 'Read the theory', href: '/' },
+    link: { label: 'Read more about Narrative Theory', href: '/' },
   },
 
   {
-    id: 'not-only',
-    nav: 'Not only',
+    id: 'not-just-a-nerd',
+    nav: 'Not just',
     tone: 'paper',
     bg: 'oklch(0.955 0.031 68)',
     fg: 'oklch(0.2 0.024 50)',
     accent: 'var(--e-orange)',
     kind: 'statement',
-    eyebrow: 'Disclaimer',
-    headline: 'I’m not only a nerd. I promise.',
-    marks: ['only a nerd'],
+    headline: 'I’m not just a nerd, I promise.',
+    marks: ['just a nerd'],
     body: [
-      'Djembe at the Venice Beach drum circle. Yes, I’ve been to Burning Man. I have an enormous extended family and I adore every one of them.',
+      'I like celebration, humor, and creativity. I’m a regular at the Venice Beach drum circle (I play djembe) and yes, I’ve attended Burning Man.',
+      'I also love my family. We have a very large extended family who I adore.',
     ],
+  },
+
+  {
+    id: 'ai',
+    nav: 'AI',
+    tone: 'paper',
+    bg: 'oklch(0.951 0.021 238)',
+    fg: 'oklch(0.19 0.02 250)',
+    accent: 'var(--e-blue)',
+    kind: 'statement',
+    headline:
+      'I’m into AI and tech, and am curious about the intersection of AI and everything.',
+    body: [
+      'But specifically therapy, Zen, art, and data analysis (nerd alert again!).',
+    ],
+    link: { label: 'Some of my recent projects', href: '/edahn/projects' },
+  },
+
+  {
+    id: 'writing',
+    nav: 'Writing',
+    tone: 'paper',
+    bg: 'oklch(0.949 0.022 348)',
+    fg: 'oklch(0.19 0.02 340)',
+    accent: 'var(--e-pink)',
+    kind: 'statement',
+    headline:
+      'I like to write, even though I never really considered myself a good writer.',
+    body: ['Writing within flow is incredibly enjoyable.'],
+    note: {
+      label: 'The back catalogue',
+      paragraphs: [
+        'I’ve had an advice column and countless blogs. My favorite was a short-lived one called Darwin’s Mirror, about animals and humans engaged in the same behavior, back when I was very into human ethology.',
+      ],
+    },
+    link: { label: 'Ideas and opinions', href: '/edahn/ideas' },
   },
 
   {
@@ -187,80 +215,36 @@ export const SLIDES: Slide[] = [
     align: 'center',
     accent: 'var(--e-green)',
     kind: 'statement',
-    headline: 'I’m also a leading contender for World’s Best Uncle.',
-    marks: ['World’s Best Uncle'],
-    note: 'Results pending. Confidence high.',
-  },
-
-  {
-    id: 'work',
-    nav: 'Work',
-    tone: 'paper',
-    bg: 'oklch(0.951 0.021 238)',
-    fg: 'oklch(0.19 0.02 250)',
-    accent: 'var(--e-blue)',
-    kind: 'statement',
-    eyebrow: 'Lately',
-    headline: 'AI, and what happens when it meets everything else.',
-    marks: ['everything else'],
-    body: [
-      'Specifically therapy, Zen, art, and a good dataset. Nerd alert, again.',
-    ],
-  },
-
-  {
-    id: 'writing',
-    nav: 'Writing',
-    tone: 'paper',
-    bg: 'oklch(0.949 0.022 348)',
-    fg: 'oklch(0.19 0.02 340)',
-    accent: 'var(--e-pink)',
-    kind: 'statement',
-    eyebrow: 'Also',
-    headline: 'I write, without ever being sure I’m a writer.',
-    marks: ['a writer'],
-    body: [
-      'Writing inside flow is one of the better feelings available to a person.',
-    ],
-    aside: {
-      trigger: 'The back catalogue',
-      paragraphs: [
-        'An advice column. More blogs than I can defend.',
-        'My favorite was short-lived: Darwin’s Mirror — animals and humans caught doing exactly the same thing. This was back when I was deep in human ethology.',
-      ],
-    },
+    headline: 'I’m also a contender for the world’s best uncle.',
+    marks: ['world’s best uncle'],
   },
 
   {
     id: 'life',
-    nav: 'Life',
+    nav: 'Work',
     tone: 'paper',
     bg: 'oklch(0.949 0.023 300)',
     fg: 'oklch(0.19 0.022 295)',
     accent: 'var(--e-violet)',
     kind: 'statement',
-    eyebrow: 'Practically speaking',
-    headline: 'Los Angeles. Therapy online. Data design, and now AI.',
-    marks: ['Los Angeles'],
+    headline: 'I live in Los Angeles and practice therapy online.',
     body: [
-      'Also a recovering lawyer. It turns out I like spirited debate considerably more than I like fighting.',
+      'My main work is in data design and now AI. I’m an ex-lawyer as well. Didn’t enjoy fighting as much as I enjoy spirited debate, apparently.',
     ],
+    link: { label: 'About my therapy practice', href: '/edahn/therapy' },
   },
 
   {
     id: 'contact',
-    nav: 'Say hi',
+    nav: 'Reach out',
     tone: 'paper',
     bg: 'oklch(0.956 0.034 86)',
     fg: 'oklch(0.19 0.024 60)',
     align: 'center',
     accent: 'var(--e-amber)',
     kind: 'contact',
-    headline: 'If any of this landed, I’d like to hear from you.',
-    marks: ['hear from you'],
-    body: ['Good conversation, therapy, or an argument about black holes. All welcome.'],
+    headline:
+      'If you want to learn more, have a good conversation, and talk therapy, please reach out.',
+    body: ['I’d love to hear from you.'],
   },
 ]
-
-/** Slide ids that sit on the dark half of the story. */
-export const isDark = (slide: Slide) => slide.tone === 'ink'

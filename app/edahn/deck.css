@@ -25,6 +25,11 @@
   --e-fg: var(--e-paper-ink);
   --e-accent: var(--e-violet);
 
+  /* Scoped to the personal site. A tighter, more neutral grotesk than the
+     Narrative Theory side runs — closer to the blocky editorial reference,
+     and it holds up at the very large headline sizes here. */
+  --font-display: 'Archivo', 'Helvetica Neue', ui-sans-serif, sans-serif;
+
   height: 100dvh;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -65,6 +70,17 @@
   z-index: 1;
 }
 
+.e-slide-main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.e-slide[data-align='center'] .e-slide-main {
+  align-items: center;
+}
+
 /* Short, punchy slides get centred; the text-heavy ones stay ranged left,
    where long measures are actually readable. */
 .e-slide[data-align='center'] {
@@ -93,9 +109,9 @@
 
 .e-headline {
   font-family: var(--font-display);
-  font-weight: 500;
-  letter-spacing: -0.03em;
-  line-height: 1.02;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.03;
   font-size: clamp(2.4rem, 7.2vw, 5.4rem);
   text-wrap: balance;
 }
@@ -116,7 +132,7 @@
   margin-top: 1em;
 }
 
-.e-note {
+.e-footnote {
   margin-top: 1.75rem;
   font-size: 0.85rem;
   letter-spacing: 0.02em;
@@ -161,82 +177,112 @@
 }
 
 /* ------------------------------------------------------------------ *
- * Marked words — a coloured rule that becomes a squiggle on hover
+ * Marked phrases — a flat rule, no hover behaviour
  * ------------------------------------------------------------------ */
 
 .e-mark {
-  /* inline-block, not inline: an absolutely positioned child of a relatively
-     positioned *inline* box doesn't get a dependable containing block, and the
-     underline ends up sized to a fraction of the word. */
-  display: inline-block;
   position: relative;
   white-space: nowrap;
-  color: inherit;
-}
-
-.e-mark-line {
-  position: absolute;
-  left: 0;
-  /* An SVG is a replaced element: with width auto it takes its intrinsic size
-     and drops `right` entirely, so the rule has to be explicit. */
-  width: 100%;
-  bottom: -0.14em;
-  height: 0.2em;
-  overflow: visible;
-  pointer-events: none;
-}
-
-.e-mark-line path {
-  fill: none;
-  stroke: var(--e-accent);
-  stroke-width: 3.4;
-  stroke-linecap: round;
-  vector-effect: non-scaling-stroke;
-}
-
-.e-mark-straight {
-  transition: opacity 240ms ease;
-}
-
-.e-mark-squiggle {
-  stroke-dasharray: 1;
-  stroke-dashoffset: 1;
-  opacity: 0;
-}
-
-.e-mark:hover .e-mark-straight,
-.e-mark:focus-visible .e-mark-straight {
-  opacity: 0;
-}
-
-.e-mark:hover .e-mark-squiggle,
-.e-mark:focus-visible .e-mark-squiggle {
-  opacity: 1;
-  stroke-dashoffset: 0;
-  transition:
-    stroke-dashoffset 520ms cubic-bezier(0.3, 0.8, 0.4, 1),
-    opacity 120ms ease;
+  box-shadow: inset 0 -0.09em 0 var(--e-accent);
 }
 
 /* ------------------------------------------------------------------ *
- * Asides — the depth, folded away until asked for
+ * Note blocks
+ *
+ * The long material, as a solid slab that slides in from the right a beat
+ * after its slide settles. Driven purely by the deck's data-active attribute,
+ * so it rides the scroll — there is nothing to click and nothing to dismiss.
+ * Flat, square, and in the slide's own accent, so it reads as part of the
+ * page rather than a dialog floating over it.
  * ------------------------------------------------------------------ */
 
-.e-aside {
-  margin-top: 2.5rem;
-  max-width: 36rem;
+.e-note-block {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  z-index: 15;
+  width: min(25rem, 38vw);
+  max-height: 76vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 2rem 2rem 2.15rem;
+  background: var(--e-accent);
+  color: oklch(0.16 0.012 285);
+  transform: translate(100%, -50%);
+  opacity: 0;
+  /* Fades at the foot so a note taller than the slab reads as scrollable
+     rather than clipped. */
+  mask-image: linear-gradient(to bottom, #000 calc(100% - 2.5rem), transparent);
+  transition:
+    transform 720ms cubic-bezier(0.22, 1, 0.36, 1) 260ms,
+    opacity 420ms ease 260ms;
+}
+
+.e-slide[data-active='true'] .e-note-block {
+  transform: translate(0, -50%);
+  opacity: 1;
+}
+
+.e-note-block::-webkit-scrollbar {
+  width: 3px;
+}
+
+.e-note-block::-webkit-scrollbar-thumb {
+  background: color-mix(in oklab, currentColor 30%, transparent);
+}
+
+.e-note-label {
+  margin: 0 0 1rem;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.78;
+}
+
+.e-note-body {
+  font-size: 0.94rem;
+  line-height: 1.62;
+}
+
+.e-note-body h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: -0.015em;
+  margin: 0 0 0.7rem;
+}
+
+.e-note-body p {
+  margin: 0;
+}
+
+.e-note-body p + p {
+  margin-top: 0.85em;
+}
+
+/* Keep the type clear of the slab on wide screens, and ease the headline
+   down a step so it doesn't wrap to three words a line in the narrower
+   column it now has. */
+@media (min-width: 901px) {
+  .e-slide[data-has-note='true'] .e-slide-main {
+    max-width: min(100%, 48rem);
+  }
+
+  .e-slide[data-has-note='true'] .e-headline {
+    font-size: clamp(2.2rem, 5.4vw, 4.1rem);
+  }
 }
 
 .e-aside-trigger {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
-  font-size: 0.82rem;
-  letter-spacing: 0.06em;
+  gap: 0.5rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: inherit;
-  opacity: 0.6;
-  border-bottom: 1px dashed color-mix(in oklab, currentColor 40%, transparent);
+  opacity: 0.5;
+  border-bottom: 1px solid color-mix(in oklab, currentColor 30%, transparent);
   padding-bottom: 0.2rem;
   transition: opacity 200ms ease;
 }
@@ -245,119 +291,16 @@
   opacity: 1;
 }
 
-.e-aside-trigger span:last-child {
-  display: inline-block;
-  transition: transform 320ms cubic-bezier(0.3, 0.8, 0.4, 1);
-}
-
-.e-aside-trigger[aria-expanded='true'] span:last-child {
-  transform: rotate(90deg);
-}
-
-/* The card that animates over the slide. Squarish, offset to the right on
-   desktop so the headline underneath stays readable behind it. */
-.e-card {
-  position: fixed;
-  z-index: 30;
-  right: max(5vw, 6rem);
-  top: 50%;
-  width: min(27rem, 76vw);
-  max-height: min(30rem, 64vh);
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  padding: 2rem 1.9rem 2.1rem;
-  border-radius: 4px;
-  border-top: 3px solid var(--e-accent);
-  /* Lifted off the slide colour so the card reads as a separate plane on both
-     the paper slides and the black ones, where a shadow alone does nothing. */
-  background: var(--e-card-bg, var(--e-bg));
-  color: var(--e-fg);
-  box-shadow:
-    0 1px 2px color-mix(in oklab, black 14%, transparent),
-    0 20px 55px -12px color-mix(in oklab, black 45%, transparent);
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-46%) scale(0.93);
-  transform-origin: top right;
-  transition:
-    opacity 300ms cubic-bezier(0.3, 0.8, 0.4, 1),
-    transform 380ms cubic-bezier(0.22, 1, 0.36, 1),
-    visibility 0s linear 380ms;
-}
-
-.e-card[data-open='true'] {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(-50%) scale(1);
-  transition:
-    opacity 260ms ease,
-    transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
-    visibility 0s;
-}
-
-.e-card::-webkit-scrollbar {
-  width: 3px;
-}
-
-.e-card::-webkit-scrollbar-thumb {
-  background: color-mix(in oklab, currentColor 25%, transparent);
-  border-radius: 3px;
-}
-
-.e-card:focus-visible {
-  outline: none;
-}
-
-.e-card-close {
-  position: absolute;
-  top: 0.7rem;
-  right: 0.9rem;
-  font-size: 1.35rem;
-  line-height: 1;
-  color: inherit;
-  opacity: 0.35;
-  transition: opacity 200ms ease;
-}
-
-.e-card-close:hover {
-  opacity: 1;
-}
-
-.e-card-body {
-  font-family: var(--font-serif);
-  font-size: 1.04rem;
-  line-height: 1.68;
-  opacity: 0.82;
-}
-
-.e-card-body h3 {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 1.2rem;
-  margin-bottom: 0.75rem;
-  opacity: 1;
-}
-
-.e-card-body p + p {
-  margin-top: 0.9em;
-}
-
-@media (max-width: 900px) {
-  .e-card {
-    right: 50%;
-    transform: translate(50%, -46%) scale(0.93);
-    transform-origin: center;
-    width: min(30rem, 86vw);
-  }
-
-  .e-card[data-open='true'] {
-    transform: translate(50%, -50%) scale(1);
-  }
-}
-
 /* ------------------------------------------------------------------ *
  * The uncatchable self
  * ------------------------------------------------------------------ */
+
+/* The slide wrapper aligns children to flex-start so links and buttons keep
+   their own width. The chase is the one thing that has to fill the column. */
+.e-catch-wrap {
+  align-self: stretch;
+  width: 100%;
+}
 
 .e-catch {
   margin-top: 2.5rem;
@@ -533,7 +476,7 @@
 }
 
 /* An open card lands where the rail lives, so the rail gets out of the way. */
-.e-deck:has(.e-card[data-open='true']) .e-rail {
+.e-deck:has(.e-slide[data-active='true'][data-has-note='true']) .e-rail {
   opacity: 0;
   pointer-events: none;
 }
@@ -629,6 +572,26 @@
   .e-list li {
     opacity: 1;
     transform: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .e-note-block {
+    position: static;
+    width: 100%;
+    max-width: 34rem;
+    max-height: none;
+    margin-top: 2.25rem;
+    transform: translateY(1.5rem);
+  }
+
+  .e-slide[data-active='true'] .e-note-block {
+    transform: none;
+  }
+
+  .e-slide[data-has-note='true'] {
+    justify-content: flex-start;
+    padding-top: 7rem;
   }
 }
 

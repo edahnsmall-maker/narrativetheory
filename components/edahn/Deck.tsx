@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { SLIDES } from '@/lib/edahn/content'
-import { Aside, marked } from './bits'
+import { NoteBlock, marked } from './bits'
 import UncatchableSelf from './UncatchableSelf'
 import Cosmos from './Cosmos'
 
@@ -21,12 +21,9 @@ export default function Deck() {
   const slide = SLIDES[active]
 
   const goTo = useCallback((index: number) => {
-    const target = slideRefs.current[index]
-    if (!target) return
-    target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    slideRefs.current[index]?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }, [])
 
-  // Which slide owns the viewport right now.
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -45,19 +42,15 @@ export default function Deck() {
     return () => observer.disconnect()
   }, [])
 
-  // Keyboard: arrows, space, home/end, and vim keys for the people who'd try.
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
       const target = event.target as HTMLElement | null
       if (target && ['INPUT', 'TEXTAREA'].includes(target.tagName)) return
 
-      const forward = ['ArrowDown', 'PageDown', 'j', ' ']
-      const back = ['ArrowUp', 'PageUp', 'k']
-
-      if (forward.includes(event.key)) {
+      if (['ArrowDown', 'PageDown', 'j', ' '].includes(event.key)) {
         event.preventDefault()
         goTo(Math.min(SLIDES.length - 1, active + 1))
-      } else if (back.includes(event.key)) {
+      } else if (['ArrowUp', 'PageUp', 'k'].includes(event.key)) {
         event.preventDefault()
         goTo(Math.max(0, active - 1))
       } else if (event.key === 'Home') {
@@ -84,11 +77,6 @@ export default function Deck() {
           '--e-bg': slide.bg,
           '--e-fg': slide.fg,
           '--e-accent': slide.accent,
-          // Cards sit a plane above the slide. Dark slides need a bigger lift
-          // than paper ones to read as separate rather than as a hole.
-          '--e-card-bg': dark
-            ? `color-mix(in oklab, ${slide.bg} 80%, white)`
-            : `color-mix(in oklab, ${slide.bg} 55%, white)`,
         } as React.CSSProperties
       }
     >
@@ -124,60 +112,55 @@ export default function Deck() {
           data-kind={item.kind}
           data-align={item.align ?? 'left'}
           data-active={index === active}
+          data-has-note={Boolean(item.note)}
           className="e-slide"
           ref={(element) => {
             slideRefs.current[index] = element
           }}
         >
-          {item.eyebrow && <p className="e-eyebrow">{item.eyebrow}</p>}
+          <div className="e-slide-main">
+            {item.eyebrow && <p className="e-eyebrow">{item.eyebrow}</p>}
 
-          <h2 className="e-headline">{marked(item.headline, item.marks)}</h2>
+            <h2 className="e-headline">{marked(item.headline, item.marks)}</h2>
 
-          {item.items && (
-            <ul className="e-list">
-              {item.items.map((value, valueIndex) => (
-                <li
-                  key={value}
-                  style={{ transitionDelay: `${140 + valueIndex * 90}ms` }}
-                >
-                  {value}
-                </li>
-              ))}
-            </ul>
-          )}
+            {item.items && (
+              <ul className="e-list">
+                {item.items.map((value, valueIndex) => (
+                  <li key={value} style={{ transitionDelay: `${160 + valueIndex * 85}ms` }}>
+                    {value}
+                  </li>
+                ))}
+              </ul>
+            )}
 
-          {item.body && (
-            <div className="e-body">
-              {item.body.map((paragraph, paragraphIndex) => (
-                <p key={paragraphIndex}>{paragraph}</p>
-              ))}
-            </div>
-          )}
+            {item.body && (
+              <div className="e-body">
+                {item.body.map((paragraph, paragraphIndex) => (
+                  <p key={paragraphIndex}>{paragraph}</p>
+                ))}
+              </div>
+            )}
 
-          {item.note && <p className="e-note">{item.note}</p>}
+            {item.footnote && <p className="e-footnote">{item.footnote}</p>}
 
-          {item.kind === 'self' && item.aside && (
-            <UncatchableSelf>
-              <Aside aside={item.aside} />
-            </UncatchableSelf>
-          )}
+            {item.kind === 'self' && <UncatchableSelf />}
 
-          {item.kind !== 'self' && item.aside && <Aside aside={item.aside} />}
+            {item.link && (
+              <Link href={item.link.href} className="e-link">
+                <span>{item.link.label}</span>
+                <span aria-hidden>&rarr;</span>
+              </Link>
+            )}
 
-          {item.link && (
-            <Link href={item.link.href} className="e-link">
-              <span>{item.link.label}</span>
-              <span aria-hidden>&rarr;</span>
-            </Link>
-          )}
+            {item.kind === 'contact' && (
+              <div className="e-contact">
+                {/* TODO(edahn): swap in the address you actually want public. */}
+                <a href="mailto:hello@edahnsmall.com">Email me</a>
+              </div>
+            )}
+          </div>
 
-          {item.kind === 'contact' && (
-            <div className="e-contact">
-              {/* TODO(edahn): swap in the address you actually want public. */}
-              <a href="mailto:hello@edahnsmall.com">Email me</a>
-              <Link href="/program">Try the program</Link>
-            </div>
-          )}
+          {item.note && <NoteBlock note={item.note} />}
         </section>
       ))}
     </div>

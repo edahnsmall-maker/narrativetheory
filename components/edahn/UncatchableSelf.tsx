@@ -19,12 +19,7 @@ import { useCallback, useRef, useState } from 'react'
 const PRONOUNS = ['I', 'me', 'my', 'mine', 'myself', 'this', 'I']
 const ATTEMPTS_UNTIL_REST = 6
 
-interface Props {
-  /** Rendered once the chase resolves. */
-  children: React.ReactNode
-}
-
-export default function UncatchableSelf({ children }: Props) {
+export default function UncatchableSelf() {
   const [attempts, setAttempts] = useState(0)
   const [position, setPosition] = useState({ x: 50, y: 50 })
   const wordRef = useRef<HTMLButtonElement>(null)
@@ -58,7 +53,7 @@ export default function UncatchableSelf({ children }: Props) {
   const reveal = useCallback(() => setAttempts(ATTEMPTS_UNTIL_REST), [])
 
   return (
-    <div>
+    <div className="e-catch-wrap">
       {!resolved && (
         <div
           className="e-catch"
@@ -102,13 +97,9 @@ export default function UncatchableSelf({ children }: Props) {
       )}
 
       {resolved ? (
-        <div>
-          <p className="e-catch-resolved">
-            You can&rsquo;t catch it. Not because you&rsquo;re slow &mdash; because there&rsquo;s
-            nothing there to catch.
-          </p>
-          {children}
-        </div>
+        <p className="e-catch-resolved">
+          As soon as you try to grab it, it slips away and becomes something else.
+        </p>
       ) : (
         <button
           type="button"
