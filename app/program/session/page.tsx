@@ -18,8 +18,10 @@ import {
   clearState,
   completeStage,
   createState,
+  exportFilename,
   goToStage,
   loadState,
+  parseImported,
   saveState,
   serializeContext,
 } from '@/lib/program/state'
@@ -57,6 +59,8 @@ export default function SessionPage() {
   const [state, setState] = useState<ProgramState | null>(null)
   const [panel, setPanel] = useState<PanelId>('observations')
   const [confirmingReset, setConfirmingReset] = useState(false)
+  const [importError, setImportError] = useState<string | null>(null)
+  const fileInputRef = useRef<HTMLInputElement>(null)
 
   // Mirrors state so several tool calls arriving in one stream each build on
   // the previous one rather than all reading the same stale render.
@@ -114,6 +118,36 @@ export default function SessionPage() {
   )
 
   const buildContext = useCallback(() => serializeContext(stateRef.current ?? createState()), [])
+
+  const downloadRecord = useCallback(() => {
+    const current = stateRef.current
+    if (!current) return
+    const blob = new Blob([JSON.stringify(current, null, 2)], { type: 'application/json' })
+    const url = URL.createObjectURL(blob)
+    const link = document.createElement('a')
+    link.href = url
+    link.download = exportFilename(current)
+    link.click()
+    URL.revokeObjectURL(url)
+  }, [])
+
+  const uploadRecord = useCallback(
+    async (file: File) => {
+      setImportError(null)
+      try {
+        const restored = parseImported(JSON.parse(await file.text()))
+        if (!restored) {
+          setImportError("That file isn't a record this version can read.")
+          return
+        }
+        commit(restored)
+        setPanel(DEFAULT_PANEL[restored.currentStage])
+      } catch {
+        setImportError("That file couldn't be read.")
+      }
+    },
+    [commit],
+  )
 
   const stage = state ? stageById(state.currentStage) : null
   const proposal = state?.completionProposals[state.currentStage]
@@ -195,13 +229,41 @@ export default function SessionPage() {
               </button>
             </>
           ) : (
-            <button
-              onClick={() => setConfirmingReset(true)}
-              disabled={!hasAnything}
-              className="rounded-lg px-2.5 py-1 text-xs text-[var(--muted-foreground)] hover:bg-[var(--muted)] disabled:opacity-40"
-            >
-              Start over
-            </button>
+            <>
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="application/json,.json"
+                className="hidden"
+                onChange={(e) => {
+                  const file = e.target.files?.[0]
+                  if (file) void uploadRecord(file)
+                  e.target.value = ''
+                }}
+              />
+              <button
+                onClick={downloadRecord}
+                disabled={!hasAnything}
+                title="Download your record as a file — the only backup there is"
+                className="rounded-lg px-2.5 py-1 text-xs text-[var(--muted-foreground)] hover:bg-[var(--muted)] disabled:opacity-40"
+              >
+                Save a copy
+              </button>
+              <button
+                onClick={() => fileInputRef.current?.click()}
+                title="Load a record you saved earlier, replacing what is here"
+                className="rounded-lg px-2.5 py-1 text-xs text-[var(--muted-foreground)] hover:bg-[var(--muted)]"
+              >
+                Load
+              </button>
+              <button
+                onClick={() => setConfirmingReset(true)}
+                disabled={!hasAnything}
+                className="rounded-lg px-2.5 py-1 text-xs text-[var(--muted-foreground)] hover:bg-[var(--muted)] disabled:opacity-40"
+              >
+                Start over
+              </button>
+            </>
           )}
         </div>
       </nav>
@@ -285,8 +347,13 @@ export default function SessionPage() {
         </section>
       </div>
 
+      {importError && (
+        <p className="pt-3 text-center text-xs text-[var(--destructive)]">{importError}</p>
+      )}
+
       <p className="pt-3 text-center text-xs text-[var(--muted-foreground)]">
-        Everything here is stored in this browser only &mdash; nothing is sent to an account.{' '}
+        Everything here is stored in this browser only &mdash; nothing is sent to an account. Save a
+        copy if it matters to you.{' '}
         <Link href="/program" className="underline underline-offset-2">
           What this is
         </Link>

@@ -142,16 +142,16 @@ export default function AboutPage() {
 
       <div className="border-t pt-8 flex flex-wrap gap-4">
         <Link
-          href="/theory"
+          href="/program"
           className="bg-primary text-primary-foreground px-5 py-2.5 rounded-xl text-sm font-medium hover:opacity-90 transition-opacity inline-flex items-center gap-2"
         >
-          Learn the vocabulary <ArrowRight size={14} />
+          Do the program <ArrowRight size={14} />
         </Link>
         <Link
-          href="/life"
+          href="/theory"
           className="border bg-card text-muted-foreground px-5 py-2.5 rounded-xl text-sm hover:text-foreground hover:border-foreground/40 transition-colors"
         >
-          Start practicing
+          Learn the vocabulary
         </Link>
       </div>
     </div>

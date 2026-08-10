@@ -13,6 +13,7 @@ export default function Footer() {
         </div>
         <div className="space-y-2">
           <div className="text-xs uppercase tracking-widest text-muted-foreground">Read</div>
+          <Link href="/program" className="block hover:underline">The Program</Link>
           <Link href="/theory" className="block hover:underline">Narrative Theory</Link>
           <Link href="/modes" className="block hover:underline">Mode Library</Link>
           <Link href="/life" className="block hover:underline">Life Instruction™</Link>

@@ -63,6 +63,67 @@ export function clearState(): void {
 }
 
 /* ------------------------------------------------------------------ *
+ * Export / import
+ *
+ * There is no account, so a browser profile is the only copy of the record.
+ * Stage 4 runs over weeks, which is a long time to trust localStorage with
+ * something this personal — so the file is the backup, and the way to move
+ * between devices.
+ * ------------------------------------------------------------------ */
+
+export function exportFilename(state: ProgramState): string {
+  const stamp = new Date(state.updatedAt).toISOString().slice(0, 10)
+  const slug = (state.map.title ?? 'record')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '')
+  return `dream-${slug || 'record'}-${stamp}.json`
+}
+
+/** Rebuilds a state object from parsed JSON, filling anything missing. */
+export function parseImported(raw: unknown): ProgramState | null {
+  if (!raw || typeof raw !== 'object') return null
+  const input = raw as Partial<ProgramState>
+  if (input.version !== VERSION) return null
+
+  const base = createState()
+  const arr = <T>(value: unknown, fallback: T[]): T[] =>
+    Array.isArray(value) ? (value as T[]) : fallback
+
+  const stage = ([1, 2, 3, 4, 5] as StageId[]).includes(input.currentStage as StageId)
+    ? (input.currentStage as StageId)
+    : 1
+
+  const transcripts = { ...base.transcripts }
+  for (const id of STAGE_IDS) {
+    transcripts[id] = arr(input.transcripts?.[id], [])
+  }
+
+  return {
+    ...base,
+    createdAt: typeof input.createdAt === 'number' ? input.createdAt : base.createdAt,
+    updatedAt: typeof input.updatedAt === 'number' ? input.updatedAt : base.updatedAt,
+    currentStage: stage,
+    status: { ...base.status, ...(input.status ?? {}) },
+    completionProposals: input.completionProposals ?? {},
+    observations: arr(input.observations, []),
+    map: {
+      title: input.map?.title,
+      thesis: input.map?.thesis,
+      nodes: arr(input.map?.nodes, []),
+      edges: arr(input.map?.edges, []),
+    },
+    plan: {
+      issues: arr(input.plan?.issues, []),
+      anticipations: arr(input.plan?.anticipations, []),
+    },
+    missions: arr(input.missions, []),
+    practices: arr(input.practices, []),
+    transcripts,
+  }
+}
+
+/* ------------------------------------------------------------------ *
  * Applying the model's tool calls
  * ------------------------------------------------------------------ */
 
