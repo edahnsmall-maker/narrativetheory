@@ -3,15 +3,19 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { SLIDES } from '@/lib/edahn/content'
-import { NoteBlock, marked } from './bits'
+import { marked } from './bits'
 import UncatchableSelf from './UncatchableSelf'
-import Cosmos from './Cosmos'
+import Visual from './Visual'
 
 /**
  * The whole site is one scroll-snap column. Snapping is handled by CSS rather
  * than by intercepting wheel events — native snap keeps trackpads, keyboards,
  * touch and screen readers all behaving correctly, which hijacked scroll never
  * quite manages.
+ *
+ * Structure comes from three fixed pieces that persist across slides: the
+ * number column down the left, the wordmark, and the section rail on the
+ * right. Only the ground colour and the content change underneath them.
  */
 export default function Deck() {
   const [active, setActive] = useState(0)
@@ -66,21 +70,13 @@ export default function Deck() {
     return () => window.removeEventListener('keydown', onKeyDown)
   }, [active, goTo])
 
-  const dark = slide.tone === 'ink'
-
   return (
-    <div
-      ref={scrollerRef}
-      className="e-deck"
-      style={
-        {
-          '--e-bg': slide.bg,
-          '--e-fg': slide.fg,
-          '--e-accent': slide.accent,
-        } as React.CSSProperties
-      }
-    >
-      <Cosmos visible={dark} />
+    <div ref={scrollerRef} className="e-deck" data-tone={slide.tone}>
+      {/* Fixed spine. The number is the only thing in it that changes. */}
+      <div className="e-spine" aria-hidden>
+        <span className="e-spine-num">{String(active + 1).padStart(2, '0')}</span>
+        <span className="e-spine-total">/ {String(SLIDES.length).padStart(2, '0')}</span>
+      </div>
 
       <Link href="/" className="e-wordmark">
         Edahn Small
@@ -105,64 +101,83 @@ export default function Deck() {
         Scroll
       </p>
 
-      {SLIDES.map((item, index) => (
-        <section
-          key={item.id}
-          id={item.id}
-          data-kind={item.kind}
-          data-align={item.align ?? 'left'}
-          data-active={index === active}
-          data-has-note={Boolean(item.note)}
-          className="e-slide"
-          ref={(element) => {
-            slideRefs.current[index] = element
-          }}
-        >
-          <div className="e-slide-main">
-            {item.eyebrow && <p className="e-eyebrow">{item.eyebrow}</p>}
+      {SLIDES.map((item, index) => {
+        // A visual owns the right column outright — washing it behind body copy
+        // makes a solid mark like the enso fight the text. So when a slide
+        // carries a field, the body moves left under the headline; when it
+        // doesn't, the body takes the right column instead.
+        const hasVisual = Boolean(item.visual)
+        const bodyLeft = hasVisual
+        const hasRight = hasVisual || Boolean(item.body || item.items) || item.kind === 'self'
 
-            <h2 className="e-headline">{marked(item.headline, item.marks)}</h2>
-
-            {item.items && (
-              <ul className="e-list">
-                {item.items.map((value, valueIndex) => (
-                  <li key={value} style={{ transitionDelay: `${160 + valueIndex * 85}ms` }}>
-                    {value}
-                  </li>
-                ))}
-              </ul>
-            )}
-
-            {item.body && (
-              <div className="e-body">
-                {item.body.map((paragraph, paragraphIndex) => (
-                  <p key={paragraphIndex}>{paragraph}</p>
-                ))}
-              </div>
-            )}
-
-            {item.footnote && <p className="e-footnote">{item.footnote}</p>}
-
-            {item.kind === 'self' && <UncatchableSelf />}
-
-            {item.link && (
-              <Link href={item.link.href} className="e-link">
-                <span>{item.link.label}</span>
-                <span aria-hidden>&rarr;</span>
-              </Link>
-            )}
-
-            {item.kind === 'contact' && (
-              <div className="e-contact">
-                {/* TODO(edahn): swap in the address you actually want public. */}
-                <a href="mailto:hello@edahnsmall.com">Email me</a>
-              </div>
-            )}
+        const body = item.body && (
+          <div className="e-body">
+            {item.body.map((paragraph, paragraphIndex) => (
+              <p key={paragraphIndex}>{paragraph}</p>
+            ))}
           </div>
+        )
 
-          {item.note && <NoteBlock note={item.note} />}
-        </section>
-      ))}
+        return (
+          <section
+            key={item.id}
+            id={item.id}
+            data-kind={item.kind}
+            data-tone={item.tone}
+            data-active={index === active}
+            className="e-slide"
+            ref={(element) => {
+              slideRefs.current[index] = element
+            }}
+          >
+            <div className="e-slide-grid" data-split={hasRight}>
+              <div className="e-col-left">
+                {item.eyebrow && <p className="e-eyebrow">{item.eyebrow}</p>}
+                <h2 className="e-headline">{marked(item.headline, item.marks)}</h2>
+
+                {bodyLeft && body}
+                {bodyLeft && item.footnote && <p className="e-footnote">{item.footnote}</p>}
+
+                {item.link && (
+                  <Link href={item.link.href} className="e-link">
+                    <span>{item.link.label}</span>
+                    <span aria-hidden>&rarr;</span>
+                  </Link>
+                )}
+
+                {item.kind === 'contact' && (
+                  <div className="e-contact">
+                    {/* TODO(edahn): swap in the address you actually want public. */}
+                    <a href="mailto:hello@edahnsmall.com">Email me</a>
+                  </div>
+                )}
+              </div>
+
+              {hasRight && (
+                <div className="e-col-right">
+                  {item.visual && <Visual kind={item.visual} />}
+
+                  {item.items && (
+                    <ul className="e-list">
+                      {item.items.map((value, valueIndex) => (
+                        <li key={value} style={{ transitionDelay: `${180 + valueIndex * 80}ms` }}>
+                          {value}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+
+                  {!bodyLeft && body}
+                  {!bodyLeft && item.footnote && <p className="e-footnote">{item.footnote}</p>}
+
+                  {item.kind === 'self' && <UncatchableSelf />}
+                </div>
+              )}
+            </div>
+          </section>
+        )
+      })}
+
     </div>
   )
 }
