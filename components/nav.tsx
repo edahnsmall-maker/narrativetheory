@@ -10,6 +10,7 @@ const primary = [
   { href: '/life', label: 'Life Instruction™' },
   { href: '/situation', label: 'Bring a Situation' },
   { href: '/about', label: 'About' },
+  { href: '/edahn', label: 'Edahn' },
 ]
 
 export default function Nav() {
