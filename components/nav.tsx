@@ -10,7 +10,6 @@ const primary = [
   { href: '/life', label: 'Life Instruction™' },
   { href: '/situation', label: 'Bring a Situation' },
   { href: '/about', label: 'About' },
-  { href: '/', label: 'Edahn Small' },
 ]
 
 export default function Nav() {
@@ -20,7 +19,7 @@ export default function Nav() {
   return (
     <header className="sticky top-0 z-40 backdrop-blur-md bg-[color-mix(in_oklab,var(--paper)_85%,transparent)] border-b">
       <div className="mx-auto max-w-7xl px-5 lg:px-8 h-14 flex items-center justify-between gap-4">
-        <Link href="/narrative-theory" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2">
           <span
             className="inline-block h-2.5 w-2.5 rounded-full"
             style={{ background: 'conic-gradient(from 0deg, #a78bfa, #ec4899, #fb923c, #60a5fa, #a78bfa)' }}
