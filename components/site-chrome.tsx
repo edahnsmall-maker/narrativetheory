@@ -3,14 +3,21 @@
 import { usePathname } from 'next/navigation'
 
 /**
- * The personal deck is a full-viewport scroll-snap surface with its own
- * wordmark and rail, so the Narrative Theory nav and footer would only be in
- * its way. Everything else on the site keeps them.
+ * The personal site carries its own chrome — the deck has a spine and rail,
+ * the inner pages have their own bar — so the Narrative Theory nav and footer
+ * are suppressed across it. Everything under /narrative-theory, /theory,
+ * /modes, /life, /program and friends keeps them.
  */
-const BARE_ROUTES = ['/edahn']
+const BARE_EXACT = ['/']
+const BARE_PREFIXES = ['/projects', '/therapy', '/ideas']
 
 export default function SiteChrome({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
-  if (BARE_ROUTES.some((route) => pathname.startsWith(route))) return null
+
+  // The root has to match exactly — startsWith('/') is every page on the site.
+  const bare =
+    BARE_EXACT.includes(pathname) || BARE_PREFIXES.some((route) => pathname.startsWith(route))
+
+  if (bare) return null
   return <>{children}</>
 }

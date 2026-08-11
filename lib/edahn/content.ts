@@ -140,7 +140,7 @@ export const SLIDES: Slide[] = [
       'I’ve been developing my own theory called Narrative Theory. (The name just kinda happened.)',
       'In a nutshell, it’s a way to systematically think about how we construct stories (narratives) about ourselves, others, the future, and situations, how to document and classify those stories, and how those stories interact with other stories (narrative dynamics).',
     ],
-    link: { label: 'Read more about Narrative Theory', href: '/' },
+    link: { label: 'Read more about Narrative Theory', href: '/narrative-theory' },
   },
 
   {
@@ -166,7 +166,7 @@ export const SLIDES: Slide[] = [
     headline:
       'I’m into AI and tech, and am curious about the intersection of AI and everything.',
     body: ['But specifically therapy, Zen, art, and data analysis (nerd alert again!).'],
-    link: { label: 'Some of my recent projects', href: '/edahn/projects' },
+    link: { label: 'Some of my recent projects', href: '/projects' },
   },
 
   {
@@ -177,7 +177,7 @@ export const SLIDES: Slide[] = [
     headline:
       'I like to write, even though I never really considered myself a good writer.',
     body: ['Writing within flow is incredibly enjoyable.'],
-    link: { label: 'Ideas and opinions', href: '/edahn/ideas' },
+    link: { label: 'Ideas and opinions', href: '/ideas' },
   },
 
   {
@@ -209,7 +209,7 @@ export const SLIDES: Slide[] = [
     body: [
       'My main work is in data design and now AI. I’m an ex-lawyer as well. Didn’t enjoy fighting as much as I enjoy spirited debate, apparently.',
     ],
-    link: { label: 'About my therapy practice', href: '/edahn/therapy' },
+    link: { label: 'About my therapy practice', href: '/therapy' },
   },
 
   {

@@ -41,7 +41,7 @@ export default function TherapyPage() {
   return (
     <PageShell
       band="oklch(0.62 0.2 295)"
-      current="/edahn/therapy"
+      current="/therapy"
       title="Therapy"
       intro="I live in Los Angeles and practice therapy online. Here’s roughly how I think about the work, and who it tends to suit."
     >
@@ -72,7 +72,7 @@ export default function TherapyPage() {
           </p>
         </div>
         <div className="e-cta-actions">
-          <a className="e-btn" href="/theory">
+          <a className="e-btn" href="/narrative-theory">
             <span>Read Narrative Theory</span>
             <span aria-hidden>&rarr;</span>
           </a>

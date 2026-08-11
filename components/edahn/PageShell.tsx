@@ -6,9 +6,9 @@ import Link from 'next/link'
  */
 
 const LINKS = [
-  { href: '/edahn/projects', label: 'AI projects' },
-  { href: '/edahn/therapy', label: 'Therapy' },
-  { href: '/edahn/ideas', label: 'Ideas' },
+  { href: '/projects', label: 'AI projects' },
+  { href: '/therapy', label: 'Therapy' },
+  { href: '/ideas', label: 'Ideas' },
 ]
 
 interface Props {
@@ -24,7 +24,7 @@ export default function PageShell({ band, title, intro, current, children }: Pro
   return (
     <div className="e-page" style={{ ['--e-band' as string]: band }}>
       <header className="e-page-bar">
-        <Link href="/edahn">&larr; Edahn Small</Link>
+        <Link href="/">&larr; Edahn Small</Link>
         <nav>
           {LINKS.map((link) => (
             <Link
@@ -46,7 +46,7 @@ export default function PageShell({ band, title, intro, current, children }: Pro
       {children}
 
       <footer className="e-page-foot">
-        <Link href="/edahn">Back to the beginning</Link>
+        <Link href="/">Back to the beginning</Link>
       </footer>
     </div>
   )

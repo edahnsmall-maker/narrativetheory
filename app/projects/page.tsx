@@ -54,7 +54,7 @@ export default function ProjectsPage() {
   return (
     <PageShell
       band="oklch(0.68 0.16 235)"
-      current="/edahn/projects"
+      current="/projects"
       title="AI projects"
       intro="I’m curious about the intersection of AI and everything, but specifically therapy, Zen, art, and data analysis. Here’s what that has turned into so far."
     >

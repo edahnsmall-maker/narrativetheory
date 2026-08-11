@@ -60,7 +60,7 @@ export default function IdeasPage() {
   return (
     <PageShell
       band="oklch(0.65 0.21 5)"
-      current="/edahn/ideas"
+      current="/ideas"
       title="Ideas and opinions"
       intro="I like to write, even though I never really considered myself a good writer. Writing within flow is incredibly enjoyable. This is where that goes."
     >

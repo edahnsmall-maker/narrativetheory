@@ -23,7 +23,7 @@ export default function Footer() {
           <Link href="/situation" className="block hover:underline">Bring a Situation</Link>
           <Link href="/studio" className="block hover:underline">Studio</Link>
           <Link href="/about" className="block hover:underline">About</Link>
-          <Link href="/edahn" className="block hover:underline">Edahn Small</Link>
+          <Link href="/" className="block hover:underline">Edahn Small</Link>
         </div>
       </div>
       <div className="border-t">
