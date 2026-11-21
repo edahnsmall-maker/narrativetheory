@@ -430,8 +430,7 @@ function Paywall({ sessionId }: { sessionId?: string }) {
       </div>
       <h3 className="font-display text-2xl mb-2">That's the free part of this session</h3>
       <p className="mx-auto max-w-md text-[15px] text-muted-foreground leading-relaxed mb-5">
-        Members finish every guided session, bring situations whenever they come up, and build their own mode library across all of it.
-        Your session is saved: become a member and you'll pick up right here.
+        Members get the rest of this session and every other one. Your session is saved, so if you join you'll pick up right here.
       </p>
       <div className="flex flex-wrap items-center justify-center gap-3">
         <UpgradeButton label="Become a member" returnTo={sessionId ? `/session/${sessionId}` : '/life'} />

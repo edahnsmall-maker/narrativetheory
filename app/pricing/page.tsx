@@ -31,11 +31,11 @@ const faq = [
   },
   {
     q: 'Is this therapy?',
-    a: 'No. Narrative Theory is education — a way of looking at experience that you can practice on your own. The guided sessions are a teacher, not a clinician. If you are in crisis or need care, please reach out to a licensed professional or a local crisis line.',
+    a: "No. It's education. The guide is closer to a sharp friend who knows the theory than to a therapist, and it won't diagnose you or dig through your childhood. If you're in crisis, call or text 988 (US) or your local emergency number.",
   },
   {
     q: 'What does “fair use” mean?',
-    a: `The guide runs on an AI model that costs real money per reply, so there is a daily ceiling on replies — ${rules.dailyReplyCap.member} a day for members. Almost no one comes near it; it is there to keep the price low for everyone. If you reach it, you can pick up again the next day.`,
+    a: `Every reply from the guide costs money to run, so there's a daily ceiling: ${rules.dailyReplyCap.member} replies a day for members. That's a lot of talking. If you hit it, pick up again tomorrow.`,
   },
   {
     q: 'What do I keep if I stop?',
@@ -61,11 +61,11 @@ export default async function PricingPage() {
       <header className="mb-14 max-w-2xl">
         <div className="text-xs uppercase tracking-widest text-muted-foreground mb-3">Pricing</div>
         <h1 className="font-display text-4xl md:text-5xl text-foreground mb-5 leading-tight">
-          Read freely. Go deeper when you&rsquo;re ready.
+          The reading is free.
         </h1>
         <p className="text-muted-foreground leading-relaxed">
-          The ideas are free for anyone. Membership pays for the guided work — the sessions that
-          walk through your own life with you — and keeps the project going.
+          All the ideas, articles and diagrams are free for anyone. The guided sessions cost money because the AI behind them
+          costs money, and because this thing has to pay for itself somehow.
         </p>
       </header>
 

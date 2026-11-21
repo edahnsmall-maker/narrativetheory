@@ -1,159 +1,89 @@
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
+import type { Metadata } from 'next'
+import type { ReactNode } from 'react'
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'About — Narrative Theory',
-  description: 'What Narrative Theory is, where it comes from, and what it claims — in the author’s own words.',
+  description: 'Where Narrative Theory came from, in Edahn Small’s words.',
 }
 
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <section className="mb-12">
-      <h2 className="font-display text-xl text-foreground mb-4">{title}</h2>
-      <div className="prose-nt text-[17px] leading-relaxed space-y-5">{children}</div>
-    </section>
-  )
+/**
+ * About page, assembled from Edahn's own writing: the "One Pager" (the
+ * 30-day retreat), the introduction to his book draft ("Lenses"), and the
+ * goals paragraph. Typo fixes only.
+ */
+
+function P({ children }: { children: ReactNode }) {
+  return <p className="text-[18px] md:text-[19px] leading-[1.7] text-foreground/90 mb-6">{children}</p>
+}
+
+function H2({ children }: { children: ReactNode }) {
+  return <h2 className="font-display text-3xl md:text-4xl leading-tight tracking-tight pt-12 mb-5">{children}</h2>
 }
 
 export default function AboutPage() {
   return (
-    <div className="mx-auto max-w-2xl px-5 lg:px-8 py-16">
-      <header className="mb-14">
-        <div className="text-xs uppercase tracking-widest text-muted-foreground mb-3">About</div>
-        <h1 className="font-display text-4xl md:text-5xl text-foreground mb-5 leading-tight">
-          What is Narrative Theory?
-        </h1>
-        <p className="text-muted-foreground leading-relaxed">
-          People have asked what Narrative Theory is all about. Here&rsquo;s the short version —
-          three to five minutes. Assembled almost entirely from the notebooks it grew up in.
-        </p>
-      </header>
+    <article className="mx-auto max-w-[44rem] px-4 sm:px-6 py-14 md:py-20">
+      <div className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground mb-3">About</div>
+      <h1 className="font-display text-5xl md:text-6xl leading-[1] tracking-tight mb-8">Where this came from</h1>
 
-      <Section title="Where it comes from">
-        <p>
-          Narrative Theory is a way to break down and make sense of our experience. It was born out
-          of personal observation, Zen practice, psychology, animal behavior, and an honest
-          disappointment in contemporary psychotherapy. It&rsquo;s a map — of relationships, conflict,
-          happiness, and everything in between — so you can understand your own situations with
-          clarity, and see their solutions.
-        </p>
-        <p>
-          Another way to say it: NT is the psychology of Zen. It starts from the clear mind — the
-          one you find at the end of a long retreat, after real grief, in deep rest — and asks:
-          what is that mind, and what is everything else? It is the book I couldn&rsquo;t find on the
-          shelf, so it had to be written.
-        </p>
-      </Section>
+      <P>
+        It’s tricky to verbalize the fundamental point of Zen, because the fundamental point is experiencing the world without extra thinking.
+        Zen is beyond or before thinking, while concepts, words, and explanations are the product of thinking. It’s for that reason that Zen is
+        often described by mystics without words but with actions that call attention to the present moment, for without thinking, one finds
+        themselves fully absorbed in this moment. There’s nothing else to be absorbed in because nothing else exists.
+      </P>
+      <P>
+        This was the essence of my experience on my 30-day kyol che (silent retreat). After roughly 30 days of 16+ hours of meditation practice a
+        day, my extra thinking began to dry up like water evaporating off a hot pan. I could still think abstractly when needed but much of the
+        diffuse, background noise of thinking had evaporated. But that wasn’t all that changed: my relationships changed, my attitude towards
+        myself changed, my optimism changed, my work changed, my love life changed, and my vulnerability changed. The way I felt, responded, and
+        saw the world had shifted.
+      </P>
+      <P>
+        But why? What explains all these changes? I found no adequate explanation in contemporary theories of psychology that have yet to
+        integrate spirituality into their frameworks. Zen lore was too mystical and lacked the systematic nature of Western psychology theories.
+      </P>
 
-      <Section title="The basic claim">
-        <p>
-          You can experience reality two fundamentally different ways: with noisy habitual thinking,
-          and without. NT looks to understand everything through that one dichotomy.
-        </p>
-        <p>
-          When the mind is quiet, the world is less divided. Situations are less gloomy. Other
-          people become ordinary and near. The natural impulse to help comes online by itself,
-          without a philosophy attached.
-        </p>
-        <p>
-          When the mind is noisy, we live inside a constructed world — reality cut into pieces,
-          each piece wrapped in an identity, a value, a rank we projected onto it — and then we
-          defend that world as if we had found it rather than made it.
-        </p>
-      </Section>
+      <H2>Another lens</H2>
+      <P>
+        As a psychology major in university, we were required to take a variety of introductory psych courses. Each course was from a different
+        area of psychology: cognitive, social, abnormal, behavioral, motivational, personality, and developmental psychology. I loved those
+        classes because for one quarter, I was able to immerse myself in a mindset. In cognitive psychology, the world turned into thoughts,
+        information, and memories. During social psychology, I observed the interaction of groups, persuasion, and human needs. In clinical,
+        everyone had a diagnosis and I had multiple. I was surely the most fucked up person that was in school. I think everyone thought that.
+        Each class offered a new lens with which to view the world, and I could change them at will.
+      </P>
+      <P>
+        NT is another lens. It’s a way to divide the world up and see the fundamental units at play. It ushers in clarity. It’s a theory that’s
+        designed to address the inadequacies I saw in explaining my own experience and challenges. Not just my own, but also that of others: my
+        family whom I love, my therapy clients, friends, political and legal conflicts, and more.
+      </P>
 
-      <Section title="The Saran Wrap">
-        <p>
-          We are always harboring thoughts, and those thoughts are projected outward into
-          perception. We don&rsquo;t notice, because the projection maps perfectly onto reality — like
-          plastic wrap pulled tight over a fruit. It fits so well and it&rsquo;s so clear that you
-          can&rsquo;t see it&rsquo;s there.
-        </p>
-        <p>
-          But sometimes it peels. The moment you decide to stop fighting, and the person you hated
-          becomes a person again. The end of a retreat. Real loss. Deep relaxation. Then you see
-          what things are like without the commentary: quiet, connected, unranked, simpler than the
-          story said. That glimpse is the beginning of the whole practice — once you have seen the
-          wrap as wrap, you can never fully unsee it.
-        </p>
-      </Section>
+      <H2>What it’s for</H2>
+      <P>
+        The goal of Narrative Theory is both scientific understanding and quality of life. By examining and breaking down our personal narrative
+        sets, we can disentangle our own perceptions from reality, undo our faulty assumptions, develop keen perception and wisdom, and improve
+        our quality of life from moment to moment. This disentangling can also help us improve how we respond to the world and feel about
+        ourselves. We can also better understand conflict in general. Finally, with sustained meditation practice, we can even come to understand
+        our purpose in life.
+      </P>
+      <P>
+        NT is a lens that I continue to develop as ideas take new shapes, make new alliances, and split off from each other. I encourage you to
+        form a similar relationship to NT: let it inform your view of phenomena, and before you discard anything, make sure you understand it
+        deeply, but then, feel empowered to modify, adapt, and grow it into your own personal lens. Good luck.
+      </P>
 
-      <Section title="Modes">
-        <p>
-          We move through the day in modes: repeating packages of thinking style, body state,
-          energy, and action that arrive together and leave together. A mode is a little world.
-          Inside Anxiety Mode the future is dangerous. Inside Fight Mode the other person is guilty.
-          Inside Progress Mode your life is a scoreboard, and you&rsquo;re behind.
+      <div className="mt-12 border-t pt-8">
+        <p className="text-[15px] text-muted-foreground leading-relaxed mb-6">
+          Edahn Small is a therapist associate and a longtime Zen practitioner. He has been working on Narrative Theory for about twenty years.
         </p>
-        <p>
-          The key mechanism is the feedback loop: a mode&rsquo;s actions reinforce the world that
-          produced them. Anxiety avoids, and avoidance makes danger feel more real. The mode solves
-          the moment and deepens the pattern. That is why these things get sticky — and why naming
-          the mode, feeling its body signature, and watching its sequence is already the start of
-          the exit.
-        </p>
-      </Section>
-
-      <Section title="Rank, frames, and the fake contest">
-        <p>
-          Much of social life is a quiet contest over whose frame governs and whose way of being
-          counts as normal. Rank feels real — the felt hierarchy of every room — but the scoreboard
-          is invented, and it flickers with your state, which is the giveaway. Certainty transfers;
-          doubt defers. None of this needs to be won. It needs to be seen.
-        </p>
-      </Section>
-
-      <Section title="The Shift">
-        <p>
-          Healing, in NT, is not narrative editing. We don&rsquo;t try to swap bad stories for better
-          ones — that&rsquo;s redecorating the cell. The Shift is a change from resistance to
-          surrender: the cessation of wanting this moment to be different, the end of trying.
-        </p>
-        <p>
-          Wanting is the fuel of the thinking machine. Remove the fuel and the machinery quiets on
-          its own — the wrap thins, the body unclenches, and wisdom and warmth come up by
-          themselves, uninvited. You cannot force this. Forcing is the opposite motion. You can only
-          position yourself — sit down, stop steering, let things be as they already are right now —
-          and let it happen to you.
-        </p>
-      </Section>
-
-      <Section title="What NT is not">
-        <p>
-          It is not therapy, and it&rsquo;s not a substitute for it. It is not positive thinking. It
-          is not about killing thought — the mind is no hindrance; thoughts come and go, and you
-          simply stop being their vehicle. And it is not a finished doctrine. It&rsquo;s a working
-          map, drawn from the inside, still being drawn.
-        </p>
-        <p>
-          Kindness is woven into all of this. Not the end goal — more the end state. When the
-          contest quiets and the wrap thins, care is just what&rsquo;s left.
-        </p>
-      </Section>
-
-      <Section title="The point">
-        <p>
-          The goal is not to make perfect categories. There are no perfect categories. The goal is
-          to see clearly enough that we stop being possessed by the categories and worlds we create
-          — and then to live from there: simpler, warmer, with both feet in the actual moment.
-        </p>
-        <p>Now practice that.</p>
-      </Section>
-
-      <div className="border-t pt-8 flex flex-wrap gap-4">
-        <Link
-          href="/program"
-          className="bg-primary text-primary-foreground px-5 py-2.5 rounded-xl text-sm font-medium hover:opacity-90 transition-opacity inline-flex items-center gap-2"
-        >
-          Do the program <ArrowRight size={14} />
-        </Link>
-        <Link
-          href="/theory"
-          className="border bg-card text-muted-foreground px-5 py-2.5 rounded-xl text-sm hover:text-foreground hover:border-foreground/40 transition-colors"
-        >
-          Learn the vocabulary
-        </Link>
+        <div className="flex flex-wrap gap-3">
+          <Link href="/" className="chip hover:border-foreground/40">The basics of NT</Link>
+          <Link href="/writing" className="chip hover:border-foreground/40">Writing</Link>
+          <Link href="/life/start-here-core-practice" className="chip hover:border-foreground/40">Try a guided session</Link>
+        </div>
       </div>
-    </div>
+    </article>
   )
 }

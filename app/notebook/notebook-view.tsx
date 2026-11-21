@@ -23,7 +23,7 @@ const SECTIONS: { kind: NotebookKind; title: string; tab: string; blurb: string 
     title: 'Your modes',
     tab: 'Modes',
     blurb:
-      'The recurring selves you keep becoming. Each one maps the story, what the body does, what you do, and the energy underneath. Learn to spot them early and they lose their grip.',
+      'The packages you keep falling into: the story, what your body does, what you do. The sooner you recognize one, the less it runs you.',
   },
   {
     kind: 'insight',
@@ -80,8 +80,8 @@ export function NotebookView({ initial }: { initial: NotebookEntry[] }) {
           <div className="text-xs uppercase tracking-widest text-muted-foreground">Notebook</div>
           <h1 className="mt-3 font-display text-5xl md:text-6xl leading-[0.95]">What you’ve seen.</h1>
           <p className="mt-4 max-w-xl text-muted-foreground leading-relaxed">
-            As you work through sessions, the guide saves what matters here: the modes you map, the insights that
-            land, the practices you take on.
+            When you do a guided session, the guide saves the good stuff here. Modes you figured out, things you
+            realized, and anything it suggested you try.
           </p>
 
           {items.length > 0 && (
@@ -245,8 +245,8 @@ function EmptyState() {
           <div className="text-xs uppercase tracking-widest text-muted-foreground">Nothing saved yet</div>
           <h2 className="mt-2 font-display text-3xl leading-tight">Your notebook fills itself as you work.</h2>
           <p className="mt-3 text-muted-foreground leading-relaxed">
-            In a guided session, the guide saves the important pieces for you. Over time this becomes a personal
-            library of how your mind builds its world, and how to put the construction down.
+            In a guided session, the guide saves the important pieces for you. Over time it turns into a pretty good
+            map of how your mind works.
           </p>
           <Link
             href="/life/start-here-core-practice"

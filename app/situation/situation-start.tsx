@@ -25,8 +25,8 @@ export function SituationStart({ signedIn, remaining }: { signedIn: boolean; rem
       <div className="text-[11px] uppercase tracking-[0.14em] text-muted-foreground mb-3">Bring a Situation</div>
       <h1 className="font-display text-4xl md:text-5xl leading-[1.02] mb-4">What are you caught in?</h1>
       <p className="text-[17px] text-muted-foreground leading-relaxed max-w-2xl mb-10">
-        Describe one real moment. The guide will pull apart what actually happened from what your mind built on top of it, name the pattern
-        you're in, and point at what loosens it. Then you can talk it through.
+        Describe one real moment. The guide will separate what actually happened from what your mind built on top of it, and then you can
+        talk it through.
       </p>
 
       <div className="grid sm:grid-cols-3 gap-3 mb-10">

@@ -38,8 +38,8 @@ export function LibraryBrowser({ rows, search }: { rows: ShelfRowData[]; search:
           <div className="text-xs uppercase tracking-widest text-muted-foreground">Life Instruction™</div>
           <h1 className="mt-3 font-display text-5xl md:text-7xl leading-[0.95]">Pick a thread.</h1>
           <p className="mt-4 max-w-xl text-muted-foreground leading-relaxed">
-            {flat.length} short modules on the places the story grips hardest: how you see yourself, other people,
-            conflict, grief, meaning. Read the article, try the exercise, then work it through with the guide.
+            {flat.length} short pieces on self-worth, conflict, dating, anxiety, grief, meditation and more. Read the
+            article, try the exercise, and if you want, work it through on your own life with the guide.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row sm:items-center gap-3">
             <label className="relative w-full sm:w-[28rem]">

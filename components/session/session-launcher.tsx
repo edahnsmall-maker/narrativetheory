@@ -38,8 +38,8 @@ export function SessionLauncher({
       </div>
       <h3 className="font-display text-2xl sm:text-3xl leading-tight mb-2">Work through {moduleName} with the guide</h3>
       <p className="text-[15px] text-muted-foreground leading-relaxed max-w-xl mb-6">
-        About fifteen minutes. The guide teaches this idea through one real moment from your life, shows you what's happening as you go,
-        and leaves you with one small thing to notice. Everything you find is saved to your notebook.
+        Takes about fifteen minutes. You bring one real moment from your life and the guide uses it to teach the idea. Whatever you figure
+        out gets saved to your notebook.
       </p>
 
       {existing && existing.status !== 'complete' && (
