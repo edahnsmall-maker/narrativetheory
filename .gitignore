@@ -9,3 +9,6 @@ next-env.d.ts
 
 # Local development data (dev store)
 .data/
+
+# local editor/app config
+.claude/
