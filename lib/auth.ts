@@ -56,3 +56,14 @@ export function isMember(u: UserRecord | null): boolean {
   if (u.currentPeriodEnd && new Date(u.currentPeriodEnd).getTime() < Date.now() - 3 * 864e5) return false
   return true
 }
+
+/**
+ * The site owner(s), from NT_ADMIN_EMAILS. In local development with no list
+ * set, any dev sign-in counts, so the owner pages can be tried out.
+ */
+export function isAdmin(u: UserRecord | null): boolean {
+  if (!u) return false
+  const admins = (process.env.NT_ADMIN_EMAILS ?? '').split(',').map((e) => e.trim().toLowerCase()).filter(Boolean)
+  if (admins.length === 0) return devAuth
+  return admins.includes(u.email.toLowerCase())
+}

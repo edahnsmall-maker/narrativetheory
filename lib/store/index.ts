@@ -1,5 +1,5 @@
 import { devAuth } from '@/lib/config'
-import type { NotebookItem, SessionRecord, UserRecord } from '@/lib/types'
+import type { ModeStory, NotebookItem, SessionRecord, StoryStatus, UserRecord } from '@/lib/types'
 import { fileStore } from './file'
 import { supabaseStore } from './supabase'
 
@@ -28,6 +28,11 @@ export interface Store {
   countRepliesSince(userId: string, since: string): Promise<number>
   /** Records one reply for fair-use counting. */
   recordReply(userId: string, sessionId: string): Promise<void>
+
+  /** Readers' mode stories (Mode Field Guide). */
+  addStory(s: ModeStory): Promise<void>
+  listStories(filter: { status?: StoryStatus; modeSlug?: string; userId?: string }): Promise<ModeStory[]>
+  setStoryStatus(id: string, status: StoryStatus): Promise<void>
 }
 
 export const store: Store = devAuth ? fileStore : supabaseStore

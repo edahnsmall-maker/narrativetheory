@@ -106,3 +106,15 @@ export type StreamEvent =
   | { t: 'status'; status: SessionStatus }
   | { t: 'done' }
   | { t: 'error'; v: string }
+
+/** A reader's story of a mode, for the Mode Field Guide. Private until the owner approves it. */
+export type StoryStatus = 'new' | 'approved' | 'hidden'
+export interface ModeStory {
+  id: string
+  userId: string
+  modeSlug: string
+  modeName: string
+  text: string
+  status: StoryStatus
+  createdAt: string
+}

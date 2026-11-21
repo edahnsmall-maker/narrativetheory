@@ -1,7 +1,7 @@
 import { createClient, type SupabaseClient } from '@supabase/supabase-js'
 import { env } from '@/lib/config'
 import type { Store } from './index'
-import type { NotebookItem, SessionRecord, UserRecord } from '@/lib/types'
+import type { ModeStory, NotebookItem, SessionRecord, UserRecord } from '@/lib/types'
 
 /**
  * Production store on Supabase Postgres. Uses the service-role key, so it must
@@ -123,6 +123,41 @@ export const supabaseStore: Store = {
     )
     // The list view doesn't need transcripts.
     return (data ?? []).map((r: Row) => toSession({ ...r, system: '', api_messages: [], log: [] }))
+  },
+
+  async addStory(st) {
+    check(
+      await db().from('mode_stories').insert({
+        id: st.id,
+        user_id: st.userId,
+        mode_slug: st.modeSlug,
+        mode_name: st.modeName,
+        text: st.text,
+        status: st.status,
+        created_at: st.createdAt,
+      }),
+    )
+  },
+  async listStories(f) {
+    let q = db().from('mode_stories').select('*').order('created_at', { ascending: false }).limit(500)
+    if (f.status) q = q.eq('status', f.status)
+    if (f.modeSlug) q = q.eq('mode_slug', f.modeSlug)
+    if (f.userId) q = q.eq('user_id', f.userId)
+    const data = check(await q)
+    return (data ?? []).map(
+      (r: Row): ModeStory => ({
+        id: r.id as string,
+        userId: r.user_id as string,
+        modeSlug: r.mode_slug as string,
+        modeName: r.mode_name as string,
+        text: r.text as string,
+        status: r.status as ModeStory['status'],
+        createdAt: r.created_at as string,
+      }),
+    )
+  },
+  async setStoryStatus(id, status) {
+    check(await db().from('mode_stories').update({ status }).eq('id', id))
   },
 
   async addNotebook(item) {

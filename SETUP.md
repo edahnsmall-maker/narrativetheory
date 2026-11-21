@@ -161,3 +161,11 @@ values; real billing needs `STRIPE_SECRET_KEY` and `STRIPE_PRICE_ID` (and, for
 webhooks to reach your computer, the Stripe CLI: `stripe listen --forward-to
 localhost:3000/api/billing/webhook`, which prints a `whsec_` secret to use as
 `STRIPE_WEBHOOK_SECRET`). Restart `npm run dev` after editing `.env.local`.
+
+## Mode stories (Mode Field Guide)
+
+Readers can share stories of a mode on each Field Guide page. Stories are private until you approve them.
+
+- Set `NT_ADMIN_EMAILS` to your email address (comma-separate several) in the hosting environment's settings. That makes `/studio/stories` and the Studio work for you and nobody else.
+- Review stories at `/studio/stories`: Approve shows a story on its mode page (without a name), Hide keeps it off.
+- If you already ran `supabase/schema.sql` before this feature existed, run it again. It only adds the new `mode_stories` table and leaves everything else alone.

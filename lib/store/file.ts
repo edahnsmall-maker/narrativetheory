@@ -1,7 +1,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import type { Store } from './index'
-import type { NotebookItem, SessionRecord, UserRecord } from '@/lib/types'
+import type { ModeStory, NotebookItem, SessionRecord, UserRecord } from '@/lib/types'
 
 /**
  * Local-development store: one JSON file at .data/dev-store.json (gitignored).
@@ -13,6 +13,7 @@ interface Db {
   sessions: Record<string, SessionRecord>
   notebook: NotebookItem[]
   replies: { userId: string; sessionId: string; at: string }[]
+  stories?: ModeStory[]
 }
 
 const FILE = path.join(process.cwd(), '.data', 'dev-store.json')
@@ -31,6 +32,22 @@ function save(db: Db) {
 }
 
 export const fileStore: Store = {
+  async addStory(st) {
+    const db = load()
+    db.stories = [...(db.stories ?? []), st]
+    save(db)
+  },
+  async listStories(f) {
+    return (load().stories ?? [])
+      .filter((x) => (!f.status || x.status === f.status) && (!f.modeSlug || x.modeSlug === f.modeSlug) && (!f.userId || x.userId === f.userId))
+      .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
+  },
+  async setStoryStatus(id, status) {
+    const db = load()
+    db.stories = (db.stories ?? []).map((x) => (x.id === id ? { ...x, status } : x))
+    save(db)
+  },
+
   async getUser(id) {
     return load().users[id] ?? null
   },

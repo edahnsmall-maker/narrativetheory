@@ -49,7 +49,19 @@ create table if not exists public.replies (
 );
 create index if not exists replies_user_created on public.replies (user_id, created_at desc);
 
+create table if not exists public.mode_stories (
+  id uuid primary key,
+  user_id uuid not null references public.profiles (id) on delete cascade,
+  mode_slug text not null,
+  mode_name text not null,
+  text text not null,
+  status text not null default 'new',
+  created_at timestamptz not null default now()
+);
+create index if not exists mode_stories_mode_status on public.mode_stories (mode_slug, status, created_at desc);
+
 alter table public.profiles enable row level security;
 alter table public.sessions enable row level security;
 alter table public.notebook enable row level security;
 alter table public.replies enable row level security;
+alter table public.mode_stories enable row level security;
