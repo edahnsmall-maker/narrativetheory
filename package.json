@@ -6,7 +6,9 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "note": "node scripts/new-post.mjs note",
+    "essay": "node scripts/new-post.mjs essay"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.106.0",

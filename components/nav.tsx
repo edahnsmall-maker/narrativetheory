@@ -11,6 +11,7 @@ const primary = [
   { href: '/modes', label: 'Modes' },
   { href: '/life', label: 'Life Instruction™' },
   { href: '/situation', label: 'Bring a Situation' },
+  { href: '/writing', label: 'Writing' },
   { href: '/notebook', label: 'Notebook' },
   { href: '/about', label: 'About' },
 ]

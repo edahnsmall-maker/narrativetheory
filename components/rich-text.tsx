@@ -11,6 +11,7 @@ import { Fragment, type ReactNode } from 'react'
 
 type Part =
   | { type: 'p'; text: string }
+  | { type: 'h'; level: 2 | 3; text: string }
   | { type: 'prompts'; groups: string[][] }
   | { type: 'hr' }
   | { type: 'quote'; text: string }
@@ -18,14 +19,23 @@ type Part =
 
 function inline(text: string): ReactNode[] {
   const out: ReactNode[] = []
-  const re = /\*\*([^*\n]+)\*\*|\*([^*\s][^*\n]*?)\*|(?<![\w])_([^_\n]+)_(?![\w])/g
+  const re = /\[([^\]\n]+)\]\(([^)\s]+)\)|\*\*([^*\n]+)\*\*|\*([^*\s][^*\n]*?)\*|(?<![\w])_([^_\n]+)_(?![\w])/g
   let last = 0
   let m: RegExpExecArray | null
   let k = 0
   while ((m = re.exec(text))) {
     if (m.index > last) out.push(text.slice(last, m.index))
-    if (m[1]) out.push(<strong key={k++}>{m[1]}</strong>)
-    else out.push(<em key={k++}>{m[2] ?? m[3]}</em>)
+    if (m[1] && m[2]) {
+      const href = m[2]
+      const safe = /^(https?:\/\/|\/|#|mailto:)/.test(href) ? href : '#'
+      const external = safe.startsWith('http')
+      out.push(
+        <a key={k++} href={safe} className="underline underline-offset-4 decoration-[var(--accent-violet)]/60 hover:decoration-[var(--accent-violet)]" {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
+          {m[1]}
+        </a>,
+      )
+    } else if (m[3]) out.push(<strong key={k++}>{m[3]}</strong>)
+    else out.push(<em key={k++}>{m[4] ?? m[5]}</em>)
     last = m.index + m[0].length
   }
   if (last < text.length) out.push(text.slice(last))
@@ -49,7 +59,9 @@ function parse(text: string): Part[] {
       const p = raw.trim()
       if (!p) continue
       const lines = p.split('\n').map((l) => l.trim())
-      if (/^-{3,}$/.test(p)) parts.push({ type: 'hr' })
+      const heading = /^(#{2,3})\s+(.+)$/.exec(p)
+      if (heading && lines.length === 1) parts.push({ type: 'h', level: heading[1].length as 2 | 3, text: heading[2] })
+      else if (/^-{3,}$/.test(p)) parts.push({ type: 'hr' })
       else if (lines.every((l) => l.startsWith('>')))
         parts.push({ type: 'quote', text: lines.map((l) => l.replace(/^>\s?/, '')).join('\n') })
       else if (lines.every((l) => /^\d+[.)]\s/.test(l)))
@@ -67,7 +79,8 @@ function parse(text: string): Part[] {
 export function plainText(text: string): string {
   return text
     .replace(/```[a-z]*\n?|```/g, '')
-    .replace(/^\s*(>|-{3,}|[-•]\s|\d+[.)]\s)/gm, '')
+    .replace(/^\s*(>|-{3,}|[-•]\s|\d+[.)]\s|#{1,3}\s)/gm, '')
+    .replace(/\[([^\]\n]+)\]\([^)\s]+\)/g, '$1')
     .replace(/\*\*([^*\n]+)\*\*|\*([^*\s][^*\n]*?)\*/g, (_, b, i) => b ?? i)
     .replace(/\s+/g, ' ')
     .trim()
@@ -90,6 +103,12 @@ export function RichText({ text, className = '' }: { text: string; className?: s
                   </ul>
                 ))}
               </div>
+            )
+          case 'h':
+            return p.level === 2 ? (
+              <h2 key={i} className="font-display text-2xl md:text-3xl leading-tight pt-6">{inline(p.text)}</h2>
+            ) : (
+              <h3 key={i} className="font-display text-xl leading-snug pt-3">{inline(p.text)}</h3>
             )
           case 'hr':
             return <hr key={i} className="border-rule" />
