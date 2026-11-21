@@ -7,6 +7,7 @@ import { ModeScene } from '@/components/home2/ModeScene'
 import { ModeTree, ModeTable, Species, ContestGrid } from '@/components/home2/Panels'
 import { Fn } from '@/components/home2/Footnote'
 import { HeroApple } from '@/components/home2/HeroApple'
+import { CoworkerPanels } from '@/components/home2/CoworkerPanels'
 
 /**
  * Homepage: Edahn's own copy ("NT web copy rewrite — v.edahn"), lightly
@@ -176,6 +177,7 @@ export default function HomePage() {
           <Fn n={5}>Or good enough…fucking HR, am I right?</Fn> The narrative popped, and that was a clue that it was all narrative. It was all made
           up by me and injected into the situation. (Later we’ll get into techniques for peeling back the layer of Saran Wrap.)
         </P>
+        <CoworkerPanels />
       </article>
 
       <div className="mx-auto max-w-4xl px-4 sm:px-6">
