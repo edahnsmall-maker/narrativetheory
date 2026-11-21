@@ -182,7 +182,7 @@ export default function TheoryIndex() {
             <Eyebrow label="See it in practice" />
             <h2 className="mt-2 font-display text-3xl md:text-4xl">The diagrams</h2>
             <p className="mt-3 text-muted-foreground">
-              The home page shows one thing evolving. These go deeper on four pieces of it.
+              Four of the ideas, as diagrams you can play with.
             </p>
           </div>
 
