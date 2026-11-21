@@ -115,7 +115,16 @@ export function WrapScene() {
         <Person id={id} x={775} y={555} s={1.2} skin={C.skin3} hair={C.ink} hairStyle="cap" shirt={C.mustard} expr="flat" look={-1} />
 
         {/* the beams: the story leaving the person */}
-        <g style={{ opacity: beamsOn ? 1 : 0, transition: 'opacity 450ms ease' }}>
+        <g
+          style={{
+            opacity: beamsOn ? 1 : 0,
+            // the beams shoot out of the eye, then fade in place (and reset invisibly)
+            transformBox: 'view-box',
+            transformOrigin: `${EYE[0]}px ${EYE[1]}px`,
+            transform: step === 0 ? 'scale(0.03)' : 'scale(1)',
+            transition: step === 0 ? 'none' : 'transform 700ms cubic-bezier(.2,.8,.2,1), opacity 450ms ease',
+          }}
+        >
           {(Object.keys(BOX) as Target[]).map((t) => {
             const b = BOX[t]
             return (
@@ -134,7 +143,17 @@ export function WrapScene() {
         {(Object.keys(BOX) as Target[]).map((t, i) => {
           const b = BOX[t]
           return (
-            <g key={t} style={{ opacity: wrapsOn ? 1 : 0, transition: `opacity 500ms ease ${i * 90}ms` }}>
+            <g
+              key={t}
+              style={{
+                opacity: wrapsOn ? 1 : 0,
+                // the film shrinks tight onto the thing, like plastic wrap
+                transformBox: 'view-box',
+                transformOrigin: `${b.x + b.w / 2}px ${b.y + b.h / 2}px`,
+                transform: wrapsOn ? 'scale(1)' : 'scale(1.12)',
+                transition: `opacity 500ms ease ${i * 90}ms, transform 600ms cubic-bezier(.2,.8,.2,1) ${i * 90}ms`,
+              }}
+            >
               <rect x={b.x - 10} y={b.y - 10} width={b.w + 20} height={b.h + 20} rx="26" fill={s.color} opacity="0.2" style={{ transition: 'fill 500ms' }} />
               <rect x={b.x - 10} y={b.y - 10} width={b.w + 20} height={b.h + 20} rx="26" fill={`url(#${id}-gloss)`} opacity="0.7" />
               <rect x={b.x - 10} y={b.y - 10} width={b.w + 20} height={b.h + 20} rx="26" fill="none" stroke={s.color} strokeWidth="2" opacity="0.6" style={{ transition: 'stroke 500ms' }} />
