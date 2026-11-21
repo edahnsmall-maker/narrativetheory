@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
 import { getModule } from '@/lib/data/lifeInstruction'
-import { GradientOrb } from '@/components/nt/GradientOrb'
+import { ShelfArt } from '@/components/home2/ShelfArt'
 import { RichText } from '@/components/rich-text'
 import { SessionLauncher } from '@/components/session/session-launcher'
 import { currentUser } from '@/lib/auth'
@@ -43,8 +43,8 @@ export default async function ModulePage({ params }: Props) {
             <div className="text-xs uppercase tracking-widest text-muted-foreground mb-2">Cluster · {cluster.name}</div>
             <h1 className="font-display text-4xl md:text-5xl text-foreground leading-tight">{mod.name}</h1>
           </div>
-          <div className="md:col-span-3 flex justify-end">
-            <GradientOrb variant="violet" size={140} />
+          <div className="hidden md:flex md:col-span-3 justify-end">
+            <ShelfArt shelf={shelf.slug} className="w-40 md:w-48 h-auto" />
           </div>
         </div>
       </header>
