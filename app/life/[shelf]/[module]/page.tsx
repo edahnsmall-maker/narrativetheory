@@ -2,9 +2,12 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
 import { getModule } from '@/lib/data/lifeInstruction'
-import ModuleAI from '@/components/module-ai'
 import { GradientOrb } from '@/components/nt/GradientOrb'
 import { RichText } from '@/components/rich-text'
+import { SessionLauncher } from '@/components/session/session-launcher'
+import { currentUser } from '@/lib/auth'
+import { moduleOffer } from '@/lib/entitlements'
+import { store } from '@/lib/store'
 
 interface Props {
   params: Promise<{ shelf: string; module: string }>
@@ -18,6 +21,12 @@ export default async function ModulePage({ params }: Props) {
   if (!found) notFound()
 
   const { shelf, cluster, module: mod } = found
+  const moduleId = `${shelf.slug}/${mod.slug}`
+  const user = await currentUser()
+  const offer = moduleOffer(user, moduleId)
+  const existing = user
+    ? ((await store.listSessions(user.id)).find((s) => s.kind === 'module' && s.moduleId === moduleId) ?? null)
+    : null
 
   return (
     <article>
@@ -63,11 +72,11 @@ export default async function ModulePage({ params }: Props) {
 
         {/* AI Walkthrough */}
         <section>
-          <div className="text-xs uppercase tracking-widest text-muted-foreground mb-4">AI Walkthrough</div>
-          <ModuleAI
-            shelfSlug={shelfSlug}
-            moduleSlug={moduleSlug}
+          <SessionLauncher
+            moduleId={moduleId}
             moduleName={mod.name}
+            offer={offer}
+            existing={existing ? { id: existing.id, status: existing.status } : null}
           />
         </section>
 

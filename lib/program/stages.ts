@@ -1,4 +1,5 @@
 import type { StageId } from './types'
+import { models } from '@/lib/config'
 
 /**
  * The program has one spine: find the dream, see it whole, take
@@ -123,8 +124,8 @@ export const STAGES: StageDef[] = [
     blurb:
       'A long, unhurried conversation about what hurts, who you are around, and how the world tends to look to you. Nothing is being fixed yet. The only goal is an accurate picture.',
     artifact: 'A set of observations, in your own language, that you can correct.',
-    model: 'claude-sonnet-5',
-    maxTokens: 1600,
+    model: models.program,
+    maxTokens: 16000,
     tools: ['record_observation', 'propose_stage_complete'],
     opener:
       "Let's start wherever it's easiest. What's been sitting with you lately — the thing you'd mention first if a friend asked how you were actually doing?",
@@ -184,8 +185,8 @@ ${endRule(
     blurb:
       'Together you work out what the dream actually is — what sets it off, the world it produces, the specific ways it makes things look, and what keeps happening as a result. It ends as a single diagram you can look at.',
     artifact: 'A live map of the dream: triggers, world, lenses, consequences.',
-    model: 'claude-opus-5',
-    maxTokens: 2400,
+    model: models.program,
+    maxTokens: 16000,
     tools: [
       'propose_node',
       'propose_edge',
@@ -266,8 +267,8 @@ ${endRule(
     blurb:
       'The practical stage. What you are responsible for, what to do when the dream fires, and — said in advance — the specific ways this tends to go wrong so it does not surprise you.',
     artifact: 'A working plan: issues, response options, and if-then protocols.',
-    model: 'claude-opus-5',
-    maxTokens: 2400,
+    model: models.program,
+    maxTokens: 16000,
     tools: [
       'add_plan_issue',
       'update_plan_issue',
@@ -331,8 +332,8 @@ ${endRule(
     blurb:
       'Missions with real success conditions, and honest check-ins over weeks — including the ones where nothing happened. What you learn here goes back into the map.',
     artifact: 'Active missions and a check-in history.',
-    model: 'claude-sonnet-5',
-    maxTokens: 1800,
+    model: models.program,
+    maxTokens: 16000,
     tools: [
       'add_mission',
       'update_mission',
@@ -397,8 +398,8 @@ ${endRule(
     blurb:
       'Everything before this was about the contents of the dream. This is about the fact of dreaming — attention, stillness, and noticing the film while it is on rather than afterward.',
     artifact: 'A small set of practices aimed at your specific map.',
-    model: 'claude-opus-5',
-    maxTokens: 2000,
+    model: models.program,
+    maxTokens: 16000,
     tools: ['add_practice', 'update_practice', 'record_observation', 'propose_stage_complete'],
     opener:
       "Everything up to now has been about what's in the dream. This last stage is about the dreaming itself — catching the film while it's on, which is a different skill entirely from understanding it.",

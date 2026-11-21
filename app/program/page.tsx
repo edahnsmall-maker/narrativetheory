@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function ProgramPage() {
   return (
     <div className="mx-auto max-w-3xl px-6 py-20">
-      <p className="chip">Five stages &middot; no account &middot; free while in demo</p>
+      <p className="chip">Five stages &middot; the deep track &middot; for members</p>
 
       <h1 className="mt-6 font-display text-5xl leading-[1.05] tracking-tight">
         Everyone is walking around inside a dream.
@@ -90,8 +90,9 @@ export default function ProgramPage() {
           and a tidy origin story is usually a story.
         </p>
         <p>
-          <strong>Your record lives in this browser.</strong> No account, no server-side copy. Clear
-          your browser data and it is gone; open it on your phone and it is not there.
+          <strong>Your record lives in this browser.</strong> The Program is part of membership, but the
+          record it builds isn&rsquo;t copied to our servers. Clear your browser data and it is gone;
+          open it on your phone and it is not there.
         </p>
       </div>
     </div>

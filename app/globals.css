@@ -166,6 +166,54 @@ pre.code-block {
   color: var(--foreground);
 }
 
+/* Session cards */
+.nt-card {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 18px;
+  padding: 1.15rem 1.25rem;
+  box-shadow: 0 1px 0 color-mix(in oklab, var(--ink) 4%, transparent);
+}
+.nt-wrap-panel {
+  border-top: 1px solid var(--rule);
+  background:
+    linear-gradient(135deg, color-mix(in oklab, var(--accent-blue) 9%, transparent), transparent 60%),
+    color-mix(in oklab, var(--accent-blue) 4%, var(--card));
+}
+@media (min-width: 640px) { .nt-wrap-panel { border-top: 0; border-left: 1px solid var(--rule); } }
+.nt-shift {
+  background: radial-gradient(120% 140% at 0% 0%, color-mix(in oklab, var(--accent-violet) 12%, transparent), transparent 55%),
+              radial-gradient(120% 140% at 100% 100%, color-mix(in oklab, var(--accent-pink) 10%, transparent), transparent 55%),
+              var(--card);
+}
+.nt-opt {
+  text-align: left;
+  border: 1px solid var(--rule);
+  background: var(--background);
+  border-radius: 12px;
+  padding: 0.65rem 0.9rem;
+  font-size: 15px;
+  line-height: 1.4;
+  transition: border-color 150ms, background 150ms;
+}
+.nt-opt:not(:disabled):hover { border-color: color-mix(in oklab, var(--accent-violet) 60%, transparent); }
+.nt-opt-right { border-color: oklch(0.7 0.14 150); background: color-mix(in oklab, oklch(0.7 0.14 150) 12%, var(--card)); }
+.nt-opt-wrong { border-color: oklch(0.7 0.15 25); background: color-mix(in oklab, oklch(0.7 0.15 25) 10%, var(--card)); }
+.nt-reply {
+  border: 1px solid color-mix(in oklab, var(--accent-violet) 40%, var(--rule));
+  color: var(--foreground);
+  background: var(--card);
+  border-radius: 999px;
+  padding: 0.45rem 0.95rem;
+  font-size: 14px;
+  transition: background 150ms;
+}
+.nt-reply:hover { background: color-mix(in oklab, var(--accent-violet) 8%, var(--card)); }
+
+.nt-appear { animation: nt-appear 420ms ease-out both; }
+@keyframes nt-appear { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .nt-appear { animation: none; } }
+
 @keyframes accordion-down {
   from { height: 0; }
   to { height: var(--radix-accordion-content-height); }
@@ -183,5 +231,4 @@ pre.code-block {
 :focus-visible {
   outline: 2px solid var(--accent-violet);
   outline-offset: 2px;
-  border-radius: 4px;
 }

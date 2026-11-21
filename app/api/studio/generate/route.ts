@@ -1,5 +1,7 @@
 import Anthropic from '@anthropic-ai/sdk'
 import { NextRequest, NextResponse } from 'next/server'
+import { currentUser } from '@/lib/auth'
+import { models } from '@/lib/config'
 
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
 
@@ -8,11 +10,18 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'API key not configured' }, { status: 500 })
   }
 
+  // Studio is an authoring tool for the site owner, not a public endpoint.
+  const user = await currentUser()
+  const admins = (process.env.NT_ADMIN_EMAILS ?? '').split(',').map((e) => e.trim().toLowerCase()).filter(Boolean)
+  if (!user || !admins.includes(user.email.toLowerCase())) {
+    return NextResponse.json({ error: 'Studio is only available to the site owner (set NT_ADMIN_EMAILS).' }, { status: 403 })
+  }
+
   const { transcript } = await req.json()
 
   const response = await client.messages.create({
-    model: 'claude-fable-5',
-    max_tokens: 2048,
+    model: models.program,
+    max_tokens: 16000,
     messages: [
       {
         role: 'user',
@@ -38,7 +47,8 @@ Respond in JSON format:
     ],
   })
 
-  const text = response.content[0].type === 'text' ? response.content[0].text : '{}'
+  const textBlock = response.content.find((b) => b.type === 'text')
+  const text = textBlock && textBlock.type === 'text' ? textBlock.text : '{}'
   try {
     const parsed = JSON.parse(text)
     return NextResponse.json(parsed)

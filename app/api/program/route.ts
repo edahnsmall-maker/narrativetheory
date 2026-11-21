@@ -3,6 +3,8 @@ import { NextRequest } from 'next/server'
 import { buildSystemPrompt, stageById } from '@/lib/program/stages'
 import { toolsForStage } from '@/lib/program/tools'
 import type { StageId } from '@/lib/program/types'
+import { currentUser, isMember } from '@/lib/auth'
+import { rules } from '@/lib/config'
 
 export const runtime = 'nodejs'
 export const maxDuration = 120
@@ -79,6 +81,12 @@ function sanitize(messages: IncomingMessage[]): Anthropic.MessageParam[] {
 export async function POST(req: NextRequest) {
   if (!process.env.ANTHROPIC_API_KEY) {
     return Response.json({ error: 'The guide is not configured on this deploy.' }, { status: 500 })
+  }
+
+  const user = await currentUser()
+  if (!user) return Response.json({ error: 'Sign in to use the Program.' }, { status: 401 })
+  if (rules.programRequiresMember && !isMember(user)) {
+    return Response.json({ error: 'The Program is part of membership.' }, { status: 402 })
   }
 
   const limit = rateLimit(clientKey(req))
