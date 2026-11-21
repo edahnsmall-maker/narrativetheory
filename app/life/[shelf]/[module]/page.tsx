@@ -4,36 +4,13 @@ import { ArrowLeft } from 'lucide-react'
 import { getModule } from '@/lib/data/lifeInstruction'
 import ModuleAI from '@/components/module-ai'
 import { GradientOrb } from '@/components/nt/GradientOrb'
+import { RichText } from '@/components/rich-text'
 
 interface Props {
   params: Promise<{ shelf: string; module: string }>
 }
 
-function Block({ text }: { text: string }) {
-  const parts: { type: 'code' | 'p'; content: string }[] = []
-  const segs = text.split(/```(?:text)?\n([\s\S]*?)```/)
-  segs.forEach((s, i) => {
-    if (!s.trim()) return
-    if (i % 2 === 1) {
-      parts.push({ type: 'code', content: s.trim() })
-    } else {
-      s.split(/\n\n+/).forEach((p) => {
-        if (p.trim()) parts.push({ type: 'p', content: p.trim() })
-      })
-    }
-  })
-  return (
-    <div className="space-y-5">
-      {parts.map((p, i) =>
-        p.type === 'code' ? (
-          <pre key={i} className="code-block">{p.content}</pre>
-        ) : (
-          <p key={i} className="prose-nt text-[17px] leading-relaxed whitespace-pre-line">{p.content}</p>
-        )
-      )}
-    </div>
-  )
-}
+const Block = RichText
 
 export default async function ModulePage({ params }: Props) {
   const { shelf: shelfSlug, module: moduleSlug } = await params

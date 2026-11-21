@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getShelf } from '@/lib/data/lifeInstruction'
+import { plainText } from '@/components/rich-text'
 
 interface Props {
   params: Promise<{ shelf: string }>
@@ -33,7 +34,7 @@ export default async function ShelfPage({ params }: Props) {
                   >
                     <div className="font-display text-lg leading-tight">{m.name}</div>
                     {m.sections.Article && (
-                      <p className="mt-2 text-sm text-muted-foreground line-clamp-3">{m.sections.Article.slice(0, 160)}…</p>
+                      <p className="mt-2 text-sm text-muted-foreground line-clamp-3">{plainText(m.sections.Article).slice(0, 160)}…</p>
                     )}
                   </Link>
                 ))}

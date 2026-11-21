@@ -143,6 +143,29 @@ pre.code-block {
   line-height: 1.65;
 }
 
+/* Module text: prompt lists (from ```text blocks) and pull quotes */
+.prompt-box {
+  border-left: 2px solid color-mix(in oklab, var(--accent-violet) 55%, transparent);
+  background: color-mix(in oklab, var(--accent-violet) 5%, transparent);
+  border-radius: 0 12px 12px 0;
+  padding: 0.9rem 1.25rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--foreground);
+}
+.prompt-box ul { list-style: none; margin: 0; padding: 0; }
+.prompt-box ul + ul { margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--rule); }
+.prompt-box li + li { margin-top: 0.3rem; }
+
+.pull-quote {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  line-height: 1.45;
+  padding-left: 1rem;
+  border-left: 2px solid var(--rule);
+  color: var(--foreground);
+}
+
 @keyframes accordion-down {
   from { height: 0; }
   to { height: var(--radix-accordion-content-height); }

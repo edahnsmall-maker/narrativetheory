@@ -14,8 +14,8 @@ export function ModeNetwork() {
   const layout = useMemo(() => {
     const cx = W / 2, cy = H / 2
     const famRadius = 220
-    const center = families.find((f) => f.name === 'Natural Function / Being')
-    const ring = families.filter((f) => f.name !== 'Natural Function / Being')
+    const center = families.find((f) => f.name === 'Correct Function / Being')
+    const ring = families.filter((f) => f.name !== 'Correct Function / Being')
     const famPositions = [
       ...(center ? [{ ...center, x: cx, y: cy, isCenter: true }] : []),
       ...ring.map((f, i) => {

@@ -7,7 +7,7 @@ export type FamilyKey =
   | "Role / Persona"
   | "Collapse / Withdrawal"
   | "Appetite / Stimulation"
-  | "Natural Function / Being";
+  | "Correct Function / Being";
 
 export interface Family {
   name: FamilyKey;
@@ -34,8 +34,8 @@ export const families: Family[] = [
     blurb: "Energy folds inward. The story shrinks the world; engagement falls." },
   { name: "Appetite / Stimulation", slug: "appetite-stimulation", accent: "var(--accent-orange)", hue: 35,
     blurb: "Wanting and seeking. The mind reaches toward stimulation as relief or escape." },
-  { name: "Natural Function / Being", slug: "natural-function-being", accent: "var(--accent-yellow)", hue: 90,
-    blurb: "Modes of clear contact and natural function. Less story between action and situation." },
+  { name: "Correct Function / Being", slug: "natural-function-being", accent: "var(--accent-yellow)", hue: 90,
+    blurb: "Modes of clear contact and correct function. Less story between action and situation." },
 ];
 
 export const familyBySlug = (slug: string) => families.find((f) => f.slug === slug);
