@@ -20,7 +20,8 @@ export function ModeNetwork() {
       ...(center ? [{ ...center, x: cx, y: cy, isCenter: true }] : []),
       ...ring.map((f, i) => {
         const a = (i / ring.length) * Math.PI * 2 - Math.PI / 2
-        return { ...f, x: cx + Math.cos(a) * famRadius, y: cy + Math.sin(a) * famRadius, isCenter: false }
+        // rounded so server and browser render identical numbers (avoids a hydration mismatch)
+        return { ...f, x: Math.round((cx + Math.cos(a) * famRadius) * 100) / 100, y: Math.round((cy + Math.sin(a) * famRadius) * 100) / 100, isCenter: false }
       }),
     ]
     const modePositions = modes.map((m) => {
@@ -30,7 +31,7 @@ export function ModeNetwork() {
       const count = Math.max(1, siblings.length)
       const a = (idx / count) * Math.PI * 2
       const r = (fam.isCenter ? 55 : 78) + (idx % 2) * 22
-      return { ...m, x: fam.x + Math.cos(a) * r, y: fam.y + Math.sin(a) * r }
+      return { ...m, x: Math.round((fam.x + Math.cos(a) * r) * 100) / 100, y: Math.round((fam.y + Math.sin(a) * r) * 100) / 100 }
     })
     return { famPositions, modePositions }
   }, [])
