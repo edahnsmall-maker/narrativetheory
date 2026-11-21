@@ -1,3 +1,4 @@
+import { conceptVoice } from './conceptVoice';
 export interface Concept {
   slug: string;
   name: string;
@@ -6,7 +7,7 @@ export interface Concept {
   related: string[];
 }
 
-export const concepts: Concept[] = [
+const baseConcepts: Concept[] = [
   {
     slug: "construction",
     name: "Construction",
@@ -240,5 +241,8 @@ export const concepts: Concept[] = [
     related: ["narrative", "scoring-system", "expectation-narrative"],
   },
 ];
+
+// Edahn's own wording overrides the older texts for the core concepts.
+export const concepts: Concept[] = baseConcepts.map((c) => ({ ...c, ...(conceptVoice[c.slug] ?? {}) }));
 
 export const conceptBySlug = (slug: string) => concepts.find((c) => c.slug === slug);
