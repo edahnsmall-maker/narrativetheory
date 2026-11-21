@@ -19,7 +19,7 @@ const PRACTICE: Record<string, { href: string; label: string }> = {
   checking: { href: '/practices#checking', label: 'Practice: checking' },
   'narrative-lock': { href: '/practices#gloves', label: 'Practice: putting down the gloves' },
   mode: { href: '/practices#all-in-a-mode', label: 'Practice: we’re all in a mode' },
-  'the-end-of-trying': { href: '/practices#nothing-wrong', label: 'Practice: what if nothing is wrong?' },
+  'the-end-of-trying': { href: '/practices/give-up', label: 'Lesson one: give up' },
   'saran-wrap': { href: '/practices/x-ray', label: 'Try the Narrative X-ray' },
   'thought-o-complete': { href: '/practices/x-ray', label: 'Try the Narrative X-ray' },
   rank: { href: '/practices#jacket', label: 'Practice: confidence like a jacket' },

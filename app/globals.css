@@ -232,3 +232,6 @@ pre.code-block {
   outline: 2px solid var(--accent-violet);
   outline-offset: 2px;
 }
+
+/* Line-style drawings: clean sans labels inside figures */
+.art-line svg text, .art-line svg tspan { font-family: var(--font-sans) !important; }

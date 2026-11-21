@@ -37,6 +37,23 @@ export default function PracticesPage() {
         </span>
       </Link>
 
+      <Link
+        href="/practices/give-up"
+        className="group mb-12 grid gap-6 md:grid-cols-[1fr_auto] items-center rounded-3xl border p-6 sm:p-8 hover:shadow-[3px_4px_0_rgba(31,29,26,0.12)] transition-shadow"
+      >
+        <div>
+          <div className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground mb-2">Chapter 1 · sitting practice</div>
+          <div className="font-display text-3xl md:text-4xl leading-tight">Lesson one. Give up.</div>
+          <p className="mt-3 max-w-xl text-[16px] text-foreground/80 leading-relaxed">
+            The shift is a loss of desire in a big, huge, huge way. I can’t out-maneuver without burning up in the process. You win.
+            You win. You win. And your shoulders fall.
+          </p>
+        </div>
+        <span className="justify-self-start md:justify-self-end rounded-full border px-5 py-2.5 text-sm group-hover:bg-accent">
+          Read it →
+        </span>
+      </Link>
+
       <div className="grid gap-5 md:grid-cols-2">
         {practices.map((p) => (
           <PracticeCard key={p.id} practice={p} />

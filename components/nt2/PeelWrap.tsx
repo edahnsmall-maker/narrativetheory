@@ -1,7 +1,7 @@
 'use client'
 
 import { useId, useState } from 'react'
-import { C, Defs, Figure, Paper, Person, Scrap } from '@/components/home2/collage'
+import { C, Defs, Figure, L, Paper, Person, Scrap, useArtStyle } from '@/components/home2/collage'
 
 /**
  * Layers of Saran Wrap, from Edahn's notes (Apple Notes, "Layers of Saran"):
@@ -25,6 +25,7 @@ export function PeelWrap() {
   // how many layers have been peeled off (outermost first)
   const [peeled, setPeeled] = useState(0)
   const done = peeled >= LAYERS.length
+  const line = useArtStyle() === 'line'
 
   return (
     <Figure
@@ -125,8 +126,8 @@ export function PeelWrap() {
               <path d={`M${x + w},${ty} L${TAG_X},${ty}`} stroke={l.color} strokeWidth="2" strokeDasharray="4 4" opacity="0.8" />
               <circle cx={x + w} cy={ty} r="4" fill={l.color} />
               {/* the label, in a column on the right */}
-              <g transform={`translate(${TAG_X},${ty}) rotate(${i % 2 ? 1.2 : -1.2})`} filter={`url(#${id}-cut)`}>
-                <rect x="0" y="-20" width={tagW} height="44" fill={C.cream} />
+              <g transform={`translate(${TAG_X},${ty}) rotate(${line ? 0 : i % 2 ? 1.2 : -1.2})`} filter={line ? undefined : `url(#${id}-cut)`}>
+                <rect x="0" y="-20" width={tagW} height="44" fill={C.cream} rx={line ? 8 : 0} stroke={line ? L.lavender : 'none'} strokeWidth="1.5" />
                 <rect x="0" y="-20" width="6" height="44" fill={l.color} />
                 <text x="14" y="-4" fontSize="11" letterSpacing="1.5" fill={C.ink} opacity="0.55" fontFamily="Inter, sans-serif">
                   {l.name.toUpperCase()}

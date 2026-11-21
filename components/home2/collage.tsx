@@ -1,6 +1,27 @@
 'use client'
 
-import type { ReactNode } from 'react'
+import { createContext, useContext, type ReactNode } from 'react'
+
+/**
+ * Two drawing styles share this kit:
+ * - 'line' (default): thin dark outlines, soft pastel fills, light ground, clean labels.
+ * - 'collage': the original cut-paper look (rough edges, grain, halftone). Kept so the
+ *   older drawings can still be seen, e.g. on /drawings/cut-paper.
+ */
+export type ArtStyle = 'line' | 'collage'
+const ArtStyleCtx = createContext<ArtStyle>('line')
+export function ArtStyleProvider({ style, children }: { style: ArtStyle; children: ReactNode }) {
+  return <ArtStyleCtx.Provider value={style}>{children}</ArtStyleCtx.Provider>
+}
+export const useArtStyle = () => useContext(ArtStyleCtx)
+
+/** Line style colors */
+export const L = {
+  ground: '#faf9f7',
+  line: '#34323a',
+  lavender: '#b9a2f0',
+  halo: '#c9b6f7',
+}
 
 /**
  * A small cut-paper collage kit for the homepage illustrations: a palette,
@@ -32,6 +53,8 @@ export const C = {
 
 /** Filters and patterns. Render once inside each <svg>, with a unique prefix. */
 export function Defs({ id }: { id: string }) {
+  const style = useArtStyle()
+  if (style === 'line') return <LineDefs id={id} />
   return (
     <defs>
       {/* hand-cut paper edge */}
@@ -74,8 +97,74 @@ export function Defs({ id }: { id: string }) {
   )
 }
 
+/* Line style: same filter ids, different look. "cut" softens a shape's colors toward pastel
+   (darks stay dark, so text stays readable) and draws a thin outline around it. "torn"
+   only softens. Grain is a no-op. */
+function Soften() {
+  // wash light and mid colors toward white; leave darks (text, ink) alone
+  return (
+    <>
+      <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0.3 0.59 0.11 0 0" result="lum" />
+      <feComponentTransfer in="lum" result="mask">
+        <feFuncA type="table" tableValues="0 0.12 0.62 0.8 0.85" />
+      </feComponentTransfer>
+      <feComposite in="mask" in2="SourceGraphic" operator="atop" result="soft" />
+    </>
+  )
+}
+function LineDefs({ id }: { id: string }) {
+  return (
+    <defs>
+      <filter id={`${id}-cut`} x="-10%" y="-10%" width="120%" height="120%" colorInterpolationFilters="sRGB">
+        <Soften />
+        <feMorphology in="SourceAlpha" operator="dilate" radius="1.1" result="fat" />
+        <feFlood floodColor={L.line} result="ink" />
+        <feComposite in="ink" in2="fat" operator="in" result="outline" />
+        <feMerge>
+          <feMergeNode in="outline" />
+          <feMergeNode in="soft" />
+        </feMerge>
+      </filter>
+      <filter id={`${id}-torn`} colorInterpolationFilters="sRGB">
+        <Soften />
+      </filter>
+      <filter id={`${id}-grain`}>
+        <feFlood floodOpacity="0" />
+      </filter>
+      <radialGradient id={`${id}-halo`}>
+        <stop offset="0" stopColor={L.halo} stopOpacity="0.55" />
+        <stop offset="1" stopColor={L.halo} stopOpacity="0" />
+      </radialGradient>
+      <pattern id={`${id}-dots`} width="7" height="7" patternUnits="userSpaceOnUse" />
+      <pattern id={`${id}-dots-lg`} width="11" height="11" patternUnits="userSpaceOnUse" />
+      <pattern id={`${id}-lines`} width="6" height="6" patternUnits="userSpaceOnUse" />
+      <pattern id={`${id}-check`} width="22" height="22" patternUnits="userSpaceOnUse">
+        <rect width="22" height="22" fill="#fff" />
+        <rect width="11" height="11" fill={L.lavender} opacity="0.35" />
+        <rect x="11" y="11" width="11" height="11" fill={L.lavender} opacity="0.35" />
+      </pattern>
+      <linearGradient id={`${id}-gloss`} x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stopColor="#fff" stopOpacity="0.75" />
+        <stop offset="0.35" stopColor="#fff" stopOpacity="0.08" />
+        <stop offset="1" stopColor="#fff" stopOpacity="0.3" />
+      </linearGradient>
+    </defs>
+  )
+}
+
+/** Mix a #rrggbb color toward white (t = 0 keeps it, 1 is white). */
+export function wash(hex: string, t: number) {
+  const m = /^#([0-9a-f]{6})$/i.exec(hex)
+  if (!m) return hex
+  const n = parseInt(m[1], 16)
+  const ch = (v: number) => Math.round(v + (255 - v) * t).toString(16).padStart(2, '0')
+  return `#${ch(n >> 16)}${ch((n >> 8) & 255)}${ch(n & 255)}`
+}
+
 /** A full-bleed paper ground with grain. */
 export function Paper({ id, w, h, color = C.paper }: { id: string; w: number; h: number; color?: string }) {
+  if (useArtStyle() === 'line')
+    return <rect width={w} height={h} fill={wash(color, 0.82)} style={{ transition: 'fill 600ms ease' }} />
   return (
     <g>
       <rect width={w} height={h} fill={color} style={{ transition: 'fill 600ms ease' }} />
@@ -189,6 +278,33 @@ export function Person({
   children?: ReactNode
 }) {
   const sh = slump * 8
+  if (useArtStyle() === 'line') {
+    const sw = 1.7 / s
+    const torso = `M-46,0 C-46,${-40 - sh} -32,${-60 - sh} 0,${-60 - sh * 0.4} C32,${-60 - sh} 46,${-40 - sh} 46,0`
+    return (
+      <g transform={`translate(${x},${y}) scale(${s})`} style={{ transition: 'transform 500ms ease' }}>
+        <circle cx="0" cy={-90 + sh} r="56" fill={`url(#${id}-halo)`} />
+        <g stroke={L.line} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round">
+          <path d={torso + ' Z'} fill="#fff" stroke="none" />
+          <path d={torso + ' Z'} fill={shirt} opacity="0.22" stroke="none" style={{ transition: 'fill 500ms' }} />
+          <path d={torso} fill="none" />
+          <path d={`M-12,${-58 - sh * 0.4} q12,12 24,0`} fill="none" />
+          <path d={`M-7,${-70 + sh} V${-59 - sh * 0.4} M7,${-70 + sh} V${-59 - sh * 0.4}`} fill="none" />
+        </g>
+        <g transform={`translate(0,${sh})`}>
+          <ellipse cx="0" cy="-93" rx="25" ry="28" fill="#fff" stroke={L.line} strokeWidth={sw} />
+          <g opacity="0.3">
+            <Hair style={hairStyle} color={hair} />
+          </g>
+          <g stroke={L.line} strokeWidth={sw} strokeLinejoin="round">
+            <Hair style={hairStyle} color="none" />
+          </g>
+          <Face e={expr} look={look} />
+        </g>
+        {children}
+      </g>
+    )
+  }
   return (
     <g transform={`translate(${x},${y}) scale(${s})`} style={{ transition: 'transform 500ms ease' }}>
       <g filter={`url(#${id}-cut)`}>
@@ -231,6 +347,27 @@ export function ThoughtCloud({
   const lh = size * 1.3
   const h = lines.length * lh + 34
   const r = 18
+  if (useArtStyle() === 'line') {
+    return (
+      <g>
+        {tailTo && (
+          <g fill="#fff" stroke={L.lavender} strokeWidth="1.5">
+            <circle cx={x + (tailTo[0] - x) * 0.55} cy={y + h + (tailTo[1] - y - h) * 0.45} r="6" />
+            <circle cx={x + (tailTo[0] - x) * 0.8} cy={y + h + (tailTo[1] - y - h) * 0.75} r="3.5" />
+          </g>
+        )}
+        <rect x={x - 4} y={y - 4} width={w + 8} height={h + 8} rx={r + 4} fill={L.halo} opacity="0.25" />
+        <rect x={x} y={y} width={w} height={h} rx={r} fill="#fff" stroke={L.lavender} strokeWidth="1.5" />
+        <text x={x + w / 2} y={y + 22 + size * 0.4} textAnchor="middle" fontSize={size * 0.95} fill={L.line}>
+          {lines.map((l, i) => (
+            <tspan key={i} x={x + w / 2} dy={i === 0 ? 0 : lh}>
+              {l}
+            </tspan>
+          ))}
+        </text>
+      </g>
+    )
+  }
   return (
     <g>
       {tailTo && (
@@ -261,6 +398,12 @@ export function ThoughtCloud({
 
 /** A rough paper scrap (background decoration). */
 export function Scrap({ id, d, fill, opacity = 1, pattern }: { id: string; d: string; fill: string; opacity?: number; pattern?: 'dots' | 'dots-lg' | 'lines' }) {
+  if (useArtStyle() === 'line')
+    return (
+      <g opacity={opacity}>
+        <path d={d} fill={wash(fill, 0.72)} style={{ transition: 'fill 600ms' }} />
+      </g>
+    )
   return (
     <g filter={`url(#${id}-torn)`} opacity={opacity}>
       <path d={d} fill={fill} style={{ transition: 'fill 600ms' }} />
@@ -319,10 +462,11 @@ export function Figure({
   /** Readable version of the text inside the art, shown on phones where the SVG text gets tiny. */
   mobile?: ReactNode
 }) {
+  const line = useArtStyle() === 'line'
   return (
-    <figure className="my-12 md:my-16 -mx-4 sm:mx-0">
+    <figure className={`my-12 md:my-16 -mx-4 sm:mx-0 ${line ? 'art-line' : ''}`}>
       {controls && <div className="mb-4 px-4 sm:px-0 flex flex-wrap items-center gap-3">{controls}</div>}
-      <div className="overflow-hidden sm:rounded-3xl border-y sm:border bg-[#f5f0e6] shadow-[0_1px_0_rgba(0,0,0,0.04)]" aria-label={label} role="img">
+      <div className={`overflow-hidden sm:rounded-3xl border-y sm:border shadow-[0_1px_0_rgba(0,0,0,0.04)] ${line ? 'bg-[#faf9f7]' : 'bg-[#f5f0e6]'}`} aria-label={label} role="img">
         {children}
       </div>
       {mobile && <div className="sm:hidden px-4 pt-3 text-[15px] leading-snug">{mobile}</div>}

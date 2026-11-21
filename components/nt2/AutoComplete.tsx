@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { C, Toggle } from '@/components/home2/collage'
+import { C, Toggle, useArtStyle } from '@/components/home2/collage'
 
 type State = 'relaxed' | 'anxious' | 'irritated'
 type Scene = 'read' | 'glance' | 'pause'
@@ -48,6 +48,7 @@ const SCENES: Record<Scene, { tab: string; known: string; prompt: string; fill: 
 export function AutoComplete({ caption = true }: { caption?: boolean }) {
   const [scene, setScene] = useState<Scene>('read')
   const [state, setState] = useState<State>('anxious')
+  const line = useArtStyle() === 'line'
   const [typed, setTyped] = useState('')
   const s = SCENES[scene]
   const chips = s.fill[state]
@@ -78,9 +79,9 @@ export function AutoComplete({ caption = true }: { caption?: boolean }) {
         />
       </div>
 
-      <div className="rounded-3xl border bg-[#f5f0e6] p-4 sm:p-8 grid md:grid-cols-[minmax(0,320px)_1fr] gap-6 md:gap-10 items-center">
+      <div className={`rounded-3xl border ${line ? 'bg-[#faf9f7]' : 'bg-[#f5f0e6]'} p-4 sm:p-8 grid md:grid-cols-[minmax(0,320px)_1fr] gap-6 md:gap-10 items-center`}>
         {/* the phone */}
-        <div className="mx-auto w-full max-w-[320px] rounded-[2.2rem] bg-[#1f1d1a] p-2.5 shadow-[3px_5px_0_rgba(31,29,26,0.18)] rotate-[-1.2deg]">
+        <div className={`mx-auto w-full max-w-[320px] rounded-[2.2rem] p-2.5 ${line ? 'bg-white border-[1.5px] border-[#34323a] shadow-[0_0_40px_rgba(185,162,240,0.35)]' : 'bg-[#1f1d1a] shadow-[3px_5px_0_rgba(31,29,26,0.18)] rotate-[-1.2deg]'}`}>
           <div className="rounded-[1.8rem] bg-[#fffaf0] overflow-hidden">
             <div className="flex gap-1 p-2 border-b border-black/5" role="tablist" aria-label="Situation">
               {(Object.keys(SCENES) as Scene[]).map((k) => (
