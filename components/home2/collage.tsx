@@ -292,13 +292,13 @@ export function Person({
           <path d={`M-7,${-70 + sh} V${-59 - sh * 0.4} M7,${-70 + sh} V${-59 - sh * 0.4}`} fill="none" />
         </g>
         <g transform={`translate(0,${sh})`}>
-          <ellipse cx="0" cy="-93" rx="25" ry="28" fill="#fff" stroke={L.line} strokeWidth={sw} />
-          <g opacity="0.3">
-            <Hair style={hairStyle} color={hair} />
+          {/* outline only the outer silhouette of head + hair: stroke underneath, fills on top */}
+          <g stroke={L.line} strokeWidth={sw * 2} strokeLinejoin="round">
+            <ellipse cx="0" cy="-93" rx="25" ry="28" fill="#fff" />
+            <Hair style={hairStyle} color="#fff" />
           </g>
-          <g stroke={L.line} strokeWidth={sw} strokeLinejoin="round">
-            <Hair style={hairStyle} color="none" />
-          </g>
+          <ellipse cx="0" cy="-93" rx="25" ry="28" fill="#fff" />
+          <Hair style={hairStyle} color={wash(hair, 0.4)} />
           <Face e={expr} look={look} />
         </g>
         {children}
