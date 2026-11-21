@@ -42,6 +42,15 @@ export const conceptVoice: Record<string, Partial<Concept>> = {
     text:
       'What you may not realize is how many narratives are already in play, activated but not at the forefront of your experience. We call these dehydrated narratives because they developed long ago but we don’t remember them. They’re still active.\n\nThe deep ones are still operating on the body and running the default narrative mode. They show up as mood, not as thoughts.\n\nWe need to rehydrate them to get to them. And then befriend them, rather than hate them or feel ashamed of them.',
   },
+  'thought-o-complete': {
+    name: 'Thoughtocomplete',
+    text:
+      'Autocomplete is the way we anticipate things happening. Your Thoughtocomplete could be positive or negative. Negative ToC is anxiety. It doesn’t lead to anxiety, it is it.\n\nThoughtocomplete explains what happens when we have ambiguous information: if somebody likes me, if somebody’s looking at me, if someone liked what I just said, if someone is enjoying me or not. All of that is Thoughtocomplete and your energy.\n\nPessimism is just filling in the blanks negatively, and optimism is filling in the blanks positively. I have a tendency to fill in the blanks negatively, and I’m not angry at myself for that. That’s just my pattern.\n\nIt’s mostly unconscious. It’s a dehydrated narrative, which is to say it’s not obviously recognizable as a narrative. We experience it as a vague “mood.” It needs to be rehydrated, then examined.\n\nEverybody needs to see how they fill in with negative detail. That’s the main job. Negative detail about how people see me, but also negative detail about other people. And if you really don’t know, you may as well think positive.',
+  },
+  checking: {
+    text:
+      'Zen Master Seung Sahn would say, “Just drive.” I like that. When you’re driving, just drive. But I don’t really just drive. I keep checking my experience. How outside my mind I am. How salient things are.\n\nAt the gym I realized that monitoring whether you’re self-monitoring is just another form of monitoring. Another version of checking, worrying, occupying the mind. Versus just jumping in, regardless of whether there’s a little anxiety. Not monitoring it. Just doing the thing. And if you don’t feel it, you don’t feel it. You don’t have to feel everything.\n\nTrying leads to checking. Checking is such a big part of practice: looking and waiting for our minds to do something, like settle or get to a destination. But meditation is always at the origin. It’s the origin-destination problem.\n\nSo I think the right approach is: it’s okay to check. Let the checking end on its own. Notice when you’re checking. That’s skillful means.',
+  },
   'the-end-of-trying': {
     name: 'The End of Trying',
     text:

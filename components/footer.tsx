@@ -21,6 +21,7 @@ export default function Footer() {
         <div className="space-y-2">
           <div className="text-xs uppercase tracking-widest text-muted-foreground">Utilities</div>
           <Link href="/situation" className="block hover:underline">Bring a Situation</Link>
+          <Link href="/practices" className="block hover:underline">Practices</Link>
           <Link href="/writing" className="block hover:underline">Writing</Link>
           <Link href="/pricing" className="block hover:underline">Membership</Link>
           <Link href="/about" className="block hover:underline">About</Link>

@@ -1,7 +1,29 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { concepts, conceptBySlug } from '@/lib/data/concepts'
+import type { ReactNode } from 'react'
 import { GradientOrb } from '@/components/nt/GradientOrb'
+import { PeelWrap } from '@/components/nt2/PeelWrap'
+import { AutoComplete } from '@/components/nt2/AutoComplete'
+import { RankSeesaw } from '@/components/nt2/RankSeesaw'
+
+/** Interactive figures that belong to particular concepts. */
+const FIGURES: Record<string, ReactNode> = {
+  'saran-wrap': <PeelWrap />,
+  'thought-o-complete': <AutoComplete caption={false} />,
+  rank: <RankSeesaw zone={false} />,
+}
+
+/** A practice to try after reading a concept. */
+const PRACTICE: Record<string, { href: string; label: string }> = {
+  checking: { href: '/practices#checking', label: 'Practice: checking' },
+  'narrative-lock': { href: '/practices#gloves', label: 'Practice: putting down the gloves' },
+  mode: { href: '/practices#all-in-a-mode', label: 'Practice: we’re all in a mode' },
+  'the-end-of-trying': { href: '/practices#nothing-wrong', label: 'Practice: what if nothing is wrong?' },
+  'saran-wrap': { href: '/practices/x-ray', label: 'Try the Narrative X-ray' },
+  'thought-o-complete': { href: '/practices/x-ray', label: 'Try the Narrative X-ray' },
+  rank: { href: '/practices#jacket', label: 'Practice: confidence like a jacket' },
+}
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -29,6 +51,18 @@ export default async function ConceptPage({ params }: Props) {
           {concept.text.split('\n\n').map((p, i) => <p key={i}>{p}</p>)}
         </div>
       </section>
+      {FIGURES[slug] && (
+        <section className="border-t">
+          <div className="mx-auto max-w-5xl px-5 lg:px-8">{FIGURES[slug]}</div>
+        </section>
+      )}
+      {PRACTICE[slug] && (
+        <div className="mx-auto max-w-2xl px-5 lg:px-8 pb-12">
+          <Link href={PRACTICE[slug].href} className="inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm hover:bg-accent">
+            {PRACTICE[slug].label} →
+          </Link>
+        </div>
+      )}
       {concept.related.length > 0 && (
         <section className="border-t">
           <div className="mx-auto max-w-2xl px-5 lg:px-8 py-10">

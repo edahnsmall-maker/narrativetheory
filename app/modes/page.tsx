@@ -23,13 +23,12 @@ export default function ModesIndex() {
             <div className="text-xs uppercase tracking-widest text-muted-foreground">Field guide</div>
             <h1 className="mt-2 font-display text-5xl md:text-6xl leading-[0.95]">Mode Library</h1>
             <p className="mt-4 max-w-xl text-muted-foreground">
-              A mode is a repeating package of thinking style, body state, energy, and action.
-              You enter and leave them. You are not identical to them.
+              Modes are combinations of narrative styles, body styles, and action styles. A mode is just a repeated combo.
             </p>
           </div>
           <div className="flex gap-2">
-            <Link href="/studio" className="rounded-full border px-4 py-2 text-sm hover:bg-accent">
-              + Submit a mode
+            <Link href="/practices#all-in-a-mode" className="rounded-full border px-4 py-2 text-sm hover:bg-accent">
+              Practice: we’re all in a mode →
             </Link>
           </div>
         </div>
@@ -38,19 +37,20 @@ export default function ModesIndex() {
       <section className="border-b">
         <div className="mx-auto max-w-3xl px-5 lg:px-8 py-14 prose-nt space-y-5 text-[17px] leading-relaxed">
           <p className="font-display text-2xl leading-snug text-foreground">
-            Modes are recurring clusters of narrative, body, and action.
+            When I’m angry, I think in an angry way: black and white, simplified, me-vs.-them.
           </p>
           <p>
-            A narrative style does not operate by itself. It usually travels with a body state, a way of
-            seeing reality, and a set of action tendencies.
+            My body does characteristic things too. My breathing gets shallow. My gaze becomes intense and confrontational. I smile
+            less. And my actions shift. I interrupt more, curse more, and speak louder, in shorter sentences with less hedging.
+            Congratulations, you’re in anger mode.
           </p>
           <p>
-            When the same pattern keeps returning — anxious overthinking, combativeness, collapse, rejection,
-            perfectionism — that pattern is a mode.
+            Everyone’s modes look a little different, but there’s consistency in how a mode is expressed by an individual. Unpacking
+            your modes, and your partner’s modes, is pretty much what therapy is all about.
           </p>
           <p>
-            Modes are useful because they help you recognize the states you keep entering, what they make
-            you believe, and what they make you do.
+            I think we should be exploring mindstates like they were species: discovering, classifying, and doing that human thing we
+            do. This page is the start of that.
           </p>
         </div>
       </section>
@@ -58,8 +58,8 @@ export default function ModesIndex() {
       <section className="border-b">
         <div className="mx-auto max-w-7xl px-5 lg:px-8 py-12">
           <p className="text-sm text-muted-foreground italic mb-6 max-w-2xl">
-            You do not need to become a mode expert. The point is to recognize your own recurring modes
-            and learn how to loosen them.
+            Each mode is given a name. Spiky Mode. Connecty Mode. Even assigned an image or meme. It sounds silly, but it really
+            helps you spot it.
           </p>
           <div className="text-xs uppercase tracking-widest text-muted-foreground mb-4">Network</div>
           <ModeNetwork />

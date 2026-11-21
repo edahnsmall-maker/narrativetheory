@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { Camera, Sparkles, Wind } from 'lucide-react'
 import { SessionView } from '@/components/session/session-view'
@@ -15,6 +15,14 @@ const PROMPTS = [
 export function SituationStart({ signedIn, remaining }: { signedIn: boolean; remaining: number | null }) {
   const [text, setText] = useState('')
   const [started, setStarted] = useState<string | null>(null)
+
+  // The Narrative X-ray can hand a situation over (kept in sessionStorage, not the URL).
+  useEffect(() => {
+    try {
+      const v = sessionStorage.getItem('nt-situation-prefill')
+      if (v) setText(v)
+    } catch {}
+  }, [])
 
   if (started) return <SessionView start={{ kind: 'situation', text: started }} />
 
@@ -60,7 +68,12 @@ export function SituationStart({ signedIn, remaining }: { signedIn: boolean; rem
         <form
           onSubmit={(e) => {
             e.preventDefault()
-            if (text.trim().length >= 10) setStarted(text.trim())
+            if (text.trim().length >= 10) {
+              try {
+                sessionStorage.removeItem('nt-situation-prefill')
+              } catch {}
+              setStarted(text.trim())
+            }
           }}
         >
           <label htmlFor="situation" className="sr-only">

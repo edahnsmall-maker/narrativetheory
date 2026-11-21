@@ -8,6 +8,9 @@ import { StateField } from '@/components/nt/StateField'
 import { StoryPoints } from '@/components/nt/StoryPoints'
 import { BodyMatrix } from '@/components/nt/BodyMatrix'
 import { ModeSpotlight } from '@/components/nt/ModeSpotlight'
+import { PeelWrap } from '@/components/nt2/PeelWrap'
+import { AutoComplete } from '@/components/nt2/AutoComplete'
+import { RankSeesaw } from '@/components/nt2/RankSeesaw'
 
 const ACCENTS = ['violet', 'pink', 'orange', 'blue', 'yellow'] as const
 const accentVar = (i: number) => `var(--accent-${ACCENTS[i % ACCENTS.length]})`
@@ -181,8 +184,29 @@ export default function TheoryIndex() {
             <Eyebrow label="See it in practice" />
             <h2 className="mt-2 font-display text-3xl md:text-4xl">The diagrams</h2>
             <p className="mt-3 text-muted-foreground">
-              Four of the ideas, as diagrams you can play with.
+              Some of the ideas, as diagrams you can play with.
             </p>
+          </div>
+
+          <div>
+            <div className="text-xs uppercase tracking-widest text-muted-foreground">
+              Illustrates: Saran Wrap has layers
+            </div>
+            <PeelWrap />
+          </div>
+
+          <div>
+            <div className="text-xs uppercase tracking-widest text-muted-foreground">
+              Illustrates: Thoughtocomplete
+            </div>
+            <AutoComplete />
+          </div>
+
+          <div>
+            <div className="text-xs uppercase tracking-widest text-muted-foreground">
+              Illustrates: Rank · Locus of Normal
+            </div>
+            <RankSeesaw />
           </div>
 
           <div>
