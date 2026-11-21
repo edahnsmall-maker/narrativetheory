@@ -126,7 +126,8 @@ export function BabyScene() {
 
         {/* me, in my bubble */}
         <g>
-          <circle cx="200" cy="420" r="140" fill={bad ? '#9aa39f' : C.cream} opacity="0.55" filter={`url(#${id}-torn)`} style={{ transition: 'fill 600ms' }} />
+          <circle cx="200" cy="420" r="140" fill={bad ? '#eceadf' : C.cream} opacity={bad ? 0.7 : 0.6} filter={`url(#${id}-torn)`} style={{ transition: 'fill 600ms' }} />
+          <circle cx="200" cy="420" r="140" fill={`url(#${id}-lines)`} opacity={bad ? 0.8 : 0} style={{ transition: 'opacity 600ms' }} />
           <Person id={id} x={200} y={520} s={1.25} skin={C.skin1} hair={C.hair2} hairStyle="short" shirt={C.cobalt} expr={bad ? 'angry' : 'soft'} look={1} slump={bad ? 1 : 0} />
           {/* fork & glass on the table */}
           <g filter={`url(#${id}-cut)`}>
