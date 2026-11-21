@@ -91,27 +91,26 @@ export default function TheoryIndex() {
         <div className="mx-auto max-w-5xl px-5 lg:px-8 py-20">
           <Eyebrow label="The Theory" />
           <h1 className="mt-3 font-display text-5xl md:text-7xl leading-[0.95]">
-            A theory of how mind becomes world.
+            What is Narrative Theory?
           </h1>
           <div className="mt-8 max-w-2xl text-[17px] leading-relaxed space-y-5 text-foreground/80">
             <p>
-              Narrative Theory studies how experience is constructed. Most of what we call &ldquo;reality&rdquo; arrives already
-              wrapped in story: memory, meaning, expectation, rank, fear, desire, and self-image. This invisible layer is
-              what NT calls Saran Wrap. It clings so tightly to what is happening that we mostly mistake it for the thing
-              itself.
+              To be quite honest, Narrative Theory is just the way I&rsquo;ve come to see the world and how I&rsquo;ve been able to
+              reconcile those insights into one coherent model. It&rsquo;s my response to my confusion about the nature of feelings,
+              thoughts, how they shift, how they determine other parts of our experience and perspective, and even what they actually
+              are.
             </p>
             <p>
-              The framework draws from Zen practice, cognitive psychology, ethology, psychotherapy, and patient
-              observation of one&apos;s own mind. Its claim is simple: when the wrap becomes visible, the situation becomes
-              workable. A delayed text stops being rejection. A quiet partner stops being contempt. A room stops being a
-              hierarchy. What looked like the world resolves back into the world, plus a mind constructing a version of it.
+              Narrative Theory is a blend of animal behavior, Zen, psychology, and psychotherapy. It is a model for human experience as
+              well as a guide for &ldquo;adjusting&rdquo; that experience to usher in more peace of mind, balance, and clarity. In that
+              sense it flirts with the boundary between science and therapy.
             </p>
             <p>
-              In a meeting where you feel small, the smallness is rarely in the room — it&apos;s in a scoring system the mind
-              is running underneath. In a fight that won&apos;t end, what feels like the truth is usually a locked narrative on
-              both sides. In attraction, what looks like seeing the other is often a frame projected onto a sliver of
-              evidence. These are not failures of perception. They are how perception works until it&apos;s seen.
+              The bulk of NT is a model, which is to say, it&rsquo;s a way of making sense of things, cleaning out junk, and dividing the
+              world up in ways that make more sense than the way they are currently divided up. Ultimately, the best way to think of
+              Narrative Theory is a lens with which to supplement and even replace the lens with which we view the world and ourselves.
             </p>
+            <p className="text-[15px] text-muted-foreground">Below: the vocabulary, a few diagrams to play with, and the deeper stuff.</p>
           </div>
         </div>
       </header>

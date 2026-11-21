@@ -45,7 +45,7 @@ export default function ProgramPage() {
           Start the first conversation
         </Link>
         <span className="text-sm text-[var(--muted-foreground)]">
-          Stored in your browser. Nothing to sign up for.
+          Part of membership. Your map stays in your browser.
         </span>
       </div>
 
