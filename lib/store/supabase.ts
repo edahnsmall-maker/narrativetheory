@@ -1,7 +1,7 @@
 import { createClient, type SupabaseClient } from '@supabase/supabase-js'
 import { env } from '@/lib/config'
 import type { Store } from './index'
-import type { ModeStory, NotebookItem, SessionRecord, UserRecord } from '@/lib/types'
+import type { ContactMessage, ModeStory, NotebookItem, SessionRecord, UserRecord } from '@/lib/types'
 
 /**
  * Production store on Supabase Postgres. Uses the service-role key, so it must
@@ -123,6 +123,34 @@ export const supabaseStore: Store = {
     )
     // The list view doesn't need transcripts.
     return (data ?? []).map((r: Row) => toSession({ ...r, system: '', api_messages: [], log: [] }))
+  },
+
+  async addMessage(m) {
+    check(
+      await db().from('messages').insert({
+        id: m.id,
+        name: m.name,
+        email: m.email,
+        phone: m.phone,
+        prefer: m.prefer,
+        text: m.text,
+        created_at: m.createdAt,
+      }),
+    )
+  },
+  async listMessages() {
+    const data = check(await db().from('messages').select('*').order('created_at', { ascending: false }).limit(500))
+    return (data ?? []).map(
+      (r: Row): ContactMessage => ({
+        id: r.id as string,
+        name: r.name as string,
+        email: r.email as string,
+        phone: (r.phone as string) ?? '',
+        prefer: (r.prefer as string) ?? '',
+        text: r.text as string,
+        createdAt: r.created_at as string,
+      }),
+    )
   },
 
   async addStory(st) {

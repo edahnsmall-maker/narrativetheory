@@ -15,6 +15,7 @@ export default function Footer() {
           <div className="text-xs uppercase tracking-widest text-muted-foreground">Read</div>
           <Link href="/program" className="block hover:underline">The Program</Link>
           <Link href="/theory" className="block hover:underline">Narrative Theory</Link>
+          <Link href="/theory/map" className="block hover:underline">The map</Link>
           <Link href="/modes" className="block hover:underline">Mode Field Guide</Link>
           <Link href="/life" className="block hover:underline">Life Instruction™</Link>
         </div>
@@ -25,7 +26,8 @@ export default function Footer() {
           <Link href="/writing" className="block hover:underline">Writing</Link>
           <Link href="/pricing" className="block hover:underline">Membership</Link>
           <Link href="/about" className="block hover:underline">About</Link>
-          <a href="https://edahnsmall.com" className="block hover:underline">Edahn Small</a>
+          <Link href="/contact" className="block hover:underline">Contact</Link>
+          <a href="https://askedahn.com" className="block hover:underline">Ask Edahn (column)</a>
         </div>
       </div>
       <div className="border-t">

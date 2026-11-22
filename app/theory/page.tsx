@@ -123,6 +123,10 @@ export default function TheoryIndex() {
         <div className="mx-auto max-w-6xl px-5 lg:px-8 py-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs uppercase tracking-widest text-muted-foreground">
           <span className="text-foreground/60">Jump to</span>
           <span aria-hidden className="h-3 w-px bg-border" />
+          <Link href="/theory/map" className="text-foreground hover:underline underline-offset-4">
+            The map
+          </Link>
+          <span aria-hidden className="h-3 w-px bg-border" />
           <a href="#core-vocabulary" className="hover:text-foreground underline-offset-4 hover:underline">
             Core vocabulary
           </a>
@@ -187,6 +191,23 @@ export default function TheoryIndex() {
               Some of the ideas, as diagrams you can play with.
             </p>
           </div>
+
+          <Link
+            href="/theory/map"
+            className="group block rounded-3xl bg-[#0b0b0c] text-white px-6 py-8 md:px-10 md:py-10 grid md:grid-cols-[1fr_auto] gap-6 items-center"
+          >
+            <div>
+              <div className="text-[11px] uppercase tracking-[0.16em] text-white/45">The whole thing on one page</div>
+              <div className="mt-2 font-display text-3xl md:text-4xl">The map</div>
+              <p className="mt-2 text-white/60 max-w-xl">
+                The slice, cuts, energy state, mode, narrative flavor, Saran Wrap, action sets, outcomes. Pick an energy state and
+                watch every layer change.
+              </p>
+            </div>
+            <span className="rounded-full border border-white/40 px-4 py-2 text-sm group-hover:bg-white group-hover:text-black justify-self-start">
+              Open the map →
+            </span>
+          </Link>
 
           <div>
             <div className="text-xs uppercase tracking-widest text-muted-foreground">

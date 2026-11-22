@@ -235,3 +235,10 @@ pre.code-block {
 
 /* Line-style drawings: clean sans labels inside figures */
 .art-line svg text, .art-line svg tspan { font-family: var(--font-sans) !important; }
+
+/* Narrative Theory map (/theory/map) */
+@keyframes ntmapFade { from { opacity: 0 } to { opacity: 1 } }
+@keyframes ntmapRise { from { opacity: 0; transform: translateY(-24px) } to { opacity: 1; transform: none } }
+.ntmap-fade { animation: ntmapFade .6s ease both; }
+.ntmap-rise { animation: ntmapRise .9s cubic-bezier(.2,.7,.2,1) both; }
+@media (prefers-reduced-motion: reduce) { .ntmap-fade, .ntmap-rise { animation: none; } }

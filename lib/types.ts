@@ -109,6 +109,17 @@ export type StreamEvent =
 
 /** A reader's story of a mode, for the Mode Field Guide. Private until the owner approves it. */
 export type StoryStatus = 'new' | 'approved' | 'hidden'
+/** A message from the contact form. Only the owner sees these (Studio → Messages). */
+export interface ContactMessage {
+  id: string
+  name: string
+  email: string
+  phone: string
+  prefer: string
+  text: string
+  createdAt: string
+}
+
 export interface ModeStory {
   id: string
   userId: string

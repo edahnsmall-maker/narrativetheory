@@ -60,8 +60,20 @@ create table if not exists public.mode_stories (
 );
 create index if not exists mode_stories_mode_status on public.mode_stories (mode_slug, status, created_at desc);
 
+-- Contact-form messages (owner reads them at /studio/messages).
+create table if not exists public.messages (
+  id uuid primary key,
+  name text not null,
+  email text not null,
+  phone text,
+  prefer text,
+  text text not null,
+  created_at timestamptz not null default now()
+);
+
 alter table public.profiles enable row level security;
 alter table public.sessions enable row level security;
 alter table public.notebook enable row level security;
 alter table public.replies enable row level security;
 alter table public.mode_stories enable row level security;
+alter table public.messages enable row level security;
