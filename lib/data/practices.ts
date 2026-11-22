@@ -1,7 +1,7 @@
 /**
  * Pocket practices. Every line here comes from Edahn's own notes (Narrative
  * Notes and Apple Notes), lightly cleaned up. Sources are listed in
- * ideas-from-your-notes.md at the project root.
+ * Deliverables/Notes for you/ideas-from-your-notes.md.
  */
 export interface Practice {
   id: string
