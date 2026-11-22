@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { ArrowLeft } from 'lucide-react'
 import { RichText } from '@/components/rich-text'
+import { PostFooter } from '@/components/writing/PostFooter'
 import { formatDate, getPost, showDrafts } from '@/lib/writing'
 
 interface Props {
@@ -18,8 +19,9 @@ export async function generateMetadata({ params }: Props) {
 export default async function EssayPage({ params, searchParams }: Props) {
   const { slug } = await params
   const sp = await searchParams
+  const drafts = showDrafts(sp.drafts)
   const post = getPost('essays', slug)
-  if (!post || (post.draft && !showDrafts(sp.drafts))) notFound()
+  if (!post || (post.draft && !drafts)) notFound()
 
   return (
     <article className="mx-auto max-w-[42rem] px-4 sm:px-6 py-14 md:py-20">
@@ -35,15 +37,7 @@ export default async function EssayPage({ params, searchParams }: Props) {
       <div className="[&_p]:!text-[18px] md:[&_p]:!text-[19px] [&_p]:!leading-[1.75]">
         <RichText text={post.body} />
       </div>
-      {post.tags.length > 0 && (
-        <div className="mt-12 flex flex-wrap gap-2 border-t pt-6">
-          {post.tags.map((t) => (
-            <span key={t} className="chip">
-              {t}
-            </span>
-          ))}
-        </div>
-      )}
+      <PostFooter post={post} drafts={drafts} />
     </article>
   )
 }

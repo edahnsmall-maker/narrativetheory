@@ -1,7 +1,7 @@
 ---
 title: What do we mean by narrative?
 date: 2023-07-03
-tags: theory
+tags: narrative theory
 summary: By narrative we simply mean the ideas we form in our mind about something.
 from: edahnsmall.com/blog/2023/7/3/2-what-do-we-mean-by-narrative
 ---

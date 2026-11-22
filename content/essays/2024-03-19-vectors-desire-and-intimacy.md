@@ -1,7 +1,7 @@
 ---
 title: Vectors, Desire, and Intimacy
 date: 2024-03-19
-tags: zen, meditation
+tags: zen, meditation, desire
 summary: This post is about meditation, but whenever I say meditation, I’m really talking about Zen.
 from: edahnsmall.com/blog/2024/3/19/vectors-desire-and-intimacy
 ---

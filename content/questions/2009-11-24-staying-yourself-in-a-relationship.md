@@ -1,0 +1,19 @@
+---
+title: How do I stay myself in a relationship?
+date: 2009-11-24
+tags: relationships, the self, feelings
+summary: This is how you slowly find yourself even when you're lost.
+from: askedahn.com, "How do I find myself when I'm in a relationship?", 2009-11-24 (Blogger export post #369)
+---
+
+*The question: a reader came out of a long, unhealthy relationship disliking who he'd been in it. Now whenever a relationship gets serious he panics that he'll turn back into that person, and ends it. Can he be in a relationship, stay himself, and be happy?*
+
+I completely understand what you're going through and I don't think you're alone at all. In fact, it's funny that you wrote me today. This exact question is what I want to dedicate my life's work to and something I've been thinking about recently. It's a dilemma I've struggled with for years and continue to work with, though I have found some techniques that work.
+
+First off, what's going on? People like you are special. You understand things like beauty, authenticity, and naturalness. Not everyone does. You see value in it and when anxiety makes you question yourself, the naturalness gets hidden. You immediately know something is off. Is it really off? No. It's all working according to plan. Your mind is identifying a threat and going into "threat mode." It's actually trying to protect you by monitoring the threat -- the girl, a gap in conversation, rejection -- it's just clumsy. It's kind of like a new mother who sees threats everywhere she looks and keeps her kid sheltered, preventing the kid from becoming self-reliant.
+
+You say that you don't like yourself when you're in a relationship. In truth, there are two things that change when you get into a relationship. The first is that you become a self-conscious dork much like everyone else, myself included. (I say that endearingly, not mockingly.) The second is that you become very self-critical. You reject yourself. This is what people mean when they say "conditional acceptance." You're understanding when you like the person you're being, but when you start getting nervous and dorking out, you cut off the compassion and understanding. Instead of saying "it's alright" or "it'll be okay" or being playful with yourself like you would to a friend in need, you place demands on yourself to be someone else and escape the frozenness.
+
+So the first (and most critical) step is in finding a reason to be patient with yourself. The reason is simple: you're hurting. How would you respond if you saw someone at Starbucks who was clearly and genuinely hurting over something? Grieving? Depression? Inner conflict? Confusion? What would your gut tell you to do? It would tell you to ask them if they were okay. You would be nice, kind, maybe offer a few words of encouragement or just listen compassionately. You and I are in the same position, aren't we? In those moments of intense inner conflict, either before a date or when things start getting serious, we're in pain. We're confused, afraid, lost, and maybe ashamed of the person we are and worried about the future. As soon as you recognize that you can't help but be supportive and understanding.
+
+So start recognizing the times when you're in inner turmoil. Just recognize it for what it is -- real, genuine pain. You'll start to see that even if you're not shining at the moment, you're okay. You're safe. You're still pretty awesome even though you're not perfect. You might even see how all the hardship you went through actually had a purpose, in bringing you to this moment and teaching you some valuable lessons. This is how you slowly find yourself even when you're lost. Eventually you'll have all the evidence you need to see that you can be happy, yourself, and in a relationship at the same time and you won't need any gimmicks or pep-talks to give you some fleeting hope.

@@ -1,7 +1,7 @@
 ---
 title: Meta Narrative Theory
 date: 2023-04-08
-tags: theory
+tags: narrative theory
 summary: Narrative Theory is essentially a way of mentally cutting up the world into units that make it easy to understand.
 from: edahnsmall.com/blog/2023/4/8/meta-narrative-theory
 ---

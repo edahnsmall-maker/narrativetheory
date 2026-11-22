@@ -1,7 +1,7 @@
 ---
 title: The Story of Narrative Theory
 date: 2023-03-27
-tags: theory
+tags: narrative theory
 summary: I like to think of NT as something similar to what my psychology, psychotherapy, and Eastern philosophy heroes built: something that was both a way of parsing out experience to…
 from: edahnsmall.com/blog/2023/3/27/nt-background
 ---

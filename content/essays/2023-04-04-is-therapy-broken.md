@@ -1,7 +1,7 @@
 ---
 title: Is Therapy Broken?
 date: 2023-04-04
-tags: therapy
+tags: therapy, the mind
 summary: Here’s the world’s shortest rant about problems in modern psychotherapy practice.
 from: edahnsmall.com/blog/2023/4/4/is-therapy-broken
 ---

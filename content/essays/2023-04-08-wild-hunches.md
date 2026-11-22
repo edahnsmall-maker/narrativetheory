@@ -1,7 +1,7 @@
 ---
 title: Wild Hunches
 date: 2023-04-08
-tags: speculation
+tags: narrative theory
 summary: Here are some guesses and hunches that don’t fit into the mainstream scientific paradigm but are nevertheless consistent with observation and intuition.
 from: edahnsmall.com/blog/2023/4/8/wild-hunches
 ---

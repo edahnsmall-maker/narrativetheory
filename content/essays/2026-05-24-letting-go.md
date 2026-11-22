@@ -1,7 +1,7 @@
 ---
 title: Letting Go
 date: 2026-05-24
-tags: zen, meditation, practice
+tags: zen, meditation
 summary: The hardest thing in Zen, and maybe the only thing you really need to do. If you try to do it, you break it.
 draft: true
 ---

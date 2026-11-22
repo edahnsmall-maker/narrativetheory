@@ -6,7 +6,7 @@ import { Fragment, type ReactNode } from 'react'
  *   ---             → a divider (dropped when it's the last thing in a block)
  *   > quote         → a pull quote
  *   1. / - lists    → ordered / unordered lists
- *   **bold**, *italic*, _italic_ inline
+ *   **bold**, *italic*, _italic_, ~~struck~~ inline; * escapes a marker
  */
 
 type Part =
@@ -19,7 +19,7 @@ type Part =
 
 function inline(text: string): ReactNode[] {
   const out: ReactNode[] = []
-  const re = /\[([^\]\n]+)\]\(([^)\s]+)\)|\*\*([^*\n]+)\*\*|\*([^*\s][^*\n]*?)\*|(?<![\w])_([^_\n]+)_(?![\w])/g
+  const re = /\[([^\]\n]+)\]\(([^)\s]+)\)|\*\*([^*\n]+)\*\*|\*([^*\s][^*\n]*?)\*|(?<![\w])_([^_\n]+)_(?![\w])|~~([^~\n]+)~~|\\([*_~\\])/g
   let last = 0
   let m: RegExpExecArray | null
   let k = 0
@@ -35,6 +35,8 @@ function inline(text: string): ReactNode[] {
         </a>,
       )
     } else if (m[3]) out.push(<strong key={k++}>{m[3]}</strong>)
+    else if (m[6]) out.push(<s key={k++}>{m[6]}</s>)
+    else if (m[7]) out.push(m[7])
     else out.push(<em key={k++}>{m[4] ?? m[5]}</em>)
     last = m.index + m[0].length
   }

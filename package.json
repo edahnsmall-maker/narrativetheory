@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "note": "node scripts/new-post.mjs note",
-    "essay": "node scripts/new-post.mjs essay"
+    "essay": "node scripts/new-post.mjs essay",
+    "question": "node scripts/new-post.mjs question"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.106.0",

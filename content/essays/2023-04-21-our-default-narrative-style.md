@@ -1,7 +1,7 @@
 ---
 title: Our Default Narrative Style
 date: 2023-04-21
-tags: theory, modes
+tags: narrative theory
 summary: If there’s one thing meditation teaches you, it’s the way we see the world is completely a construct.
 from: edahnsmall.com/blog/2023/4/21/our-default-narrative-style
 ---

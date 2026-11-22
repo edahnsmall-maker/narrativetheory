@@ -1,6 +1,6 @@
 ---
 date: 2026-04-05
-tags: cuts
+tags: the mind
 draft: true
 ---
 

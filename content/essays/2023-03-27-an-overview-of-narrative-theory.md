@@ -1,7 +1,7 @@
 ---
 title: An Overview of Narrative Theory
 date: 2023-03-27
-tags: theory
+tags: narrative theory
 summary: Narrative Theory (NT) is a descriptive framework with robust therapeutic implications for compartmentalizing and cataloguing our personal experience and our interactions.
 from: edahnsmall.com/blog/2023/3/27/nt-overview
 ---

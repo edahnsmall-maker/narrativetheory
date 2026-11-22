@@ -1,7 +1,7 @@
 ---
 title: What is Narrative Theory?
 date: 2023-07-03
-tags: theory
+tags: narrative theory
 summary: Narrative Theory (NT) is a system (a theory) for understanding human experience as well as transforming it for a deeper, more fulfilling life.
 from: edahnsmall.com/blog/2023/7/3/1-getting-started-what-is-narrative-theory
 ---

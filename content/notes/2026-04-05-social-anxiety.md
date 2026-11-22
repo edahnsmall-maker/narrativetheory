@@ -1,6 +1,6 @@
 ---
 date: 2026-04-05
-tags: social anxiety
+tags: feelings, the self
 draft: true
 ---
 

@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { User, Swords, Heart, Sparkles, ShieldCheck, CloudRain, Fingerprint, AlertOctagon } from 'lucide-react'
+import { User, Swords, Compass, Sparkles, ShieldCheck, CloudRain, Fingerprint, AlertOctagon } from 'lucide-react'
 import { concepts } from '@/lib/data/concepts'
 import { deepTopics } from '@/lib/data/deepTopics'
 import { disorderFamilies } from '@/lib/data/disorders'
@@ -19,68 +19,70 @@ function Eyebrow({ label }: { label: string }) {
   return <div className="text-xs uppercase tracking-widest text-muted-foreground">{label}</div>
 }
 
+// Card text is Edahn's own words from his notes (narrative notes and apple notes), typos fixed.
+// Sources with line numbers: Narrative Theory for Claude/vetting/writing-candidates/reinterp.md
 const reinterp = [
   {
-    slug: 'the-self',
-    name: 'The Self',
-    blurb: 'The self as a constructed narrative, not a fixed essence.',
-    text: 'The self is not a thing you find. It is a story your mind keeps building from memory, mood, and situation. Different states produce different selves — each one feels like the real you while it lasts.\n\nSeeing the self as constructed does not erase it. It loosens it.',
+    slug: "the-self",
+    name: "The Self",
+    blurb: "It's just a story you're always telling, always abstracting.",
+    text: "It's just a cloud that we identify with. That cloud is the narrative. It comes and goes. It's not always there.\n\nYour narratives about yourself—they're not the same. We think they're the same, but that's the secret. They just have similar themes. It's a new thought every time. How can you build a house on quicksand? The foundation itself is always changing. Your house is your ego.",
     Icon: User,
     tint: 'var(--nt-mind)',
   },
   {
-    slug: 'conflict',
-    name: 'Conflict',
-    blurb: 'Two narrative fields colliding, each defending its own reality.',
-    text: 'Conflict is rarely about the facts. It is two people defending the world their minds have built. Each feels correct. Each feels attacked. Each is arguing with a construction the other cannot see.\n\nThe move out of conflict is rarely winning the frame. It is making contact with the person under it.',
+    slug: "conflict",
+    name: "Conflict",
+    blurb: "Conflict is simply the desire to reject what's already here and opt for a different state.",
+    text: "From the inside, conflict feels all-absorbing. Tense. Oppositional. Me vs. you. We jump into our minds. We jump into sides. Whether it's a friend, a coworker, a lover, political opponents, we develop a story about this person that's very narrow. And it's all mind generated.\n\nDon't think of conflict as a thing between you and someone else; think of it as a relationship you have with something.",
     Icon: Swords,
     tint: 'var(--nt-state-combative)',
   },
   {
-    slug: 'attraction',
-    name: 'Attraction',
-    blurb: 'A narrative engine that builds a whole person from a sliver of evidence.',
-    text: "Attraction is a story the mind generates fast — a glance, a tone, an absence — and projects forward into a whole person, a whole future, a whole loss.\n\nWhat looks like seeing the other is often projecting onto them. Naming the frame doesn't kill the attraction. It stops the frame from running the person.",
-    Icon: Heart,
+    slug: "meaning",
+    name: "Meaning",
+    blurb: "The meaning of things is all hallucinated.",
+    text: "Even meaning in life—whether things are good or bad—it's all hallucinated. It's all fucking delusion. The significance of action, how we interpret them—it's all hallucinated.\n\nYou don't know if it's right. You just kind of make that up. That's the creepiest thing, really, realizing that it's really not real. That's just your perception.",
+    Icon: Compass,
     tint: 'var(--nt-state-fearful)',
   },
   {
-    slug: 'charisma',
-    name: 'Charisma',
-    blurb: 'The narrative gravity a person carries into a room.',
-    text: "Charisma is partly the strength and stability of someone's narrative field. A confident person walking into an anxious room shifts the room's gravity. People feel pulled into a steadier story about themselves.\n\nIt is less a trait than a state someone can hold long enough to share.",
+    slug: "charisma",
+    name: "Charisma",
+    blurb: "I think people with charisma maybe bring you into their world.",
+    text: "Maybe people who are really persuasive have a way of resolving your thoughts in line with theirs. It's like the energy field morphs to match theirs. You can see what they say, you're tracking them, and you're also following their scoring system.\n\nJust fun to be around energy. Playful. Best when not trying to take.",
     Icon: Sparkles,
     tint: 'var(--nt-state-proud)',
   },
   {
-    slug: 'certainty',
-    name: 'Certainty',
-    blurb: 'A felt quality of the state, not a property of the facts.',
-    text: 'Certainty is how a narrative feels from inside a charged state, not a measurement of how true it is. The same person, in a different state, finds the previous certainty puzzling.\n\nMost overconfidence is state-confidence mistaken for evidence.',
+    slug: "certainty",
+    name: "Certainty",
+    blurb: "Maybe certainty is just a lack of fear.",
+    text: "The qualities don't necessarily belong to the thought, but are associated with any kind of thinking in that moment. One of the most important qualities is certainty. Certainty leads to narrative lock: resistance to a competing narrative that is incompatible.\n\nAnyone who's certain about their purpose is dumb. How can you have certainty in a world of pointlessness?",
     Icon: ShieldCheck,
     tint: 'var(--nt-action)',
   },
   {
-    slug: 'depression-anxiety',
-    name: 'Depression & Anxiety',
-    blurb: 'Sustained states that lock in narratives about self, future, and world.',
-    text: 'Anxiety is a future-heavy narrative running on a body braced for threat. Depression is a collapsed state running narratives of closure, defeat, and pointlessness.\n\nThese are not just feelings. They are stable arrangements of mind, body, and story that mistake themselves for truth.',
+    slug: "depression-anxiety",
+    name: "Depression & Anxiety",
+    blurb: "Depression and anxiety are flavors. You can have both. But ultimately they're a way of thinking.",
+    text: "Maybe depression is remembering negative things. Or looking for negative things. It's a skew. It's not a word. It's a pattern of seeing the world.\n\nAnxiety is a projection of fear on things. It's saran. It's a flavor of thinking: a type, species, or genre of anticipation. It's still all thinking. It's patterns.",
     Icon: CloudRain,
     tint: 'var(--nt-state-ashamed)',
   },
   {
-    slug: 'personality',
-    name: 'Personality',
-    blurb: 'A recurring distribution of modes across time and contexts.',
-    text: "Personality is not a fixed essence. It is the distribution of modes a person tends to land in. The 'anxious person' lives more in Anxiety Mode. The 'driven person' in Progress Mode. The 'avoidant person' has worn grooves into Avoidance.\n\nA person is not identical to their patterns. They are the field in which patterns appear and dissolve.",
+    slug: "personality",
+    name: "Personality",
+    blurb: "Personality and default narrative style is the same thing. But personality really changes.",
+    text: "People act, think and feel in patterns. And in flavors. The type of patterns, the set of patterns and their distribution, and the flowchart of patterns (their interactions) are unique to people.\n\nMBTI is a parlor trick psychology. People really aren't 4 dimensions. They're much more complicated. Look at them, not at the test, to see how personality works. It really is more like melodies.",
     Icon: Fingerprint,
     tint: 'var(--nt-body)',
   },
   {
-    slug: 'disorders',
-    name: 'Disorders',
-    blurb: 'Modes that have become rigid, frequent, and self-reinforcing.',
-    text: 'Many disorders can be read as modes that lost their flexibility. A pattern that once protected the system stays on, organizes more and more of life, and becomes hard to step out of.\n\nThis framing does not replace clinical care. It offers a way to see the pattern as a pattern, not as identity.',
+    slug: "disorders",
+    name: "Disorders",
+    blurb: "We really need to be careful about calling them disorders, because that's saran too.",
+    text: "They aren't things that exist out there in a discrete form with value. They are just events.\n\nNarrative might actually be the disorder. The disorders could be narrative disorders with body components, and when they cluster behaviorally they become modes.\n\nThis isn't a replacement for clinical care.",
     Icon: AlertOctagon,
     tint: 'var(--nt-state-fearful)',
   },

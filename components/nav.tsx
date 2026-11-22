@@ -46,7 +46,7 @@ export default function Nav() {
           <span className="font-display text-[15px] tracking-tight">Narrative Theory</span>
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-5 xl:gap-6 text-sm" aria-label="Main">
+        <nav className="hidden xl:flex items-center gap-5 2xl:gap-6 text-sm" aria-label="Main">
           {primary.map((it) => (
             <Link
               key={it.href}
@@ -69,7 +69,7 @@ export default function Nav() {
           <Account me={me} />
         </nav>
 
-        <div className="lg:hidden flex items-center gap-2">
+        <div className="xl:hidden flex items-center gap-2">
           <Account me={me} compact />
           <button
             type="button"
@@ -84,7 +84,7 @@ export default function Nav() {
         </div>
       </div>
       {open && (
-        <div id="mobile-menu" className="lg:hidden border-t bg-background">
+        <div id="mobile-menu" className="xl:hidden border-t bg-background">
           <nav className="px-4 sm:px-5 py-3 flex flex-col" aria-label="Main">
             {primary.map((it) => (
               <Link

@@ -4,6 +4,7 @@ Everything on the site's **Writing** page comes from the files in this folder.
 
 - `notes/` short thoughts. One file per note.
 - `essays/` longer pieces.
+- `questions/` a question someone asked (the title) and your answer (the text).
 
 A file is just text with a few lines at the top:
 
@@ -25,6 +26,8 @@ The writing goes here. Blank line between paragraphs.
 
 Notes don't need a title or summary, just a date and the text.
 
+**Tags** sort everything into topics on the Writing page. Use one to three of: meditation, zen, the mind, feelings, relationships, the self, desire, conflict, therapy, everyday life, narrative theory. (The list lives in `lib/writing.ts` as `TOPICS` if you want to change it.)
+
 `draft: true` keeps it off the live site. You can still see drafts when you run the site on your computer, or on the live site by adding `?drafts=1` to the address. Delete that line (or set it to `false`) to publish.
 
 ## Adding something
@@ -36,6 +39,7 @@ Notes don't need a title or summary, just a date and the text.
 ```
 npm run note -- "There are no hard lines. It's all a matter of convenience."
 npm run essay -- "Letting Go"
+npm run question -- "How do I stop overthinking?"
 ```
 
 The first makes a note with today's date. The second makes an empty essay draft to fill in.

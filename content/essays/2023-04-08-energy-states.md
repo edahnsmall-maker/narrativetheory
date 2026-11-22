@@ -1,7 +1,7 @@
 ---
 title: Energy States
 date: 2023-04-08
-tags: theory
+tags: narrative theory, feelings
 summary: The energy state animates the body as well as the mind and by extension affects a person’s behaviors (that we’ll call action sets).
 from: edahnsmall.com/blog/2023/4/8/practical-nt-easy-examples
 ---

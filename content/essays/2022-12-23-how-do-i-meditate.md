@@ -1,7 +1,7 @@
 ---
 title: How do I meditate?
 date: 2022-12-23
-tags: zen, meditation
+tags: meditation, zen
 summary: I got interested in Zen at the end of college.
 from: edahnsmall.com/blog/2022/12/23/how-do-i-do-zen-meditation
 ---
