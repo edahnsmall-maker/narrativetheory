@@ -123,6 +123,10 @@ export default function TheoryIndex() {
         <div className="mx-auto max-w-6xl px-5 lg:px-8 py-4 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs uppercase tracking-widest text-muted-foreground">
           <span className="text-foreground/60">Jump to</span>
           <span aria-hidden className="h-3 w-px bg-border" />
+          <Link href="/theory/one-page" className="text-foreground hover:underline underline-offset-4">
+            On one page
+          </Link>
+          <span aria-hidden className="h-3 w-px bg-border" />
           <Link href="/theory/map" className="text-foreground hover:underline underline-offset-4">
             The map
           </Link>
@@ -193,11 +197,27 @@ export default function TheoryIndex() {
           </div>
 
           <Link
+            href="/theory/one-page"
+            className="group block rounded-3xl border px-6 py-8 md:px-10 md:py-10 mb-6 grid md:grid-cols-[1fr_auto] gap-6 items-center hover:bg-secondary/40"
+          >
+            <div>
+              <div className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground">The whole thing on one page</div>
+              <div className="mt-2 font-display text-3xl md:text-4xl">Narrative Theory on one page</div>
+              <p className="mt-2 text-muted-foreground max-w-xl">
+                Eight panels, from the crying baby to vectors. To read, print, or give to someone.
+              </p>
+            </div>
+            <span className="rounded-full border px-4 py-2 text-sm group-hover:bg-foreground group-hover:text-background justify-self-start">
+              Open it →
+            </span>
+          </Link>
+
+          <Link
             href="/theory/map"
             className="group block rounded-3xl bg-[#0b0b0c] text-white px-6 py-8 md:px-10 md:py-10 grid md:grid-cols-[1fr_auto] gap-6 items-center"
           >
             <div>
-              <div className="text-[11px] uppercase tracking-[0.16em] text-white/45">The whole thing on one page</div>
+              <div className="text-[11px] uppercase tracking-[0.16em] text-white/45">Layer by layer</div>
               <div className="mt-2 font-display text-3xl md:text-4xl">The map</div>
               <p className="mt-2 text-white/60 max-w-xl">
                 The slice, cuts, energy state, mode, narrative flavor, Saran Wrap, action sets, outcomes. Pick an energy state and

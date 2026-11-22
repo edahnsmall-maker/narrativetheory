@@ -12,3 +12,4 @@ next-env.d.ts
 
 # local editor/app config
 .claude/
+!public/downloads/*.pdf
