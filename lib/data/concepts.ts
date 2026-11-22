@@ -51,9 +51,9 @@ const baseConcepts: Concept[] = [
   {
     slug: "narrative-flavors",
     name: "Narrative Styles / Flavors",
-    shortDef: "The characteristic style or tone of thinking: anxious, strategic, romantic, suspicious, playful.",
+    shortDef: "Flavor refers to the style of the narrative. Each person has their own signature thinking style.",
     text:
-      "Every narrative has a flavor: anxious, strategic, romantic, suspicious, prosecutorial, collapsed, playful, devotional, contemptuous, tender. The flavor is the style of the thinking, not just its content.\n\nFlavors travel with body states and energy. Naming the flavor often loosens it faster than arguing with the words inside it.",
+      "Flavor refers to the style of the narrative. In traditional psychology, we might think of style as the emotional qualities of the narrative. For example, we might say that a person is feeling angry or sad or afraid. In NT we don’t distinguish between the thinking style and the feeling. The feeling is actually a combination of a thinking style and a body state, and it is only that.\n\nIn NT we describe one’s thinking states in flavors (sweet, salty, bitter, spicy) because using emotion terms like angry, sad creates confusion. In addition, the emotion-language doesn’t really capture the full range of human thinking styles. How for example, do we accurately describe a person whose thinking is theoretical, intellectual, and abstract? What about someone who constantly finds fault and error in things people say or do? Or someone who looks to dominate others in conversation?\n\nEach person has their own signature thinking style, and that thinking style changes over time, often passing through different flavors throughout the day.\n\nFlavors also give us the added ability to describe thinking states as combinations of flavors like a pot of soup, rather than being forced to choose one clumsy label and force-fit all of one’s thinking style into that label.",
     related: ["energy-state", "mode", "narrative"],
   },
   {

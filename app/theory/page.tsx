@@ -162,6 +162,37 @@ export default function TheoryIndex() {
               <h2 className="mt-2 font-display text-3xl md:text-4xl">Core vocabulary</h2>
             </div>
           </div>
+          <div className="mb-8 rounded-2xl border bg-card p-5 md:p-6">
+            <div className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground">One word per level, in order</div>
+            <ol className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-2 text-[15px]">
+              {['Slice', 'Cuts', 'Energy state', 'Mode', 'Narrative style (flavor)', 'Key narratives', 'Saran Wrap', 'Action sets', 'Outcomes'].map(
+                (w, i, all) => (
+                  <li key={w} className="flex items-center gap-2">
+                    <span className="rounded-full border px-3 py-1">{w}</span>
+                    {i < all.length - 1 && <span aria-hidden className="text-muted-foreground">→</span>}
+                  </li>
+                ),
+              )}
+            </ol>
+            <dl className="mt-5 grid gap-x-8 gap-y-2 text-sm text-muted-foreground sm:grid-cols-2">
+              {[
+                ['Mood', 'energy state'],
+                ['Mindstate, mode-world', 'mode'],
+                ['Thinking style, flavor', 'narrative style'],
+                ['Worldview, the dream', 'Saran Wrap'],
+                ['Karma', '“the animating energy behind the mental, behavioral, and body-feeling patterns”'],
+                ['Species', 'a mode many people share'],
+              ].map(([old, now]) => (
+                <div key={old} className="flex gap-2">
+                  <dt className="text-foreground/80 shrink-0">{old}</dt>
+                  <dd>= {now}</dd>
+                </div>
+              ))}
+            </dl>
+            <Link href="/theory/map" className="mt-5 inline-block text-sm underline underline-offset-4 hover:text-foreground text-muted-foreground">
+              See them stacked on the map →
+            </Link>
+          </div>
           <div className="grid md:grid-cols-2 gap-px bg-border rounded-2xl overflow-hidden border">
             {concepts.map((c, i) => {
               const color = accentVar(i)

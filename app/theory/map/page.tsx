@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { NTMap } from '@/components/nt2/NTMap'
+import { MapExtras } from '@/components/nt2/MapExtras'
 
 export const metadata: Metadata = {
   title: 'The map — Narrative Theory',
@@ -28,6 +29,8 @@ export default function MapPage() {
         <div className="mt-10">
           <NTMap />
         </div>
+
+        <MapExtras />
 
         <div className="mt-16 grid gap-6 md:grid-cols-2 border-t border-white/15 pt-10">
           <div>

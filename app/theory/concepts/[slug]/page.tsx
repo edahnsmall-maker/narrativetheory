@@ -6,12 +6,14 @@ import { GradientOrb } from '@/components/nt/GradientOrb'
 import { PeelWrap } from '@/components/nt2/PeelWrap'
 import { AutoComplete } from '@/components/nt2/AutoComplete'
 import { RankSeesaw } from '@/components/nt2/RankSeesaw'
+import { FlavorAxes } from '@/components/nt2/FlavorAxes'
 
 /** Interactive figures that belong to particular concepts. */
 const FIGURES: Record<string, ReactNode> = {
   'saran-wrap': <PeelWrap />,
   'thought-o-complete': <AutoComplete caption={false} />,
   rank: <RankSeesaw zone={false} />,
+  'narrative-flavors': <FlavorAxes />,
 }
 
 /** A practice to try after reading a concept. */
