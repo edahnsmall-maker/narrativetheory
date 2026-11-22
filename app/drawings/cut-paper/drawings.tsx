@@ -1,7 +1,7 @@
 'use client'
 
 import type { ReactNode } from 'react'
-import { ArtStyleProvider } from '@/components/home2/collage'
+import { ArtStyleProvider, type ArtStyle } from '@/components/home2/collage'
 import { HeroApple } from '@/components/home2/HeroApple'
 import { BabyScene } from '@/components/home2/BabyScene'
 import { CoworkerPanels } from '@/components/home2/CoworkerPanels'
@@ -25,9 +25,9 @@ function Item({ title, children }: { title: string; children: ReactNode }) {
   )
 }
 
-export function CutPaperDrawings() {
+export function CutPaperDrawings({ style = 'collage' }: { style?: ArtStyle }) {
   return (
-    <ArtStyleProvider style="collage">
+    <ArtStyleProvider style={style}>
       <Item title="An apple?">
         <div className="mt-6 max-w-sm">
           <HeroApple />
@@ -65,7 +65,7 @@ export function CutPaperDrawings() {
       </Item>
       <Item title="Mode Catalog portraits">
         <div className="mt-6 grid gap-4 grid-cols-2 sm:grid-cols-3">
-          {species.slice(0, 6).map((s) => (
+          {species.slice(0, 9).map((s) => (
             <SpeciesPortrait key={s.slug} s={s} />
           ))}
         </div>

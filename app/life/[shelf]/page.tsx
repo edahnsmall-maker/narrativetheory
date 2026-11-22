@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import { ArrowLeft } from 'lucide-react'
 import { getShelf, shelves } from '@/lib/data/lifeInstruction'
 import { shelfCards } from '@/components/life/library-data'
-import { artStyle, ArtLines } from '@/components/life/shelf-art'
+import { ShelfArt } from '@/components/home2/ShelfArt'
 import { ShelfGrid } from '@/components/life/shelf-grid'
 import { rules } from '@/lib/config'
 
@@ -40,10 +40,8 @@ export default async function ShelfPage({ params }: Props) {
   return (
     <div className="overflow-x-clip">
       <header className="relative border-b overflow-hidden">
-        <div className="absolute inset-0 opacity-50" style={artStyle(idx, 'hero')} aria-hidden />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[color-mix(in_oklab,var(--paper)_55%,transparent)] to-[var(--paper)]" aria-hidden />
-        <div className="absolute -right-10 -top-6 h-64 w-80 opacity-60 hidden sm:block" aria-hidden>
-          <ArtLines seed={shelf.slug} />
+        <div className="absolute right-4 lg:right-12 bottom-0 hidden sm:block" aria-hidden>
+          <ShelfArt shelf={shelf.slug} className="h-52 md:h-60 w-auto" />
         </div>
         <div className="relative mx-auto max-w-6xl px-4 sm:px-5 lg:px-8 pt-10 pb-12 md:pt-14 md:pb-14">
           <Link

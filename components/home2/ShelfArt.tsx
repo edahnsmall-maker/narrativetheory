@@ -1,7 +1,7 @@
 'use client'
 
 import { useId, type ReactNode } from 'react'
-import { C, Defs, Person, Scrap, type Expression } from './collage'
+import { C, Defs, Person, Scrap, useArtStyle, type Expression, type HairStyle } from './collage'
 
 /**
  * Small cut-paper header art for Life Instruction module pages: one cut-out
@@ -162,14 +162,34 @@ const ART: Record<string, Art> = {
   },
 }
 
-export function ShelfArt({ shelf, className }: { shelf: string; className?: string }) {
+const SKINS = [C.skin1, C.skin2, C.skin3]
+const HAIRS = [C.hair1, C.hair2, C.hair3]
+const STYLES: HairStyle[] = ['short', 'long', 'bun', 'curly', 'cap', 'bald']
+const MOODS: Expression[] = ['soft', 'smile', 'flat', 'worried', 'bigsmile']
+function hash(s: string) {
+  let h = 2166136261
+  for (let i = 0; i < s.length; i++) h = Math.imul(h ^ s.charCodeAt(i), 16777619)
+  return h >>> 0
+}
+
+/** seed: vary the person (skin, hair, mood, which way they look) so cards on one shelf aren't copies. */
+export function ShelfArt({ shelf, className, seed }: { shelf: string; className?: string; seed?: string }) {
   const id = useId().replace(/:/g, '')
   const a = ART[shelf] ?? ART['start-here-core-practice']
+  const contour = useArtStyle() === 'contour'
+  const pick = (salt: string, n: number) => (seed ? hash(seed + salt) % n : 0)
+  const v = seed
+    ? { skin: SKINS[pick('s', 3)], hair: HAIRS[pick('h', 3)], style: STYLES[pick('y', STYLES.length)], expr: a.expr === 'frown' || a.expr === 'worried' || a.expr === 'angry' ? a.expr : MOODS[pick('e', MOODS.length)], look: pick('l', 3) - 1 }
+    : null
   return (
     <svg viewBox="0 0 200 160" className={className} aria-hidden="true">
       <Defs id={id} />
-      <Scrap id={id} d="M18,30 C40,6 150,0 184,26 C204,60 196,140 172,160 H26 C6,130 0,60 18,30 Z" fill={a.ground} opacity={0.55} />
-      <Scrap id={id} d="M120,100 l60,-14 l14,60 l-62,10 z" fill={C.paper2} opacity={0.8} pattern="dots" />
+      {!contour && (
+        <>
+          <Scrap id={id} d="M18,30 C40,6 150,0 184,26 C204,60 196,140 172,160 H26 C6,130 0,60 18,30 Z" fill={a.ground} opacity={0.55} />
+          <Scrap id={id} d="M120,100 l60,-14 l14,60 l-62,10 z" fill={C.paper2} opacity={0.8} pattern="dots" />
+        </>
+      )}
       {a.prop(id)}
       {a.second ? (
         <>
@@ -177,7 +197,7 @@ export function ShelfArt({ shelf, className }: { shelf: string; className?: stri
           <Person id={id} x={136} y={160} s={0.6} skin={C.skin3} hair={C.hair1} hairStyle="long" shirt={C.tomato} expr="smile" look={-1} />
         </>
       ) : (
-        <Person id={id} x={96} y={160} s={0.7} skin={C.skin1} hair={C.hair2} hairStyle="short" shirt={a.shirt} expr={a.expr} look={a.look ?? 0} />
+        <Person id={id} x={96} y={160} s={0.7} skin={v?.skin ?? C.skin1} hair={v?.hair ?? C.hair2} hairStyle={v?.style ?? 'short'} shirt={a.shirt} expr={v?.expr ?? a.expr} look={v?.look ?? a.look ?? 0} />
       )}
     </svg>
   )

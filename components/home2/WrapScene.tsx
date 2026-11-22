@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useId, useRef, useState } from 'react'
-import { C, Defs, Figure, Paper, Person, Scrap, Toggle } from './collage'
+import { C, Defs, Figure, Paper, Person, Scrap, Toggle, K, useArtStyle } from './collage'
 
 type State = 'reflective' | 'anxious' | 'combative'
 
@@ -30,6 +30,7 @@ const EYE: [number, number] = [178, 412]
 
 export function WrapScene() {
   const id = useId().replace(/:/g, '')
+  const contour = useArtStyle() === 'contour'
   const [state, setState] = useState<State>('reflective')
   // 0: wrapped (resting) · 1: beams out · 2: wrapping · 3: beams fading
   const [step, setStep] = useState(0)
@@ -88,11 +89,11 @@ export function WrapScene() {
 
         {/* the ocean */}
         <g filter={`url(#${id}-cut)`}>
-          <rect x="470" y="70" width="450" height="170" rx="10" fill={C.cobalt} />
-          <rect x="470" y="70" width="450" height="60" rx="10" fill={C.sky} />
+          <rect x="470" y="70" width="450" height="170" rx="10" fill={contour ? C.sky : C.cobalt} />
+          <rect x="470" y="70" width="450" height="60" rx="10" fill={contour ? '#fff' : C.sky} />
           <circle cx="860" cy="108" r="24" fill={C.mustard} />
         </g>
-        <g stroke={C.cream} strokeWidth="4" fill="none" strokeLinecap="round" opacity="0.8">
+        <g stroke={contour ? K.ink : C.cream} strokeWidth={contour ? 2.2 : 4} fill="none" strokeLinecap="round" opacity={contour ? 1 : 0.8}>
           <path d="M500,170 q20,-14 40,0 t40,0 t40,0" />
           <path d="M650,200 q20,-14 40,0 t40,0 t40,0 t40,0" />
           <path d="M560,222 q20,-12 40,0 t40,0" />

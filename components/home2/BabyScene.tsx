@@ -1,7 +1,7 @@
 'use client'
 
 import { useId, useState } from 'react'
-import { C, Defs, Figure, Paper, Person, Scrap, ThoughtCloud, Toggle } from './collage'
+import { C, Defs, Figure, Paper, Person, Scrap, ThoughtCloud, Toggle, K, useArtStyle } from './collage'
 
 type Mood = 'great' | 'bad'
 
@@ -67,6 +67,7 @@ export function BabyScene() {
   const [mood, setMood] = useState<Mood>('bad')
   const m = COPY[mood]
   const bad = mood === 'bad'
+  const contour = useArtStyle() === 'contour'
 
   return (
     <Figure
@@ -92,7 +93,8 @@ export function BabyScene() {
         {/* restaurant: wall scraps, window, lamp */}
         <Scrap id={id} d="M0,0 H960 V250 H0 Z" fill={bad ? '#c4c7b4' : '#f1d28a'} opacity={0.55} pattern="lines" />
         <Scrap id={id} d="M520,40 h170 v130 h-170 z" fill={bad ? '#9fa9a6' : C.sky} opacity={0.85} />
-        <path d="M605,40 v130 M520,105 h170" stroke={C.cream} strokeWidth="6" />
+        <path d="M605,40 v130 M520,105 h170" stroke={contour ? K.ink : C.cream} strokeWidth={contour ? 2 : 6} />
+        {contour && <rect x="520" y="40" width="170" height="130" fill="none" stroke={K.ink} strokeWidth="2.4" />}
         <g filter={`url(#${id}-cut)`}>
           <line x1="820" y1="0" x2="820" y2="60" stroke={C.ink} strokeWidth="2" />
           <path d="M790,60 h60 l-12,26 h-36 z" fill={C.ink} />

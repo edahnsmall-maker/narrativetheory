@@ -6,7 +6,8 @@ import { ArrowRight, Search, X, Play } from 'lucide-react'
 import { GradientOrb } from '@/components/nt/GradientOrb'
 import { ModuleCard } from './module-card'
 import { ScrollRow } from './scroll-row'
-import { artStyle, ArtLines } from './shelf-art'
+import { artStyle } from './shelf-art'
+import { ShelfArt } from '@/components/home2/ShelfArt'
 import { useMe } from './use-me'
 import type { ModuleCardData, ShelfRowData } from './library-data'
 
@@ -172,8 +173,8 @@ function ContinueCard({ card, sessionId }: { card: ModuleCardData; sessionId: st
       style={{ borderRadius: 16 }}
       className={`group ${CARD_W} flex items-center gap-3 rounded-2xl border bg-card p-2.5 pr-4 hover:border-foreground/30`}
     >
-      <div className="relative h-16 w-20 shrink-0 overflow-hidden rounded-xl" style={artStyle(card.shelfIdx, card.id)}>
-        <ArtLines seed={card.id} />
+      <div className="relative h-16 w-20 shrink-0 overflow-hidden rounded-xl border border-black/5 bg-[#faf8f3] flex items-end justify-center">
+        <ShelfArt shelf={card.shelfSlug} seed={card.id} className="h-[95%] w-auto" />
         <span className="absolute inset-0 flex items-center justify-center">
           <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-card/90 shadow-sm transition-transform group-hover:scale-110">
             <Play size={13} className="ml-0.5" aria-hidden />

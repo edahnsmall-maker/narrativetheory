@@ -3,17 +3,28 @@
 import { createContext, useContext, type ReactNode } from 'react'
 
 /**
- * Two drawing styles share this kit:
- * - 'line' (default): thin dark outlines, soft pastel fills, light ground, clean labels.
+ * Three drawing styles share this kit:
+ * - 'contour' (default): clean contour. Even dark line, white fills, a few full-strength color pops.
+ * - 'line': thin dark outlines, soft pastel fills, light ground, clean labels.
  * - 'collage': the original cut-paper look (rough edges, grain, halftone). Kept so the
  *   older drawings can still be seen, e.g. on /drawings/cut-paper.
  */
-export type ArtStyle = 'line' | 'collage'
-const ArtStyleCtx = createContext<ArtStyle>('line')
+export type ArtStyle = 'contour' | 'line' | 'collage'
+const ArtStyleCtx = createContext<ArtStyle>('contour')
 export function ArtStyleProvider({ style, children }: { style: ArtStyle; children: ReactNode }) {
   return <ArtStyleCtx.Provider value={style}>{children}</ArtStyleCtx.Provider>
 }
 export const useArtStyle = () => useContext(ArtStyleCtx)
+
+/** Contour style colors */
+export const K = {
+  ground: '#faf8f3',
+  ink: '#242522',
+  accent: '#f0b93a',
+}
+
+/** True for the two outline styles ('contour' and 'line'), which share most drawing code. */
+export const useOutline = () => useArtStyle() !== 'collage'
 
 /** Line style colors */
 export const L = {
@@ -54,6 +65,7 @@ export const C = {
 /** Filters and patterns. Render once inside each <svg>, with a unique prefix. */
 export function Defs({ id }: { id: string }) {
   const style = useArtStyle()
+  if (style === 'contour') return <ContourDefs id={id} />
   if (style === 'line') return <LineDefs id={id} />
   return (
     <defs>
@@ -152,6 +164,59 @@ function LineDefs({ id }: { id: string }) {
   )
 }
 
+/* Contour style: same filter ids. "cut" turns light colors (skin, pastels, paper) white, keeps
+   strong colors as full-strength pops, and draws an even dark outline. "torn" only whitens. */
+function Whiten() {
+  return (
+    <>
+      <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0.3 0.59 0.11 0 0" result="lum" />
+      <feComponentTransfer in="lum" result="mask">
+        <feFuncA type="table" tableValues="0 0 0 0 0 0 0 0.15 0.85 0.97 1" />
+      </feComponentTransfer>
+      <feComposite in="mask" in2="SourceGraphic" operator="atop" result="soft" />
+    </>
+  )
+}
+function ContourDefs({ id }: { id: string }) {
+  return (
+    <defs>
+      <filter id={`${id}-cut`} x="-10%" y="-10%" width="120%" height="120%" colorInterpolationFilters="sRGB">
+        <Whiten />
+        <feMorphology in="SourceAlpha" operator="dilate" radius="1.5" result="fat" />
+        <feFlood floodColor={K.ink} result="ink" />
+        <feComposite in="ink" in2="fat" operator="in" result="outline" />
+        <feMerge>
+          <feMergeNode in="outline" />
+          <feMergeNode in="soft" />
+        </feMerge>
+      </filter>
+      <filter id={`${id}-torn`} colorInterpolationFilters="sRGB">
+        <Whiten />
+      </filter>
+      <filter id={`${id}-grain`}>
+        <feFlood floodOpacity="0" />
+      </filter>
+      <radialGradient id={`${id}-halo`}>
+        <stop offset="0" stopColor="#fff" stopOpacity="0" />
+        <stop offset="1" stopColor="#fff" stopOpacity="0" />
+      </radialGradient>
+      <pattern id={`${id}-dots`} width="7" height="7" patternUnits="userSpaceOnUse" />
+      <pattern id={`${id}-dots-lg`} width="11" height="11" patternUnits="userSpaceOnUse" />
+      <pattern id={`${id}-lines`} width="6" height="6" patternUnits="userSpaceOnUse" />
+      <pattern id={`${id}-check`} width="22" height="22" patternUnits="userSpaceOnUse">
+        <rect width="22" height="22" fill="#fff" />
+        <rect width="11" height="11" fill={K.accent} opacity="0.3" />
+        <rect x="11" y="11" width="11" height="11" fill={K.accent} opacity="0.3" />
+      </pattern>
+      <linearGradient id={`${id}-gloss`} x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stopColor="#fff" stopOpacity="0.75" />
+        <stop offset="0.35" stopColor="#fff" stopOpacity="0.08" />
+        <stop offset="1" stopColor="#fff" stopOpacity="0.3" />
+      </linearGradient>
+    </defs>
+  )
+}
+
 /** Mix a #rrggbb color toward white (t = 0 keeps it, 1 is white). */
 export function wash(hex: string, t: number) {
   const m = /^#([0-9a-f]{6})$/i.exec(hex)
@@ -163,7 +228,9 @@ export function wash(hex: string, t: number) {
 
 /** A full-bleed paper ground with grain. */
 export function Paper({ id, w, h, color = C.paper }: { id: string; w: number; h: number; color?: string }) {
-  if (useArtStyle() === 'line')
+  const st = useArtStyle()
+  if (st === 'contour') return <rect width={w} height={h} fill={wash(color, 0.86)} style={{ transition: 'fill 600ms ease' }} />
+  if (st === 'line')
     return <rect width={w} height={h} fill={wash(color, 0.82)} style={{ transition: 'fill 600ms ease' }} />
   return (
     <g>
@@ -177,6 +244,7 @@ export type Expression = 'smile' | 'soft' | 'flat' | 'frown' | 'angry' | 'worrie
 export type HairStyle = 'short' | 'long' | 'bun' | 'curly' | 'bald' | 'cap'
 
 function Face({ e, look = 0 }: { e: Expression; look?: number }) {
+  const contour = useArtStyle() === 'contour'
   const ex = look * 2
   const brows: Record<Expression, string> = {
     smile: 'M-13,-103 q5,-3 9,0 M4,-103 q5,-3 9,0',
@@ -204,7 +272,7 @@ function Face({ e, look = 0 }: { e: Expression; look?: number }) {
       <circle cx={8 + ex} cy="-93" r="2.4" fill={C.ink} />
       <path d={brows[e]} stroke={C.ink} strokeWidth="2" fill="none" strokeLinecap="round" />
       {mouths[e]}
-      {(e === 'smile' || e === 'bigsmile' || e === 'soft') && (
+      {!contour && (e === 'smile' || e === 'bigsmile' || e === 'soft') && (
         <>
           <circle cx="-15" cy="-84" r="4.5" fill={C.tomato} opacity="0.25" />
           <circle cx="15" cy="-84" r="4.5" fill={C.tomato} opacity="0.25" />
@@ -278,7 +346,43 @@ export function Person({
   children?: ReactNode
 }) {
   const sh = slump * 8
-  if (useArtStyle() === 'line') {
+  const st = useArtStyle()
+  if (st === 'contour') {
+    const sw = 2.1 / s
+    const top = -60 - sh
+    const torso = `M-46,0 C-46,${-40 - sh} -32,${top} 0,${-60 - sh * 0.4} C32,${top} 46,${-40 - sh} 46,0 Z`
+    const ny = -59 - sh * 0.4
+    return (
+      <g transform={`translate(${x},${y}) scale(${s})`} style={{ transition: 'transform 500ms ease' }}>
+        <g stroke={K.ink} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round">
+          {/* neck */}
+          <path d={`M-8,${-72 + sh} V${ny + 2} H8 V${-72 + sh} Z`} fill={wash(skin, 0.8)} />
+          {/* open shirt over a colored tee: the pop */}
+          <path d={torso} fill="#fff" />
+          <path d={`M-15,${ny} Q0,${ny + 10} 15,${ny} L11,0 L-11,0 Z`} fill={shirt} style={{ transition: 'fill 500ms' }} />
+          <path d={`M-9,${ny + 1} Q0,${ny + 8} 9,${ny + 1}`} fill="none" strokeWidth={sw * 0.6} />
+          <path d={`M-15,${ny} L-23,${ny + 14} L-12,${ny + 10} Z M15,${ny} L23,${ny + 14} L12,${ny + 10} Z`} fill="#fff" />
+          <path d={`M-34,${-38 - sh * 0.6} C-36,-24 -37,-12 -37,0 M34,${-38 - sh * 0.6} C36,-24 37,-12 37,0`} fill="none" strokeWidth={sw * 0.7} />
+          <path d={`M19,${ny + 18} h13 v11 q-6.5,2.5 -13,0 Z`} fill="none" strokeWidth={sw * 0.7} />
+        </g>
+        <g fill={K.ink}>
+          <circle cx="15" cy={ny + 24} r={1.6} />
+          <circle cx="14" cy={ny + 40} r={1.6} />
+        </g>
+        <g transform={`translate(0,${sh})`}>
+          <g stroke={K.ink} strokeWidth={sw} strokeLinecap="round" strokeLinejoin="round">
+            <path d="M-24,-98 c-8,-3 -10,13 -1,15 M24,-98 c8,-3 10,13 1,15" fill={wash(skin, 0.8)} />
+            <ellipse cx="0" cy="-93" rx="25" ry="28" fill={wash(skin, 0.8)} />
+            <Hair style={hairStyle} color={hair} />
+          </g>
+          <Face e={expr} look={look} />
+          <path d="M0,-92 q-2,6 -3,8 q2.5,1.2 5,0" fill="none" stroke={K.ink} strokeWidth={sw * 0.6} strokeLinecap="round" />
+        </g>
+        {children}
+      </g>
+    )
+  }
+  if (st === 'line') {
     const sw = 1.7 / s
     const torso = `M-46,0 C-46,${-40 - sh} -32,${-60 - sh} 0,${-60 - sh * 0.4} C32,${-60 - sh} 46,${-40 - sh} 46,0`
     return (
@@ -347,7 +451,37 @@ export function ThoughtCloud({
   const lh = size * 1.3
   const h = lines.length * lh + 34
   const r = 18
-  if (useArtStyle() === 'line') {
+  const cst = useArtStyle()
+  if (cst === 'contour') {
+    const n = Math.max(3, Math.round(w / 46))
+    const step = w / n
+    // a bumpy cloud outline around the text box
+    let d = `M${x},${y + h / 2}`
+    d += ` C${x - 14},${y + h / 2 - 4} ${x - 8},${y - 6} ${x + step * 0.5},${y + 2}`
+    for (let i = 0; i < n; i++) d += ` Q${x + step * (i + 0.75)},${y - 18} ${x + step * (i + 1) + (i === n - 1 ? 0 : 0)},${y + 2}`
+    d += ` C${x + w + 18},${y + 6} ${x + w + 18},${y + h - 6} ${x + w},${y + h}`
+    for (let i = n; i > 0; i--) d += ` Q${x + step * (i - 0.5)},${y + h + 18} ${x + step * (i - 1)},${y + h}`
+    d += ` C${x - 14},${y + h + 4} ${x - 14},${y + h / 2 + 4} ${x},${y + h / 2} Z`
+    return (
+      <g>
+        {tailTo && (
+          <g fill="#fff" stroke={K.ink} strokeWidth="2">
+            <circle cx={x + (tailTo[0] - x) * 0.55} cy={y + h + (tailTo[1] - y - h) * 0.45} r="7" />
+            <circle cx={x + (tailTo[0] - x) * 0.8} cy={y + h + (tailTo[1] - y - h) * 0.75} r="4" />
+          </g>
+        )}
+        <path d={d} fill="#fff" stroke={K.ink} strokeWidth="2" strokeLinejoin="round" />
+        <text x={x + w / 2} y={y + 22 + size * 0.4} textAnchor="middle" fontSize={size * 0.95} fill={K.ink}>
+          {lines.map((l, i) => (
+            <tspan key={i} x={x + w / 2} dy={i === 0 ? 0 : lh}>
+              {l}
+            </tspan>
+          ))}
+        </text>
+      </g>
+    )
+  }
+  if (cst === 'line') {
     return (
       <g>
         {tailTo && (
@@ -398,7 +532,14 @@ export function ThoughtCloud({
 
 /** A rough paper scrap (background decoration). */
 export function Scrap({ id, d, fill, opacity = 1, pattern }: { id: string; d: string; fill: string; opacity?: number; pattern?: 'dots' | 'dots-lg' | 'lines' }) {
-  if (useArtStyle() === 'line')
+  const st = useArtStyle()
+  if (st === 'contour')
+    return (
+      <g opacity={opacity}>
+        <path d={d} fill={wash(fill, 0.86)} style={{ transition: 'fill 600ms' }} />
+      </g>
+    )
+  if (st === 'line')
     return (
       <g opacity={opacity}>
         <path d={d} fill={wash(fill, 0.72)} style={{ transition: 'fill 600ms' }} />
@@ -462,11 +603,12 @@ export function Figure({
   /** Readable version of the text inside the art, shown on phones where the SVG text gets tiny. */
   mobile?: ReactNode
 }) {
-  const line = useArtStyle() === 'line'
+  const st = useArtStyle()
+  const line = st !== 'collage'
   return (
     <figure className={`my-12 md:my-16 -mx-4 sm:mx-0 ${line ? 'art-line' : ''}`}>
       {controls && <div className="mb-4 px-4 sm:px-0 flex flex-wrap items-center gap-3">{controls}</div>}
-      <div className={`overflow-hidden sm:rounded-3xl border-y sm:border shadow-[0_1px_0_rgba(0,0,0,0.04)] ${line ? 'bg-[#faf9f7]' : 'bg-[#f5f0e6]'}`} aria-label={label} role="img">
+      <div className={`overflow-hidden sm:rounded-3xl border-y sm:border shadow-[0_1px_0_rgba(0,0,0,0.04)] ${st === 'contour' ? 'bg-[#faf8f3]' : line ? 'bg-[#faf9f7]' : 'bg-[#f5f0e6]'}`} aria-label={label} role="img">
         {children}
       </div>
       {mobile && <div className="sm:hidden px-4 pt-3 text-[15px] leading-snug">{mobile}</div>}

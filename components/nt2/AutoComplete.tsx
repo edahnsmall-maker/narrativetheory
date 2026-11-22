@@ -48,7 +48,7 @@ const SCENES: Record<Scene, { tab: string; known: string; prompt: string; fill: 
 export function AutoComplete({ caption = true }: { caption?: boolean }) {
   const [scene, setScene] = useState<Scene>('read')
   const [state, setState] = useState<State>('anxious')
-  const line = useArtStyle() === 'line'
+  const line = useArtStyle() !== 'collage'
   const [typed, setTyped] = useState('')
   const s = SCENES[scene]
   const chips = s.fill[state]

@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { Check, Lock, CircleDot } from 'lucide-react'
-import { artStyle, ArtLines } from './shelf-art'
+import { ShelfArt } from '@/components/home2/ShelfArt'
 import type { ModuleCardData } from './library-data'
 import type { MeState } from './use-me'
 
@@ -60,9 +60,9 @@ export function ModuleCard({
       style={{ borderRadius: 16 }}
       className={`group flex flex-col rounded-2xl border bg-card p-2.5 transition-colors hover:border-foreground/30 focus-visible:border-foreground/30 ${className}`}
     >
-      <div className="relative aspect-[16/10] overflow-hidden rounded-xl" style={artStyle(card.shelfIdx, card.id)}>
-        <div className="absolute inset-0 transition-transform duration-500 group-hover:scale-[1.04]">
-          <ArtLines seed={card.id} />
+      <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-black/5 bg-[#faf8f3]">
+        <div className="absolute inset-0 flex items-end justify-center transition-transform duration-500 group-hover:scale-[1.04]">
+          <ShelfArt shelf={card.shelfSlug} seed={card.id} className="h-[92%] w-auto" />
         </div>
         <div className="absolute left-2.5 top-2.5 min-h-[22px]">
           <BadgePill badge={badge} />

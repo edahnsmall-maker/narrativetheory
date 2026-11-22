@@ -25,7 +25,7 @@ export function PeelWrap() {
   // how many layers have been peeled off (outermost first)
   const [peeled, setPeeled] = useState(0)
   const done = peeled >= LAYERS.length
-  const line = useArtStyle() === 'line'
+  const line = useArtStyle() !== 'collage'
 
   return (
     <Figure
@@ -127,7 +127,7 @@ export function PeelWrap() {
               <circle cx={x + w} cy={ty} r="4" fill={l.color} />
               {/* the label, in a column on the right */}
               <g transform={`translate(${TAG_X},${ty}) rotate(${line ? 0 : i % 2 ? 1.2 : -1.2})`} filter={line ? undefined : `url(#${id}-cut)`}>
-                <rect x="0" y="-20" width={tagW} height="44" fill={C.cream} rx={line ? 8 : 0} stroke={line ? L.lavender : 'none'} strokeWidth="1.5" />
+                <rect x="0" y="-20" width={tagW} height="44" fill={C.cream} rx={line ? 8 : 0} stroke={line ? '#242522' : 'none'} strokeWidth="2" />
                 <rect x="0" y="-20" width="6" height="44" fill={l.color} />
                 <text x="14" y="-4" fontSize="11" letterSpacing="1.5" fill={C.ink} opacity="0.55" fontFamily="Inter, sans-serif">
                   {l.name.toUpperCase()}

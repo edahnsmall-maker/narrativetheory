@@ -42,10 +42,10 @@ export function TheShift() {
   const h = HEAT[stage]
   const done = stage === 3
   const left = BEES_LEFT[stage]
-  const line = useArtStyle() === 'line'
+  const line = useArtStyle() !== 'collage'
   const sky = (c: string, t = 0.8) => (line ? wash(c, t) : c)
   // labels: crisp text, outlined pill in line style
-  const tagRect = line ? { stroke: L.lavender, strokeWidth: 1.5, rx: 8 } : {}
+  const tagRect = line ? { stroke: '#242522', strokeWidth: 2, rx: 8 } : {}
   const tagFilter = line ? undefined : `url(#${id}-cut)`
 
   return (
@@ -107,7 +107,7 @@ export function TheShift() {
             <rect x="30" y="230" width="360" height="300" fill={sky('#2f5bd3')} opacity="0.55" />
             <rect x="30" y="360" width="360" height="170" fill={sky(C.sky, 0.5)} opacity="0.7" />
             {[[70, 70], [150, 110], [320, 60], [250, 160], [90, 190], [350, 200]].map(([x, y], i) => (
-              <circle key={i} cx={x} cy={y} r="1.8" fill={line ? L.lavender : '#fff'} opacity="0.8" />
+              <circle key={i} cx={x} cy={y} r="1.8" fill={line ? '#f0b93a' : '#fff'} opacity="0.8" />
             ))}
             <g transform="translate(225 300) rotate(-35)">
               {/* plasma trail, fades as the heat goes */}
