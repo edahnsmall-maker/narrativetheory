@@ -15,6 +15,7 @@ const primary = [
   { href: '/writing', label: 'Writing' },
   { href: '/notebook', label: 'Notebook' },
   { href: '/about', label: 'About' },
+  { href: '/contact', label: 'Contact' },
 ]
 
 export default function Nav() {

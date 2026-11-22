@@ -157,7 +157,7 @@ export const species: Species[] = [
       'There’s a physical, flow kind and a mental kind that leads to heat and friction. The difference is the energy and attachment behind it, the way it impacts our self-worth.',
     world: 'If self-worth is intact, goal mode can lead to flow. Otherwise it can lead to internal friction and heat.',
     related: ['management-mode', 'progress-mode', 'searching-mode'],
-    portrait: { expr: 'frown', shirt: P.tomato, bg: '#f1dcd4', hair: P.hair2, hairStyle: 'short', skin: P.skin1 },
+    portrait: { expr: 'flat', shirt: P.cobalt, bg: '#e3e9f6', hair: P.hair2, hairStyle: 'short', skin: P.skin1 },
   },
   {
     slug: 'management-mode',

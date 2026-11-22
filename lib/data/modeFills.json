@@ -1,0 +1,116 @@
+{
+  "alert-mode": {
+    "sequence": { "text": "Starts when someone seems too high, out of your zone, and you fear them. Winds down when you just relax and let your mind go.", "source": "notes:apple-notes-all-to-2026-06.txt:1011-1013" },
+    "meme": { "text": "When I feel a hint of anxiety the alarms all go off, like a prison with an escapee.", "source": "notes:narrative-notes.txt:1236" }
+  },
+  "anger-mode": {
+    "world": { "text": "All-absorbing. Tense. Oppositional. Me vs. you. The other person becomes enemy #1, with a story about them that’s very narrow.", "source": "notes:narrative-notes.txt:2820-2822" },
+    "sequence": { "text": "Pre-anger first: dissembling, ramping up, still trying to escape the state. Then anger. Then post-anger, putting down the gloves.", "source": "notes:edahn-overview-2024-03.txt:26" },
+    "meme": { "text": "A kettle screaming on the stove.", "source": "filled" }
+  },
+  "performance-mode": {
+    "does": { "text": "Actions and tactics directed at entertaining and appeasing the partner, or making them think I am something worthy.", "source": "notes:narrative-notes.txt:1605" },
+    "sequence": { "text": "Starts with visibility; winds down when contact replaces evaluation.", "source": "modes.json" },
+    "meme": { "text": "An actor checking the audience after every line.", "source": "modes.json" }
+  },
+  "boyfriend-mode": {
+    "body": { "text": "Like I’m just inhabiting my body like an invader.", "source": "notes:narrative-notes.txt:1604" },
+    "world": { "text": "As you get close to someone, you elevate them, making them royalty, while lowering yourself. You feel like you have to prove your worth or earn their approval.", "source": "notes:apple-notes-all-to-2026-06.txt:3729" },
+    "does": { "text": "Overthink. Second-guess myself. Focus too much on pleasing them.", "source": "notes:apple-notes-all-to-2026-06.txt:3729" },
+    "sequence": { "text": "Starts after the beginning, as you get close. It happens gradually. Winds down when I hold onto my frame and stay myself.", "source": "notes:apple-notes-all-to-2026-06.txt:3729" },
+    "meme": { "text": "A guy reading his lines off a boyfriend script.", "source": "filled" }
+  },
+  "bonding-mode": {
+    "body": { "text": "I kinda numb out.", "source": "notes:narrative-notes.txt:1969" },
+    "thinking": { "text": "Trying to bond.", "source": "notes:narrative-notes.txt:1966" },
+    "does": { "text": "Agree, please, smooth things over, brace for criticism.", "source": "filled" },
+    "sequence": { "text": "Starts with someone to connect with; winds down when the fear of disappointing them loosens.", "source": "filled" },
+    "meme": { "text": "A dog rolling over before anyone has said a word.", "source": "filled" }
+  },
+  "promoter-mode": {
+    "body": { "text": "Bright face, up energy, a guard on duty underneath.", "source": "filled" },
+    "world": { "text": "Everyone’s discomfort is my job.", "source": "filled" },
+    "does": { "text": "Talk people up, fill silences, smooth things over, keep everyone comfortable.", "source": "filled" },
+    "sequence": { "text": "Starts when someone looks uncomfortable; winds down when the guard steps off and I can feel and relax.", "source": "filled" },
+    "meme": { "text": "A party host who never gets to sit down.", "source": "filled" }
+  },
+  "evaluation-mode": {
+    "body": { "text": "Cooler, watchful, a little removed.", "source": "filled" },
+    "does": { "text": "Project the model onto the person, evaluate, say what I like.", "source": "notes:narrative-notes.txt:4847" },
+    "sequence": { "text": "Starts as you continue dating: out of positive vibes and feeling warm, into the judgments world. Winds down when you’re just friends.", "source": "notes:narrative-notes.txt:4847" },
+    "meme": { "text": "A buyer walking through a house with a clipboard.", "source": "filled" }
+  },
+  "goal-mode": {
+    "body": { "text": "Tight. Heat and friction.", "source": "notes:narrative-notes.txt:4465" },
+    "does": { "text": "Set up a goal, then judge everything against it. Plan to go from A to B. Any deviation is frustrating.", "source": "notes:narrative-notes.txt:517" },
+    "sequence": { "text": "Starts when you think you’re not there and get tight. Winds down when you ask: what if nothing is actually wrong?", "source": "notes:narrative-notes.txt:519" },
+    "meme": { "text": "A runner checking the finish line instead of running.", "source": "filled" }
+  },
+  "management-mode": {
+    "body": { "text": "We get so stressed out quietly.", "source": "notes:narrative-notes.txt:3494" },
+    "world": { "text": "So much to keep track of. Things to avoid: shame, social humiliation, pain and fear. Not wanting to look weird.", "source": "notes:narrative-notes.txt:3488" },
+    "does": { "text": "Checking. Doubting your technique. Over-management.", "source": "notes:narrative-notes.txt:557" },
+    "sequence": { "text": "Starts before you notice: you come in already wanting a lot of things. Winds down when you take a break from the management and thinking.", "source": "notes:narrative-notes.txt:3488-3497" },
+    "meme": { "text": "Someone lugging a full suitcase around without noticing they’re holding it.", "source": "filled" }
+  },
+  "searching-mode": {
+    "body": { "text": "Tight, pinging, threat level raised.", "source": "notes:narrative-notes.txt:557" },
+    "world": { "text": "We’re all searching all the time to feel different and comfortable.", "source": "notes:apple-notes-all-to-2026-06.txt:3895" },
+    "does": { "text": "Searching, tracking, modifying.", "source": "notes:narrative-notes.txt:1497" },
+    "sequence": { "text": "Activated when I sit down to be still. Winds down by non-searching: you just stop searching for things.", "source": "notes:narrative-notes.txt:557; apple-notes-all-to-2026-06.txt:32" },
+    "meme": { "text": "A flashlight sweeping a room that’s already lit.", "source": "filled" }
+  },
+  "progress-mode": {
+    "body": { "text": "Restless pressure, forward lean, inability to settle.", "source": "modes.json" },
+    "thinking": { "text": "Comparative, future-evaluating, self-measuring.", "source": "modes.json" },
+    "does": { "text": "Plan, compare, optimize, self-improve, worry.", "source": "modes.json" },
+    "sequence": { "text": "Starts with life reflection/comparison; winds down through action, perspective, or letting the verdict drop.", "source": "modes.json" },
+    "meme": { "text": "A Sunday afternoon wearing a performance review badge.", "source": "modes.json" }
+  },
+  "flex-mode": {
+    "body": { "text": "Puffed up, on, watching for the reaction.", "source": "filled" },
+    "thinking": { "text": "Pretending to be the person you think you’re supposed to be, based on what you think is cool.", "source": "notes:narrative-notes.txt:1855" },
+    "world": { "text": "Cool status. Status is rank.", "source": "notes:narrative-notes.txt:1855" },
+    "does": { "text": "Subtly competing, comparing, or shrinking myself.", "source": "notes:apple-notes-all-to-2026-06.txt:1507" },
+    "sequence": { "text": "Starts with something to prove or achieve. Winds down when the need to prove yourself drops. When it drops, something opens.", "source": "notes:apple-notes-all-to-2026-06.txt:1061" },
+    "meme": { "text": "A peacock fanning its tail at a dinner party.", "source": "filled" }
+  },
+  "nailed-it": {
+    "does": { "text": "Fist pump, wave the arms, a loud whew. Then braver acts: asking someone out, asking for a raise, singing karaoke.", "source": "notes:narrative-notes.txt:4547-4549" },
+    "sequence": { "text": "Starts after focus, with a celebratory gesture. Lasts 1–4 days, tapering off after day 1.", "source": "notes:narrative-notes.txt:4547-4553" },
+    "meme": { "text": "A gymnast sticking the landing, arms up.", "source": "filled" }
+  },
+  "victim-mode": {
+    "body": { "text": "Heavy, slumped, sighing.", "source": "filled" },
+    "thinking": { "text": "It’s being done to me. Me vs. them. Simple.", "source": "filled" },
+    "does": { "text": "Resent, replay, keep score, reject the other.", "source": "filled" },
+    "sequence": { "text": "Starts as a dance where people trigger old Saran in each other. Once it’s established, it takes conscious effort to break. It has momentum: the pattern continues even after you find out you were wrong.", "source": "notes:apple-notes-all-to-2026-06.txt:2630; narrative-notes.txt:3263" },
+    "meme": { "text": "The same sad song on repeat.", "source": "filled" }
+  },
+  "outgroup-mode": {
+    "body": { "text": "Closed off, cold eyes, turned away.", "source": "filled" },
+    "does": { "text": "A tendency to disagree. No closeness, no overlap of self and other.", "source": "notes:apple-notes-all-to-2026-06.txt:2804" },
+    "sequence": { "text": "Starts when expectation narratives of conflict are activated by a possible outgroup member. Winds down when trust comes back.", "source": "notes:narrative-notes.txt:3467" },
+    "meme": { "text": "A bouncer who has already decided you’re not on the list.", "source": "filled" }
+  },
+  "post-fight-warmth": {
+    "world": { "text": "Once we’ve calmed down, we see that it’s all bullshit. What we thought about the person was in our head.", "source": "notes:narrative-notes.txt:2824" },
+    "sequence": { "text": "Starts when you put down the gloves and look into your feelings: what is this? Opens new options. You can let go of habitual conflicts and patterns.", "source": "notes:narrative-notes.txt:2813" },
+    "meme": { "text": "Two boxers dropping their gloves.", "source": "filled" }
+  },
+  "deep-chill-mode": {
+    "body": { "text": "Relaxed in your shoulders. Musculature let go. Breathing slowed down a bit. Smooth.", "source": "notes:narrative-notes.txt:1616; narrative-notes.txt:1499" },
+    "thinking": { "text": "An empty mind is a just chilling mind. Not filled with checking or trying to hold onto something.", "source": "notes:narrative-notes.txt:1612" },
+    "world": { "text": "Happy and self-sufficient and at rest. Calm. Open.", "source": "notes:narrative-notes.txt:1500" },
+    "does": { "text": "Pay attention to your environment, but stay chill. Not in goal mode.", "source": "notes:narrative-notes.txt:1501" },
+    "sequence": { "text": "Starts when the goal drops and the body settles; winds down when a task or worry pulls you back into goal mode.", "source": "filled" },
+    "meme": { "text": "A sea otter floating on its back.", "source": "filled" }
+  },
+  "rest-mode": {
+    "body": { "text": "Slow, heavy, settled.", "source": "filled" },
+    "world": { "text": "Nothing to fix. Nothing missing.", "source": "filled" },
+    "does": { "text": "One thing at a time. Sit, eat, walk, talk.", "source": "filled" },
+    "sequence": { "text": "Starts when the doing stops; winds down when a goal or worry picks the doing back up.", "source": "filled" },
+    "meme": { "text": "A cat asleep in a patch of sun.", "source": "filled" }
+  }
+}

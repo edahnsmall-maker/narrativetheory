@@ -3,9 +3,9 @@
 import { useMemo, useState } from 'react'
 import Link from 'next/link'
 import { families } from '@/lib/data/families'
-import { modes } from '@/lib/data/modes'
+import { catalog as modes } from '@/lib/data/catalog'
 
-const W = 900, H = 640
+const W = 1000, H = 740
 
 export function ModeNetwork() {
   const [hovered, setHovered] = useState<string | null>(null)
@@ -13,7 +13,7 @@ export function ModeNetwork() {
 
   const layout = useMemo(() => {
     const cx = W / 2, cy = H / 2
-    const famRadius = 220
+    const famRadius = 245
     const center = families.find((f) => f.name === 'Correct Function / Being')
     const ring = families.filter((f) => f.name !== 'Correct Function / Being')
     const famPositions = [
@@ -30,7 +30,7 @@ export function ModeNetwork() {
       const idx = Math.max(0, siblings.findIndex((x) => x.slug === m.slug))
       const count = Math.max(1, siblings.length)
       const a = (idx / count) * Math.PI * 2
-      const r = (fam.isCenter ? 55 : 78) + (idx % 2) * 22
+      const r = (fam.isCenter ? 96 : 80) + (idx % 2) * 24
       return { ...m, x: Math.round((fam.x + Math.cos(a) * r) * 100) / 100, y: Math.round((fam.y + Math.sin(a) * r) * 100) / 100 }
     })
     return { famPositions, modePositions }
@@ -75,10 +75,13 @@ export function ModeNetwork() {
               onClick={() => setSelected(m.slug)}
               style={{ cursor: 'pointer' }}>
               <circle cx={m.x} cy={m.y} r={14} fill="transparent" />
-              <circle cx={m.x} cy={m.y} r={active ? 7 : 5}
-                fill={`oklch(0.85 0.12 ${fam.hue})`}
-                stroke="currentColor" strokeOpacity={active ? 0.7 : 0.3} strokeWidth={active ? 1.2 : 0.6}
+              <circle cx={m.x} cy={m.y} r={active ? 13 : 11}
+                fill={`oklch(0.95 0.05 ${fam.hue})`}
+                stroke="currentColor" strokeOpacity={active ? 0.7 : 0.25} strokeWidth={active ? 1.2 : 0.6}
                 style={{ pointerEvents: 'none' }} />
+              <text x={m.x} y={m.y + 4.5} textAnchor="middle" style={{ pointerEvents: 'none', fontSize: active ? 14 : 12 }}>
+                {m.sticker}
+              </text>
               {active && (
                 <g style={{ pointerEvents: 'none' }}>
                   <rect x={m.x - (m.name.length * 3.4)} y={m.y - 26} width={m.name.length * 6.8} height={16} rx={4}
@@ -103,16 +106,16 @@ export function ModeNetwork() {
                 {focusMode.family}
               </div>
               <div className="font-display text-lg leading-tight">{focusMode.name}</div>
-              <div className="text-xs text-muted-foreground italic mt-0.5">{focusMode.tagline}</div>
+              <div className="text-xs text-muted-foreground italic mt-0.5">{focusMode.line}</div>
             </div>
             <button className="text-xs text-muted-foreground hover:text-foreground"
               onClick={() => setSelected(null)} aria-label="Close">✕</button>
           </div>
           <dl className="mt-3 space-y-2 text-[12px] leading-snug">
             {[
-              { label: 'Mind / Narrative', value: focusMode.saran, token: 'var(--nt-mind)' },
+              { label: 'Mind / Narrative', value: focusMode.world, token: 'var(--nt-mind)' },
               { label: 'Body / Energy', value: focusMode.body, token: 'var(--nt-body)' },
-              { label: 'Action / Behavior', value: focusMode.behaviors, token: 'var(--nt-action)' },
+              { label: 'Action / Behavior', value: focusMode.does, token: 'var(--nt-action)' },
             ].map((row) => (
               <div key={row.label} className="flex gap-2">
                 <span className="mt-1.5 h-1.5 w-1.5 rounded-full shrink-0" style={{ background: row.token }} />

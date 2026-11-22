@@ -1,0 +1,752 @@
+{
+ "alert-mode": {
+  "sticker": "👀",
+  "quote": {
+   "text": "Once bitten, twice shy.",
+   "by": "Proverb"
+  },
+  "energy": "Fearful",
+  "pull": "apart",
+  "doing": "doing"
+ },
+ "anxiety-mode": {
+  "sticker": "⛈️",
+  "quote": {
+   "text": "We suffer more often in imagination than in reality.",
+   "by": "Seneca"
+  },
+  "energy": "Fearful",
+  "pull": "apart",
+  "doing": "doing"
+ },
+ "social-anxiety-mode": {
+  "sticker": "⚖️",
+  "quote": {
+   "text": "Hell is other people.",
+   "by": "Jean-Paul Sartre"
+  },
+  "energy": "Fearful",
+  "pull": "apart",
+  "doing": "doing"
+ },
+ "fight-mode": {
+  "sticker": "🥊",
+  "quote": {
+   "text": "A soft answer turneth away wrath.",
+   "by": "Proverbs 15:1"
+  },
+  "energy": "Agitated",
+  "pull": "apart",
+  "doing": "doing"
+ },
+ "freeze-mode": {
+  "sticker": "🧊",
+  "quote": {
+   "text": "And thus the native hue of resolution is sicklied o'er with the pale cast of thought.",
+   "by": "William Shakespeare, Hamlet"
+  },
+  "energy": "Fearful",
+  "pull": "apart",
+  "doing": "doing"
+ },
+ "defense-mode": {
+  "sticker": "🛡️",
+  "quote": {
+   "text": "The lady doth protest too much, methinks.",
+   "by": "William Shakespeare, Hamlet"
+  },
+  "energy": "Agitated",
+  "pull": "apart",
+  "doing": "doing"
+ },
+ "appeasement-mode": {
+  "sticker": "🙇",
+  "quote": {
+   "text": "An appeaser is one who feeds a crocodile, hoping it will eat him last.",
+   "by": "Winston Churchill"
+  },
+  "energy": "Fearful",
+  "pull": "together",
+  "doing": "doing"
+ },
+ "avoidance-mode": {
+  "sticker": "🙈",
+  "quote": {
+   "text": "Procrastination is the thief of time.",
+   "by": "Edward Young"
+  },
+  "energy": "Fearful",
+  "pull": "apart",
+  "doing": "doing"
+ },
+ "progress-mode": {
+  "sticker": "📈",
+  "quote": {
+   "text": "The race is not to the swift, nor the battle to the strong.",
+   "by": "Ecclesiastes 9:11"
+  },
+  "energy": "Fearful",
+  "pull": "apart",
+  "doing": "doing"
+ },
+ "performance-mode": {
+  "sticker": "🎭",
+  "quote": {
+   "text": "All the world's a stage, and all the men and women merely players.",
+   "by": "William Shakespeare, As You Like It"
+  },
+  "energy": "Fearful",
+  "pull": "either",
+  "doing": "doing"
+ },
+ "comparison-mode": {
+  "sticker": "🪞",
+  "quote": {
+   "text": "Comparison is the thief of joy.",
+   "by": "Saying"
+  },
+  "energy": "Agitated",
+  "pull": "apart",
+  "doing": "doing"
+ },
+ "shame-mode": {
+  "sticker": "🫣",
+  "quote": {
+   "text": "To err is human, to forgive divine.",
+   "by": "Alexander Pope"
+  },
+  "energy": "Low",
+  "pull": "apart",
+  "doing": "doing"
+ },
+ "validation-seeking-mode": {
+  "sticker": "👍",
+  "quote": {
+   "text": "There is only one thing in the world worse than being talked about, and that is not being talked about.",
+   "by": "Oscar Wilde"
+  },
+  "energy": "Fearful",
+  "pull": "together",
+  "doing": "doing"
+ },
+ "inferiority-mode": {
+  "sticker": "🐭",
+  "quote": {
+   "text": "I don't want to belong to any club that will accept me as a member.",
+   "by": "Groucho Marx"
+  },
+  "energy": "Low",
+  "pull": "apart",
+  "doing": "doing"
+ },
+ "impress-mode": {
+  "sticker": "🦚",
+  "quote": {
+   "text": "Empty vessels make the most noise.",
+   "by": "Proverb"
+  },
+  "energy": "Agitated",
+  "pull": "either",
+  "doing": "doing"
+ },
+ "relationship-mode": {
+  "sticker": "💞",
+  "quote": {
+   "text": "The course of true love never did run smooth.",
+   "by": "William Shakespeare, A Midsummer Night's Dream"
+  },
+  "energy": "Loving",
+  "pull": "together",
+  "doing": "doing"
+ },
+ "romantic-projection-mode": {
+  "sticker": "💭",
+  "quote": {
+   "text": "Love looks not with the eyes, but with the mind, and therefore is winged Cupid painted blind.",
+   "by": "William Shakespeare, A Midsummer Night's Dream"
+  },
+  "energy": "Loving",
+  "pull": "together",
+  "doing": "doing"
+ },
+ "chase-mode": {
+  "sticker": "🏃",
+  "quote": {
+   "text": "A watched pot never boils.",
+   "by": "Proverb"
+  },
+  "energy": "Fearful",
+  "pull": "together",
+  "doing": "doing"
+ },
+ "withdrawal-mode": {
+  "sticker": "🐚",
+  "quote": {
+   "text": "Good fences make good neighbors.",
+   "by": "Robert Frost"
+  },
+  "energy": "Fearful",
+  "pull": "apart",
+  "doing": "doing"
+ },
+ "resentment-mode": {
+  "sticker": "🧾",
+  "quote": {
+   "text": "The best way of avenging thyself is not to become like the wrongdoer.",
+   "by": "Marcus Aurelius"
+  },
+  "energy": "Agitated",
+  "pull": "apart",
+  "doing": "doing"
+ },
+ "testing-mode": {
+  "sticker": "🧪",
+  "quote": {
+   "text": "Trust, but verify.",
+   "by": "Russian proverb"
+  },
+  "energy": "Fearful",
+  "pull": "either",
+  "doing": "doing"
+ },
+ "dating-strategy-mode": {
+  "sticker": "♟️",
+  "quote": {
+   "text": "All's fair in love and war.",
+   "by": "Proverb"
+  },
+  "energy": "Analytical",
+  "pull": "together",
+  "doing": "doing"
+ },
+ "breakup-replay-mode": {
+  "sticker": "📼",
+  "quote": {
+   "text": "The past is never dead. It's not even past.",
+   "by": "William Faulkner"
+  },
+  "energy": "Low",
+  "pull": "apart",
+  "doing": "doing"
+ },
+ "planning-mode": {
+  "sticker": "🗓️",
+  "quote": {
+   "text": "Plans are worthless, but planning is everything.",
+   "by": "Dwight D. Eisenhower"
+  },
+  "energy": "Analytical",
+  "pull": "either",
+  "doing": "doing"
+ },
+ "fix-it-mode": {
+  "sticker": "🔧",
+  "quote": {
+   "text": "If it ain't broke, don't fix it.",
+   "by": "Saying"
+  },
+  "energy": "Analytical",
+  "pull": "either",
+  "doing": "doing"
+ },
+ "mental-manager-mode": {
+  "sticker": "🎙️",
+  "quote": {
+   "text": "The mind is a wonderful servant but a terrible master.",
+   "by": "Saying"
+  },
+  "energy": "Analytical",
+  "pull": "apart",
+  "doing": "doing"
+ },
+ "trying-to-relax-mode": {
+  "sticker": "😬",
+  "quote": {
+   "text": "Don't push the river; it flows by itself.",
+   "by": "Saying"
+  },
+  "energy": "Agitated",
+  "pull": "either",
+  "doing": "doing"
+ },
+ "rehearsal-mode": {
+  "sticker": "🎬",
+  "quote": {
+   "text": "Everybody has a plan until they get punched in the mouth.",
+   "by": "Mike Tyson"
+  },
+  "energy": "Fearful",
+  "pull": "apart",
+  "doing": "doing"
+ },
+ "life-management-mode": {
+  "sticker": "🛰️",
+  "quote": {
+   "text": "The best-laid schemes o' mice an' men gang aft agley.",
+   "by": "Robert Burns"
+  },
+  "energy": "Analytical",
+  "pull": "apart",
+  "doing": "doing"
+ },
+ "thinking-mode": {
+  "sticker": "🤔",
+  "quote": {
+   "text": "There is nothing either good or bad, but thinking makes it so.",
+   "by": "William Shakespeare, Hamlet"
+  },
+  "energy": "Analytical",
+  "pull": "apart",
+  "doing": "doing"
+ },
+ "reflective-mode": {
+  "sticker": "📓",
+  "quote": {
+   "text": "Life can only be understood backwards; but it must be lived forwards.",
+   "by": "Søren Kierkegaard"
+  },
+  "energy": "Calm",
+  "pull": "either",
+  "doing": "doing"
+ },
+ "theory-building-mode": {
+  "sticker": "🗺️",
+  "quote": {
+   "text": "The map is not the territory.",
+   "by": "Alfred Korzybski"
+  },
+  "energy": "Analytical",
+  "pull": "apart",
+  "doing": "doing"
+ },
+ "buddhist-speculation-mode": {
+  "sticker": "☸️",
+  "quote": {
+   "text": "The finger pointing at the moon is not the moon.",
+   "by": "Zen saying"
+  },
+  "energy": "Analytical",
+  "pull": "apart",
+  "doing": "doing"
+ },
+ "puzzle-mode": {
+  "sticker": "🧩",
+  "quote": {
+   "text": "When you have eliminated the impossible, whatever remains, however improbable, must be the truth.",
+   "by": "Arthur Conan Doyle (Sherlock Holmes)"
+  },
+  "energy": "Analytical",
+  "pull": "either",
+  "doing": "doing"
+ },
+ "meta-mode": {
+  "sticker": "🪆",
+  "quote": {
+   "text": "It always takes longer than you expect, even when you take into account Hofstadter's Law.",
+   "by": "Douglas Hofstadter"
+  },
+  "energy": "Analytical",
+  "pull": "apart",
+  "doing": "doing"
+ },
+ "work-mode": {
+  "sticker": "💼",
+  "quote": {
+   "text": "Work expands so as to fill the time available for its completion.",
+   "by": "C. Northcote Parkinson"
+  },
+  "energy": "Analytical",
+  "pull": "either",
+  "doing": "doing"
+ },
+ "good-child-mode": {
+  "sticker": "😇",
+  "quote": {
+   "text": "Children should be seen and not heard.",
+   "by": "Proverb"
+  },
+  "energy": "Fearful",
+  "pull": "together",
+  "doing": "doing"
+ },
+ "teacher-mode": {
+  "sticker": "🍎",
+  "quote": {
+   "text": "While we teach, we learn.",
+   "by": "Seneca"
+  },
+  "energy": "Analytical",
+  "pull": "together",
+  "doing": "doing"
+ },
+ "helper-mode": {
+  "sticker": "🩹",
+  "quote": {
+   "text": "Physician, heal thyself.",
+   "by": "Luke 4:23"
+  },
+  "energy": "Loving",
+  "pull": "together",
+  "doing": "doing"
+ },
+ "seducer-mode": {
+  "sticker": "😏",
+  "quote": {
+   "text": "Faint heart never won fair lady.",
+   "by": "Proverb"
+  },
+  "energy": "Agitated",
+  "pull": "together",
+  "doing": "doing"
+ },
+ "spiritual-person-mode": {
+  "sticker": "📿",
+  "quote": {
+   "text": "If you meet the Buddha, kill the Buddha.",
+   "by": "Linji (Zen master)"
+  },
+  "energy": "Fearful",
+  "pull": "apart",
+  "doing": "doing"
+ },
+ "bar-social-mode": {
+  "sticker": "🍻",
+  "quote": {
+   "text": "In vino veritas.",
+   "by": "Latin proverb"
+  },
+  "energy": "Agitated",
+  "pull": "together",
+  "doing": "doing"
+ },
+ "family-time-mode": {
+  "sticker": "🏠",
+  "quote": {
+   "text": "Happy families are all alike; every unhappy family is unhappy in its own way.",
+   "by": "Leo Tolstoy"
+  },
+  "energy": "Agitated",
+  "pull": "either",
+  "doing": "doing"
+ },
+ "collapse-mode": {
+  "sticker": "🪫",
+  "quote": {
+   "text": "This too shall pass.",
+   "by": "Proverb"
+  },
+  "energy": "Low",
+  "pull": "apart",
+  "doing": "doing"
+ },
+ "doom-mode": {
+  "sticker": "🕳️",
+  "quote": {
+   "text": "It is always darkest just before the dawn.",
+   "by": "Proverb"
+  },
+  "energy": "Low",
+  "pull": "apart",
+  "doing": "doing"
+ },
+ "numb-mode": {
+  "sticker": "😶",
+  "quote": {
+   "text": "The mass of men lead lives of quiet desperation.",
+   "by": "Henry David Thoreau"
+  },
+  "energy": "Low",
+  "pull": "apart",
+  "doing": "doing"
+ },
+ "isolation-mode": {
+  "sticker": "🏝️",
+  "quote": {
+   "text": "No man is an island, entire of itself.",
+   "by": "John Donne"
+  },
+  "energy": "Low",
+  "pull": "apart",
+  "doing": "doing"
+ },
+ "disengagement-mode": {
+  "sticker": "🙄",
+  "quote": {
+   "text": "It is a tale told by an idiot, full of sound and fury, signifying nothing.",
+   "by": "William Shakespeare, Macbeth"
+  },
+  "energy": "Low",
+  "pull": "apart",
+  "doing": "doing"
+ },
+ "craving-mode": {
+  "sticker": "🍩",
+  "quote": {
+   "text": "I can resist everything except temptation.",
+   "by": "Oscar Wilde"
+  },
+  "energy": "Agitated",
+  "pull": "either",
+  "doing": "doing"
+ },
+ "scroll-mode": {
+  "sticker": "📱",
+  "quote": {
+   "text": "All of humanity's problems stem from man's inability to sit quietly in a room alone.",
+   "by": "Blaise Pascal"
+  },
+  "energy": "Agitated",
+  "pull": "apart",
+  "doing": "doing"
+ },
+ "novelty-mode": {
+  "sticker": "✨",
+  "quote": {
+   "text": "There is no new thing under the sun.",
+   "by": "Ecclesiastes 1:9"
+  },
+  "energy": "Agitated",
+  "pull": "either",
+  "doing": "doing"
+ },
+ "substance-mode": {
+  "sticker": "🍷",
+  "quote": {
+   "text": "When the wine is in, the wit is out.",
+   "by": "Proverb"
+  },
+  "energy": "Agitated",
+  "pull": "either",
+  "doing": "doing"
+ },
+ "more-mode": {
+  "sticker": "➕",
+  "quote": {
+   "text": "He who knows he has enough is rich.",
+   "by": "Lao Tzu, Tao Te Ching"
+  },
+  "energy": "Agitated",
+  "pull": "apart",
+  "doing": "doing"
+ },
+ "social-media-mode": {
+  "sticker": "🤳",
+  "quote": {
+   "text": "The grass is always greener on the other side of the fence.",
+   "by": "Proverb"
+  },
+  "energy": "Agitated",
+  "pull": "apart",
+  "doing": "doing"
+ },
+ "drumming-flow-mode": {
+  "sticker": "🥁",
+  "quote": {
+   "text": "The quieter you become, the more you can hear.",
+   "by": "Saying"
+  },
+  "energy": "Calm",
+  "pull": "together",
+  "doing": "being"
+ },
+ "creative-expression-mode": {
+  "sticker": "🎨",
+  "quote": {
+   "text": "In the beginner's mind there are many possibilities, but in the expert's there are few.",
+   "by": "Shunryu Suzuki"
+  },
+  "energy": "Calm",
+  "pull": "either",
+  "doing": "being"
+ },
+ "listening-mode": {
+  "sticker": "👂",
+  "quote": {
+   "text": "We have two ears and one mouth for a reason.",
+   "by": "Saying"
+  },
+  "energy": "Loving",
+  "pull": "together",
+  "doing": "being"
+ },
+ "play-mode": {
+  "sticker": "🪁",
+  "quote": {
+   "text": "All work and no play makes Jack a dull boy.",
+   "by": "Proverb"
+  },
+  "energy": "Loving",
+  "pull": "together",
+  "doing": "being"
+ },
+ "care-function": {
+  "sticker": "🤲",
+  "quote": {
+   "text": "Before enlightenment, chop wood, carry water. After enlightenment, chop wood, carry water.",
+   "by": "Zen saying"
+  },
+  "energy": "Loving",
+  "pull": "together",
+  "doing": "being"
+ },
+ "meditation-mode": {
+  "sticker": "🧘",
+  "quote": {
+   "text": "Don't just do something, sit there.",
+   "by": "Saying"
+  },
+  "energy": "Calm",
+  "pull": "either",
+  "doing": "being"
+ },
+ "anger-mode": {
+  "sticker": "😤",
+  "quote": {
+   "text": "The greatest remedy for anger is delay.",
+   "by": "Seneca"
+  },
+  "energy": "Agitated",
+  "pull": "apart",
+  "doing": "doing"
+ },
+ "boyfriend-mode": {
+  "sticker": "🤵",
+  "quote": {
+   "text": "This above all: to thine own self be true.",
+   "by": "William Shakespeare, Hamlet"
+  },
+  "energy": "Fearful",
+  "pull": "either",
+  "doing": "doing"
+ },
+ "bonding-mode": {
+  "sticker": "🫂",
+  "quote": {
+   "text": "It is only with the heart that one can see rightly; what is essential is invisible to the eye.",
+   "by": "Antoine de Saint-Exupéry"
+  },
+  "energy": "Fearful",
+  "pull": "together",
+  "doing": "doing"
+ },
+ "promoter-mode": {
+  "sticker": "📣",
+  "quote": {
+   "text": "Please all, and you will please none.",
+   "by": "Aesop"
+  },
+  "energy": "Fearful",
+  "pull": "together",
+  "doing": "doing"
+ },
+ "evaluation-mode": {
+  "sticker": "📋",
+  "quote": {
+   "text": "A cynic is a man who knows the price of everything and the value of nothing.",
+   "by": "Oscar Wilde"
+  },
+  "energy": "Analytical",
+  "pull": "apart",
+  "doing": "doing"
+ },
+ "goal-mode": {
+  "sticker": "🎯",
+  "quote": {
+   "text": "A journey of a thousand miles begins with a single step.",
+   "by": "Lao Tzu, Tao Te Ching"
+  },
+  "energy": "Analytical",
+  "pull": "either",
+  "doing": "doing"
+ },
+ "management-mode": {
+  "sticker": "🗂️",
+  "quote": {
+   "text": "Some things are within our power, while others are not.",
+   "by": "Epictetus"
+  },
+  "energy": "Analytical",
+  "pull": "either",
+  "doing": "doing"
+ },
+ "searching-mode": {
+  "sticker": "🔦",
+  "quote": {
+   "text": "You are riding an ox in search of the ox.",
+   "by": "Zen saying"
+  },
+  "energy": "Agitated",
+  "pull": "either",
+  "doing": "doing"
+ },
+ "flex-mode": {
+  "sticker": "💪",
+  "quote": {
+   "text": "Pride goeth before destruction, and an haughty spirit before a fall.",
+   "by": "Proverbs 16:18"
+  },
+  "energy": "Agitated",
+  "pull": "apart",
+  "doing": "doing"
+ },
+ "nailed-it": {
+  "sticker": "🙌",
+  "quote": {
+   "text": "Fortune favors the bold.",
+   "by": "Latin proverb"
+  },
+  "energy": "Calm",
+  "pull": "together",
+  "doing": "being"
+ },
+ "victim-mode": {
+  "sticker": "🥀",
+  "quote": {
+   "text": "Men are disturbed not by things, but by the opinions about things.",
+   "by": "Epictetus"
+  },
+  "energy": "Low",
+  "pull": "apart",
+  "doing": "doing"
+ },
+ "outgroup-mode": {
+  "sticker": "🧱",
+  "quote": {
+   "text": "The enemy of my enemy is my friend.",
+   "by": "Proverb"
+  },
+  "energy": "Agitated",
+  "pull": "apart",
+  "doing": "doing"
+ },
+ "post-fight-warmth": {
+  "sticker": "🕊️",
+  "quote": {
+   "text": "Let not the sun go down upon your wrath.",
+   "by": "Ephesians 4:26"
+  },
+  "energy": "Loving",
+  "pull": "together",
+  "doing": "being"
+ },
+ "deep-chill-mode": {
+  "sticker": "🌊",
+  "quote": {
+   "text": "Sitting quietly, doing nothing, spring comes, and the grass grows by itself.",
+   "by": "Zen saying"
+  },
+  "energy": "Calm",
+  "pull": "either",
+  "doing": "being"
+ },
+ "rest-mode": {
+  "sticker": "🍵",
+  "quote": {
+   "text": "When hungry, eat; when tired, sleep.",
+   "by": "Zen saying"
+  },
+  "energy": "Calm",
+  "pull": "either",
+  "doing": "being"
+ }
+}

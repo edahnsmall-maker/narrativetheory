@@ -1,6 +1,7 @@
 import { currentUser, isAdmin } from '@/lib/auth'
 import { newId, store } from '@/lib/store'
-import { sightings, sightingSlug, species } from '@/lib/data/fieldGuide'
+import { sightings, sightingSlug } from '@/lib/data/fieldGuide'
+import { catalogBySlug } from '@/lib/data/catalog'
 import type { StoryStatus } from '@/lib/types'
 
 export const dynamic = 'force-dynamic'
@@ -8,9 +9,9 @@ export const dynamic = 'force-dynamic'
 const MAX_LEN = 2000
 const PER_DAY = 5
 
-/** Every mode a story can be about: described species plus sightings. */
+/** Every mode a story can be about: the whole catalog plus sightings. */
 function modeName(slug: string): string | null {
-  const s = species.find((x) => x.slug === slug)
+  const s = catalogBySlug(slug)
   if (s) return s.name
   const g = sightings.find((x) => sightingSlug(x.name) === slug)
   return g ? g.name : null

@@ -21,7 +21,7 @@ const TIMESCALES: { span: string; what: string; quote: string; note?: string }[]
   { span: 'Hours', what: 'An energy state, a mode', quote: 'Often passing through different flavors throughout the day.' },
   { span: 'Years', what: 'Your default narrative style', quote: 'Signature styles that are personal and unique to the individual.' },
   { span: 'A lifetime', what: 'Karma', quote: 'Based on habit and past conditioning, as well as our biology and genetics.' },
-  { span: 'Across people', what: 'Species', quote: '', note: 'Modes many people share. See the Mode Field Guide.' },
+  { span: 'Across people', what: 'Species', quote: '', note: 'Modes many people share. See the Mode Catalog.' },
 ]
 
 const Kicker = ({ children }: { children: React.ReactNode }) => (

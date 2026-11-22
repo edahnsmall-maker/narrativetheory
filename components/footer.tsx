@@ -17,7 +17,7 @@ export default function Footer() {
           <Link href="/theory" className="block hover:underline">Narrative Theory</Link>
           <Link href="/theory/one-page" className="block hover:underline">NT on one page</Link>
           <Link href="/theory/map" className="block hover:underline">The map</Link>
-          <Link href="/modes" className="block hover:underline">Mode Field Guide</Link>
+          <Link href="/modes" className="block hover:underline">Mode Catalog</Link>
           <Link href="/life" className="block hover:underline">Life Instruction™</Link>
         </div>
         <div className="space-y-2">

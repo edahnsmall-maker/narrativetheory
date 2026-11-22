@@ -63,7 +63,7 @@ export function CutPaperDrawings() {
       <Item title="Lesson one: give up">
         <TheShift />
       </Item>
-      <Item title="Mode Field Guide portraits">
+      <Item title="Mode Catalog portraits">
         <div className="mt-6 grid gap-4 grid-cols-2 sm:grid-cols-3">
           {species.slice(0, 6).map((s) => (
             <SpeciesPortrait key={s.slug} s={s} />

@@ -33,7 +33,7 @@ export default function StoryReview() {
     <div className="mx-auto max-w-3xl px-4 sm:px-6 py-14">
       <div className="text-xs uppercase tracking-widest text-muted-foreground mb-3">Studio</div>
       <h1 className="font-display text-4xl mb-2">Mode stories</h1>
-      <p className="text-muted-foreground mb-8">Readers’ stories from the Mode Field Guide. Nothing shows on the site until you approve it.</p>
+      <p className="text-muted-foreground mb-8">Readers’ stories from the Mode Catalog. Nothing shows on the site until you approve it.</p>
       {error && <p className="rounded-2xl border px-4 py-3">{error}</p>}
       {stories && (
         <>
