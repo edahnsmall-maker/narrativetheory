@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
-import { RichText } from '@/components/rich-text'
+import { RichText, plainText } from '@/components/rich-text'
 import { KINDS, TOPICS, formatDate, listPosts, postHref, showDrafts, tagFromSlug, tagSlug, type Kind, type Post } from '@/lib/writing'
 
 export const metadata: Metadata = {
@@ -92,6 +92,27 @@ function NoteItem({ post, sp }: { post: Post; sp: SP }) {
         {post.draft && <Draft />}
       </div>
     </article>
+  )
+}
+
+function StartHere({ posts }: { posts: Post[] }) {
+  if (!posts.length) return null
+  return (
+    <section aria-labelledby="start-here" className="mb-16">
+      <h2 id="start-here" className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground mb-4">
+        Start here
+      </h2>
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {posts.map((p) => (
+          <Link key={p.kind + p.slug} href={postHref(p)} className="group rounded-2xl border bg-card p-5 hover:bg-secondary/50 transition-colors">
+            <div className="text-[11px] uppercase tracking-wider text-muted-foreground">{KINDS.find((k) => k.kind === p.kind)?.one}</div>
+            <div className="mt-2 font-display text-xl leading-snug group-hover:underline underline-offset-4 line-clamp-4">
+              {p.title || plainText(p.body)}
+            </div>
+          </Link>
+        ))}
+      </div>
+    </section>
   )
 }
 
@@ -216,6 +237,7 @@ export default async function WritingPage({ searchParams }: { searchParams: Prom
         <Section kind={type} posts={filtered[type]} sp={sp} />
       ) : (
         <div className="space-y-20">
+          {!tag && <StartHere posts={(['essays', 'questions', 'notes'] as Kind[]).flatMap((k) => all[k].filter((x) => x.featured))} />}
           <Section kind="essays" posts={filtered.essays} sp={sp} limit={tag ? 10 : 8} />
           <Section kind="notes" posts={filtered.notes} sp={sp} limit={tag ? 12 : 9} />
           <Section kind="questions" posts={filtered.questions} sp={sp} limit={tag ? 10 : 8} />

@@ -12,6 +12,7 @@ import path from 'node:path'
  *   tags: zen, practice
  *   summary: One line for the index.
  *   draft: true        (hidden on the live site; visible in local development)
+ *   featured: true     (shown in "Start here" on the Writing page)
  */
 
 export type Kind = 'notes' | 'essays' | 'questions'
@@ -52,6 +53,8 @@ export interface Post {
   tags: string[]
   summary: string
   draft: boolean
+  /** Shown in "Start here" at the top of the Writing page. */
+  featured: boolean
   body: string
 }
 
@@ -91,6 +94,7 @@ function parse(kind: Kind, file: string): Post {
     tags: (meta.tags ?? '').split(',').map((t) => t.trim()).filter(Boolean),
     summary: meta.summary ?? '',
     draft: meta.draft === 'true',
+    featured: meta.featured === 'true',
     body: body.trim(),
   }
 }

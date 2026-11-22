@@ -1,6 +1,7 @@
 ---
 title: Meditation is nothing
 date: 2024-11-27
+featured: true
 tags: meditation, zen
 summary: It's not a thing you can DO because it's not a doing thing.
 from: apple notes ~line 4007-4062 ("Zen book", Chapter 2 draft, late Nov 2024

@@ -1,6 +1,7 @@
 ---
 title: Where should I put my attention during zazen?
 date: 2023-08-14
+featured: true
 tags: zen, meditation
 summary: There's nothing wrong with my meditation, nothing wrong with this moment, and nothing wrong with me.
 from: Reddit comments Q&A.txt, line 123 (post: "During zazen, where do you focus on?")

@@ -1,6 +1,7 @@
 ---
 title: A mother on a bench
 date: 2020-08-30
+featured: true
 tags: the mind, feelings, narrative theory
 summary: All of these people are reacting consistent with the state of mind they were in a split second before seeing this mother.
 from: Narrative Notes ~lines 2885-2899 (book draft "Chapter 3: Mode States"

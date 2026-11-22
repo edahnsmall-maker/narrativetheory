@@ -1,6 +1,7 @@
 ---
 title: Acceptance is not a process
 date: 2026-10-22
+featured: true
 tags: feelings, meditation, desire
 summary: Acceptance is not really a thing at all. Acceptance is a lack-of-thing.
 from: Zen email #3 "True Acceptance", Oct 22 2026 (edahn_zen_teachings.md ~line 47)
